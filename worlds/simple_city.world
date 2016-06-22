@@ -1,0 +1,73 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="default">
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <!-- A ground plane -->
+    <model name="large_ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>300 300</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>300 300</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <road name="road_left">
+      <width>7.4</width>
+      <point>0 103.7 0.01</point>
+      <point>0 -103.7 0.01</point>
+    </road>
+    <road name="road_right">
+      <width>7.4</width>
+      <point>100 -103.7 0.01</point>
+      <point>100 103.7 0.01</point>
+    </road>
+    <road name="road_top">
+      <width>7.4</width>
+      <point>3.7 100 0.01</point>
+      <point>96.3 100 0.01</point>
+    </road>
+    <road name="road_bottom">
+      <width>7.4</width>
+      <point>3.7 -100 0.01</point>
+      <point>96.3 -100 0.01</point>
+    </road>
+    <road name="road_mid">
+      <width>7.4</width>
+      <point>3.7 0 0.01</point>
+      <point>96.3 0 0.01</point>
+    </road>
+
+  </world>
+</sdf>
