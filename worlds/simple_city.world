@@ -56,6 +56,20 @@
       <point>0 103.7 0.01</point>
       <point>0 -103.7 0.01</point>
     </road>
+
+    <road name="sidewalk_left">
+      <width>3</width>
+      <point>5.2 103.7 0.005</point>
+      <point>5.2 -103.7 0.005</point>
+
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Pedestrian</name>
+        </script>
+      </material>
+    </road>
+
     <road name="road_right">
       <width>7.4</width>
       <point>100 -103.7 0.01</point>
