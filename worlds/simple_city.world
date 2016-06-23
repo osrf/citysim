@@ -1,6 +1,14 @@
 <?xml version="1.0" ?>
 <sdf version="1.6">
   <world name="default">
+    <gui>
+     <camera name="user_camera">
+       <pose>-119 -102 90 0 0.3 0.52</pose>
+     </camera>
+    </gui>
+    <scene>
+      <grid>false</grid>
+    </scene>
     <!-- A global light source -->
     <include>
       <uri>model://sun</uri>
@@ -68,6 +76,182 @@
       <point>3.7 0 0.01</point>
       <point>96.3 0 0.01</point>
     </road>
+
+    <!-- An actor in a green shirt walking around a block -->
+    <actor name="walking_pedestrian">
+      <!-- Starting pose -->
+      <pose>5 -85 0.6 0 0 1.57</pose>
+      <skin>
+        <filename>model://actor/meshes/SKIN_man_green_shirt.dae</filename>
+      </skin>
+      <animation name="animation">
+        <filename>model://actor/meshes/ANIMATION_walking.dae</filename>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <script>
+        <trajectory id="0" type="animation">
+          <!-- Starting pose -->
+          <waypoint>
+            <time>0</time>
+            <pose>5 -85 0 0 0 1.57</pose>
+          </waypoint>
+          <!-- Walk on +Y direction -->
+          <waypoint>
+            <time>40</time>
+            <pose>5 -15 0 0 0 1.57</pose>
+          </waypoint>
+          <!-- Turn from +Y to +X -->
+          <waypoint>
+            <time>60</time>
+            <pose>15 -5 0 0 0 0</pose>
+          </waypoint>
+          <!-- Walk on +X direction -->
+          <waypoint>
+            <time>100</time>
+            <pose>80 -5 0 0 0 0</pose>
+          </waypoint>
+          <!-- Turn from +X to -Y -->
+          <waypoint>
+            <time>120</time>
+            <pose>95 -15 0 0 0 -1.57</pose>
+          </waypoint>
+          <!-- Walk on -Y direction -->
+          <waypoint>
+            <time>160</time>
+            <pose>95 -85 0 0 0 -1.57</pose>
+          </waypoint>
+          <!-- Turn from -Y to -X -->
+          <waypoint>
+            <time>180</time>
+            <pose>80 -95 0 0 0 -3.14</pose>
+          </waypoint>
+          <!-- Walk on -X direction -->
+          <waypoint>
+            <time>220</time>
+            <pose>15 -95 0 0 0 3.14</pose>
+          </waypoint>
+          <!-- Turn from -X to +Y -->
+          <waypoint>
+            <time>240</time>
+            <pose>5 -85 0 0 0 1.57</pose>
+          </waypoint>
+        </trajectory>
+      </script>
+    </actor>
+
+    <!-- An actor in a red shirt running around a block -->
+    <actor name="running_pedestrian">
+      <!-- Starting pose -->
+      <pose>5 15 0.6 0 0 1.57</pose>
+      <skin>
+        <filename>model://actor/meshes/SKIN_man_red_shirt.dae</filename>
+      </skin>
+      <animation name="animation">
+        <filename>model://actor/meshes/ANIMATION_running.dae</filename>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <script>
+        <trajectory id="0" type="animation">
+          <!-- Starting pose -->
+          <waypoint>
+            <time>0</time>
+            <pose>5 15 0 0 0 1.57</pose>
+          </waypoint>
+          <!-- Walk on +Y direction -->
+          <waypoint>
+            <time>20</time>
+            <pose>5 85 0 0 0 1.57</pose>
+          </waypoint>
+          <!-- Turn from +Y to +X -->
+          <waypoint>
+            <time>30</time>
+            <pose>15 95 0 0 0 0</pose>
+          </waypoint>
+          <!-- Walk on +X direction -->
+          <waypoint>
+            <time>50</time>
+            <pose>80 95 0 0 0 0</pose>
+          </waypoint>
+          <!-- Turn from +X to -Y -->
+          <waypoint>
+            <time>60</time>
+            <pose>95 85 0 0 0 -1.57</pose>
+          </waypoint>
+          <!-- Walk on -Y direction -->
+          <waypoint>
+            <time>80</time>
+            <pose>95 15 0 0 0 -1.57</pose>
+          </waypoint>
+          <!-- Turn from -Y to -X -->
+          <waypoint>
+            <time>90</time>
+            <pose>80 5 0 0 0 -3.14</pose>
+          </waypoint>
+          <!-- Walk on -X direction -->
+          <waypoint>
+            <time>110</time>
+            <pose>15 5 0 0 0 3.14</pose>
+          </waypoint>
+          <!-- Turn from -X to +Y -->
+          <waypoint>
+            <time>120</time>
+            <pose>5 15 0 0 0 1.57</pose>
+          </waypoint>
+        </trajectory>
+      </script>
+    </actor>
+
+    <!-- An actor in a blue shirt talking -->
+    <actor name="talking_pedestrian">
+      <!-- Starting pose -->
+      <pose>5 5 0.6 0 0 0</pose>
+      <skin>
+        <filename>model://actor/meshes/SKIN_man_blue_shirt.dae</filename>
+      </skin>
+      <animation name="animation">
+        <filename>model://actor/meshes/ANIMATION_talking_a.dae</filename>
+      </animation>
+      <script>
+        <trajectory id="0" type="animation">
+          <!-- Needs trajectory otherwise it doesn't stay at initial pose and goes to 000 -->
+          <!-- But with a trajectory we have to get the duration right to loop nicely -->
+          <waypoint>
+            <time>0</time>
+            <pose>5 5 0 0 0 0</pose>
+          </waypoint>
+          <waypoint>
+            <time>100</time>
+            <pose>5 5 0 0 0 0</pose>
+          </waypoint>
+        </trajectory>
+      </script>
+    </actor>
+
+    <!-- An actor in a green shirt talking -->
+    <actor name="talking_pedestrian_2">
+      <!-- Starting pose -->
+      <pose>5 5.5 0.6 0 0 3.14</pose>
+      <skin>
+        <filename>model://actor/meshes/SKIN_man_green_shirt.dae</filename>
+      </skin>
+      <animation name="animation">
+        <filename>model://actor/meshes/ANIMATION_talking_b.dae</filename>
+      </animation>
+      <script>
+        <trajectory id="0" type="animation">
+          <!-- Needs trajectory otherwise it doesn't stay at initial pose and goes to 000 -->
+          <!-- But with a trajectory we have to get the duration right to loop nicely -->
+          <waypoint>
+            <time>0</time>
+            <pose>5 5.5 0 0 0 0</pose>
+          </waypoint>
+          <waypoint>
+            <time>100</time>
+            <pose>5 5.5 0 0 0 0</pose>
+          </waypoint>
+        </trajectory>
+      </script>
+    </actor>
 
   </world>
 </sdf>
