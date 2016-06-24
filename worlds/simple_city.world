@@ -43,6 +43,7 @@
       </link>
     </model>
 
+    <!-- Roads -->
     <road name="road_left">
       <width>7.4</width>
       <point>0 103.7 0.01</point>
@@ -68,6 +69,521 @@
       <point>3.7 0 0.01</point>
       <point>96.3 0 0.01</point>
     </road>
+
+    <!-- Buildings in block #1-->
+    <include>
+      <pose>86 -83 0 0 0 1.57</pose>
+      <uri>model://house_1</uri>
+    </include>
+
+    <include>
+      <pose>86 -51 0 0 0 1.57</pose>
+      <uri>model://house_1</uri>
+    </include>
+
+    <include>
+      <pose>86 -18 0 0 0 1.57</pose>
+      <uri>model://house_1</uri>
+    </include>
+
+    <include>
+      <pose>15 -83 0 0 0 -1.57</pose>
+      <uri>model://house_1</uri>
+    </include>
+
+    <include>
+      <pose>15 -51 0 0 0 -1.57</pose>
+      <uri>model://house_1</uri>
+    </include>
+
+    <include>
+      <pose>15 -18 0 0 0 -1.57</pose>
+      <uri>model://house_1</uri>
+    </include>
+
+    <!-- Warehouses in block #2-->
+    <model name="warehouse_0">
+      <pose>84 22 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>20 30 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>20 30 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="warehouse_1">
+      <pose>84 70 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>20 45 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>20 45 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="warehouse_2">
+      <pose>33 50 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>50 82 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>50 82 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <!-- A park -->
+    <model name="park_0">
+      <pose>50 -51 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>40 70 .1</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>40 70 .1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- North perimeter -->
+    <model name="north_perimenter_house_0">
+      <pose>-13 -83 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="north_perimenter_house_1">
+      <pose>-13 -58 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="north_perimenter_house_2">
+      <pose>-13 -33 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="north_perimenter_house_3">
+      <pose>-13 -8 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="north_perimenter_house_4">
+      <pose>-13 17 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="north_perimenter_house_5">
+      <pose>-13 42 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="north_perimenter_house_6">
+      <pose>-13 67 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="north_perimenter_house_7">
+      <pose>-13 92 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <!-- South perimenter -->
+    <model name="south_perimenter_house_0">
+      <pose>114 -83 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="south_perimenter_house_1">
+      <pose>114 -58 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="south_perimenter_house_2">
+      <pose>114 -33 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="south_perimenter_house_3">
+      <pose>114 -8 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="south_perimenter_house_4">
+      <pose>114 17 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="south_perimenter_house_5">
+      <pose>114 42 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="south_perimenter_house_6">
+      <pose>114 67 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="south_perimenter_house_7">
+      <pose>114 92 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+
+    <!-- West perimeter -->
+    <include>
+      <pose>-14 -120 0 0 0 1.57</pose>
+      <uri>model://gas_station</uri>
+    </include>
+
+    <model name="west_perimenter_building_0">
+      <pose>64 -115 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>80 10 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>80 10 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+
+    <!-- East perimeter -->
+    <include>
+      <pose>2 114 0 0 0 3.1416</pose>
+      <uri>model://house_2</uri>
+    </include>
+
+    <include>
+      <pose>27 114 0 0 0 3.1416</pose>
+      <uri>model://house_2</uri>
+    </include>
+
+    <include>
+      <pose>52 114 0 0 0 3.1416</pose>
+      <uri>model://house_2</uri>
+    </include>
+
+    <include>
+      <pose>77 114 0 0 0 3.1416</pose>
+      <uri>model://house_2</uri>
+    </include>
+
+    <include>
+      <pose>102 114 0 0 0 3.1416</pose>
+      <uri>model://house_2</uri>
+    </include>
 
   </world>
 </sdf>
