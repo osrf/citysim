@@ -1,8 +1,15 @@
+# Building
+
+cd worlds
+erb simple_city.world.erb > simple_city.world
+
+# Running
+
 1. Source setup file
 
     . setup.sh
 
-2. Open world
+1. Open world
 
     gazebo worlds/simple_city.world
 
