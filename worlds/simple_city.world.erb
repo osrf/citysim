@@ -22,23 +22,11 @@
   ]
 
   # From a rectangle (min, max)
-  def trajectory(traj, speed)
+  def trajectory(traj, speed, start)
     minX = traj[:minX]
     minY = traj[:minY]
     maxX = traj[:maxX]
     maxY = traj[:maxY]
-
-    margin = 5
-    turn = 10
-
-    # Time
-    edgeX_length = maxX - minX - margin*2.0 - turn*2.0
-    edgeX_time = (edgeX_length) / speed
-
-    edgeY_length = maxY - minY - margin*2.0 - turn*2.0
-    edgeY_time = (edgeY_length) / speed
-
-    turn_time = (turn*2.0) / speed
 
     # Orientation
     plusX = 0
@@ -46,53 +34,105 @@
     plusY = Math::PI*0.5
     minusY = -Math::PI*0.5
 
-    trajectory = Hash.new
+    margin = 5
+    turn = 10
+
+    # Time
+    edgeX_length = maxX - minX - margin*2.0 - turn*2.0
+    edgeX_time = edgeX_length / speed
+
+    edgeY_length = maxY - minY - margin*2.0 - turn*2.0
+    edgeY_time = edgeY_length / speed
+
+    turn_time = (turn*2) / speed
+
+    # poses starting from min
+    allPoses =
+    [
+      {:x => minX + margin,        :y => minY + margin + turn, :yaw => plusY},
+      {:x => minX + margin,        :y => maxY - margin - turn, :yaw => plusY},
+      {:x => minX + margin + turn, :y => maxY - margin,        :yaw => plusX},
+      {:x => maxX - margin - turn, :y => maxY - margin,        :yaw => plusX},
+      {:x => maxX - margin,        :y => maxY - margin - turn, :yaw => minusY},
+      {:x => maxX - margin,        :y => minY + margin + turn, :yaw => minusY},
+      {:x => maxX - margin - turn, :y => minY + margin,        :yaw => minusX},
+      {:x => minX + margin + turn, :y => minY + margin,        :yaw => minusX},
+      {:x => minX + margin,        :y => minY + margin + turn, :yaw => plusY},
+    ]
+
+    trajectory = Array.new
 
     time = 0.0
-    trajectory[:pose1] = {:x => minX + margin,        :y => minY + margin + turn, :yaw => plusY, :time => time}
+    current = start
+    for i in 0..8
+      if current == start
+        time = 0.0
+      elsif current == 1 or current == 5
+        time = time + edgeY_time
+      elsif current == 3 or current == 7
+        time = time + edgeX_time
+      else
+        time = time + turn_time
+      end
 
-    time = time + edgeY_time
-    trajectory[:pose2] = {:x => minX + margin,        :y => maxY - margin - turn, :yaw => plusY, :time => time}
+      pose = allPoses[current]
 
-    time = time + turn_time
-    trajectory[:pose3] = {:x => minX + margin + turn, :y => maxY - margin,        :yaw => plusX, :time => time}
+      trajectory.push({:x => pose[:x], :y => pose[:y], :yaw => pose[:yaw], :time => time})
 
-    time = time + edgeX_time
-    trajectory[:pose4] = {:x => maxX - margin - turn, :y => maxY - margin,        :yaw => plusX, :time => time}
+      if current > 7
+        current = 0
+      else
+        current = current + 1
+      end
+    end
 
-    time = time + turn_time
-    trajectory[:pose5] = {:x => maxX - margin,        :y => maxY - margin - turn, :yaw => minusY, :time => time}
+    # repeat first
+    if start == 1 || start == 5
+      time = time + edgeY_time
+    elsif start == 3 || start == 7
+      time = time + edgeX_time
+    else
+      time = time + turn_time
+    end
 
-    time = time + edgeY_time
-    trajectory[:pose6] = {:x => maxX - margin,        :y => minY + margin + turn, :yaw => minusY, :time => time}
-
-    time = time + turn_time
-    trajectory[:pose7] = {:x => maxX - margin - turn, :y => minY + margin,        :yaw => minusX, :time => time}
-
-    time = time + edgeX_time
-    trajectory[:pose8] = {:x => minX + margin + turn, :y => minY + margin,        :yaw => minusX, :time => time}
-
-    time = time + turn_time
-    trajectory[:pose9] = {:x => minX + margin,        :y => minY + margin + turn, :yaw => plusY, :time => time}
+    pose = allPoses[start]
+    trajectory.push({:x => pose[:x], :y => pose[:y], :yaw => pose[:yaw], :time => time})
 
     return trajectory
   end
 
   # Blocks
-
   block_size = 100
 
-  block_1 = {:minX => 0, :maxX => block_size, :minY => -block_size, :maxY => 0}
-  block_2 = {:minX => 0, :maxX => block_size, :minY => 0,           :maxY => block_size}
+  blocks =
+  [
+    {:minX => 0, :maxX => block_size, :minY => -block_size, :maxY => 0},
+    {:minX => 0, :maxX => block_size, :minY => 0,           :maxY => block_size}
+  ]
 
+  actors = Hash.new
 
-  # Actors
+  # walking
+  starts = [0, 1, 2, 3, 4, 5, 6, 7].shuffle
+  for i in 0..3
+    actors["walking_"+i.to_s] = {:skin => skins.sample,
+                                 :anim => animations[3],
+                                 :traj => trajectory(blocks.sample, rand(1.5..2.5), starts[i])}
+  end
 
-  actors =
-  {
-    "walking" => {:skin => skins[1], :anim => animations[3], :traj => trajectory(block_1, 2)},
-    "running" => {:skin => skins[2], :anim => animations[0], :traj => trajectory(block_2, 4)},
-  }
+  # running
+  for i in 0..3
+    actors["running_"+i.to_s] = {:skin => skins.sample,
+                                 :anim => animations[0],
+                                 :traj => trajectory(blocks.sample, rand(3.5..4.5), starts[i+4])}
+  end
+
+  actors["talkingA"] = {:skin => skins[0],
+                        :anim => animations[1],
+                        :traj => [{:x => 5, :y => 5, :yaw => 0, :time => 0}]}
+  actors["talkingB"] = {:skin => skins[1],
+                        :anim => animations[2],
+                        :traj => [{:x => 5, :y => 5.5, :yaw => 0, :time => 0}]}
 
 %>
 
@@ -106,6 +146,12 @@
     </gui>
     <scene>
       <grid>false</grid>
+      <origin_visual>false</origin_visual>
+      <sky>
+        <clouds>
+          <speed>12</speed>
+        </clouds>
+      </sky>
     </scene>
     <!-- A global light source -->
     <include>
@@ -140,10 +186,8 @@
             </plane>
           </geometry>
           <material>
-            <script>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Grey</name>
-            </script>
+            <ambient>0.52 0.37 0.26 1.0</ambient>
+            <diffuse>0.52 0.37 0.26 1.0</diffuse>
           </material>
         </visual>
       </link>
@@ -725,212 +769,44 @@
     %>
       <actor name="<%= name  %>">
         <!-- Starting pose -->
-        <pose><%= traj[:pose1][:x] %> <%= traj[:pose1][:y] %> 0.6 0 0 <%= traj[:pose1][:yaw] %></pose>
+        <pose><%= traj[0][:x] %> <%= traj[0][:y] %> 0.6 0 0 <%= traj[0][:yaw] %></pose>
         <skin>
           <filename><%= mesh_path + skin %></filename>
         </skin>
         <animation name="animation">
           <filename><%= mesh_path + anim %></filename>
-          <interpolate_x>true</interpolate_x>
+          <% if traj.length > 1 %>
+            <interpolate_x>true</interpolate_x>
+          <% end %>
         </animation>
-        <script>
-          <trajectory id="0" type="animation">
-            <%
-              traj.keys.each do |pose|
-                x = traj[pose][:x]
-                y = traj[pose][:y]
-                yaw = traj[pose][:yaw]
-                time = traj[pose][:time]
-            %>
-              <waypoint>
-                <time><%= time %></time>
-                <pose><%= x %> <%= y %> 0 0 0 <%= yaw %></pose>
-              </waypoint>
-            <% end %>
-          </trajectory>
-        </script>
+          <script>
+            <trajectory id="0" type="animation">
+              <%
+                # Needs trajectory otherwise it doesn't stay at initial pose and goes to 000
+                # But with a trajectory we have to get the duration right to loop nicely
+
+                if traj.length == 1
+                  front = traj.at(0)
+                  front[:time] = 100
+
+                  traj.push(front)
+                end
+
+                traj.each do |t|
+                  x = t[:x]
+                  y = t[:y]
+                  yaw = t[:yaw]
+                  time = t[:time]
+              %>
+                <waypoint>
+                  <time><%= time %></time>
+                  <pose><%= x %> <%= y %> 0 0 0 <%= yaw %></pose>
+                </waypoint>
+              <% end %>
+            </trajectory>
+          </script>
       </actor>
     <% end %>
-
-
-
-
-
-    <!-- An actor in a green shirt walking around a block -->
-    <actor name="walking_pedestrian">
-      <!-- Starting pose -->
-      <pose>5 -85 0.6 0 0 1.57</pose>
-      <skin>
-        <filename>model://actor/meshes/SKIN_man_green_shirt.dae</filename>
-      </skin>
-      <animation name="animation">
-        <filename>model://actor/meshes/ANIMATION_walking.dae</filename>
-        <interpolate_x>true</interpolate_x>
-      </animation>
-      <script>
-        <trajectory id="0" type="animation">
-          <!-- Starting pose -->
-          <waypoint>
-            <time>0</time>
-            <pose>5 -85 0 0 0 1.57</pose>
-          </waypoint>
-          <!-- Walk on +Y direction -->
-          <waypoint>
-            <time>40</time>
-            <pose>5 -15 0 0 0 1.57</pose>
-          </waypoint>
-          <!-- Turn from +Y to +X -->
-          <waypoint>
-            <time>60</time>
-            <pose>15 -5 0 0 0 0</pose>
-          </waypoint>
-          <!-- Walk on +X direction -->
-          <waypoint>
-            <time>100</time>
-            <pose>80 -5 0 0 0 0</pose>
-          </waypoint>
-          <!-- Turn from +X to -Y -->
-          <waypoint>
-            <time>120</time>
-            <pose>95 -15 0 0 0 -1.57</pose>
-          </waypoint>
-          <!-- Walk on -Y direction -->
-          <waypoint>
-            <time>160</time>
-            <pose>95 -85 0 0 0 -1.57</pose>
-          </waypoint>
-          <!-- Turn from -Y to -X -->
-          <waypoint>
-            <time>180</time>
-            <pose>80 -95 0 0 0 -3.14</pose>
-          </waypoint>
-          <!-- Walk on -X direction -->
-          <waypoint>
-            <time>220</time>
-            <pose>15 -95 0 0 0 3.14</pose>
-          </waypoint>
-          <!-- Turn from -X to +Y -->
-          <waypoint>
-            <time>240</time>
-            <pose>5 -85 0 0 0 1.57</pose>
-          </waypoint>
-        </trajectory>
-      </script>
-    </actor>
-
-    <!-- An actor in a red shirt running around a block -->
-    <actor name="running_pedestrian">
-      <!-- Starting pose -->
-      <pose>5 15 0.6 0 0 1.57</pose>
-      <skin>
-        <filename>model://actor/meshes/SKIN_man_red_shirt.dae</filename>
-      </skin>
-      <animation name="animation">
-        <filename>model://actor/meshes/ANIMATION_running.dae</filename>
-        <interpolate_x>true</interpolate_x>
-      </animation>
-      <script>
-        <trajectory id="0" type="animation">
-          <!-- Starting pose -->
-          <waypoint>
-            <time>0</time>
-            <pose>5 15 0 0 0 1.57</pose>
-          </waypoint>
-          <!-- Walk on +Y direction -->
-          <waypoint>
-            <time>20</time>
-            <pose>5 85 0 0 0 1.57</pose>
-          </waypoint>
-          <!-- Turn from +Y to +X -->
-          <waypoint>
-            <time>30</time>
-            <pose>15 95 0 0 0 0</pose>
-          </waypoint>
-          <!-- Walk on +X direction -->
-          <waypoint>
-            <time>50</time>
-            <pose>80 95 0 0 0 0</pose>
-          </waypoint>
-          <!-- Turn from +X to -Y -->
-          <waypoint>
-            <time>60</time>
-            <pose>95 85 0 0 0 -1.57</pose>
-          </waypoint>
-          <!-- Walk on -Y direction -->
-          <waypoint>
-            <time>80</time>
-            <pose>95 15 0 0 0 -1.57</pose>
-          </waypoint>
-          <!-- Turn from -Y to -X -->
-          <waypoint>
-            <time>90</time>
-            <pose>80 5 0 0 0 -3.14</pose>
-          </waypoint>
-          <!-- Walk on -X direction -->
-          <waypoint>
-            <time>110</time>
-            <pose>15 5 0 0 0 3.14</pose>
-          </waypoint>
-          <!-- Turn from -X to +Y -->
-          <waypoint>
-            <time>120</time>
-            <pose>5 15 0 0 0 1.57</pose>
-          </waypoint>
-        </trajectory>
-      </script>
-    </actor>
-
-    <!-- An actor in a blue shirt talking -->
-    <actor name="talking_pedestrian">
-      <!-- Starting pose -->
-      <pose>5 5 0.6 0 0 0</pose>
-      <skin>
-        <filename>model://actor/meshes/SKIN_man_blue_shirt.dae</filename>
-      </skin>
-      <animation name="animation">
-        <filename>model://actor/meshes/ANIMATION_talking_a.dae</filename>
-      </animation>
-      <script>
-        <trajectory id="0" type="animation">
-          <!-- Needs trajectory otherwise it doesn't stay at initial pose and goes to 000 -->
-          <!-- But with a trajectory we have to get the duration right to loop nicely -->
-          <waypoint>
-            <time>0</time>
-            <pose>5 5 0 0 0 0</pose>
-          </waypoint>
-          <waypoint>
-            <time>100</time>
-            <pose>5 5 0 0 0 0</pose>
-          </waypoint>
-        </trajectory>
-      </script>
-    </actor>
-
-    <!-- An actor in a green shirt talking -->
-    <actor name="talking_pedestrian_2">
-      <!-- Starting pose -->
-      <pose>5 5.5 0.6 0 0 3.14</pose>
-      <skin>
-        <filename>model://actor/meshes/SKIN_man_green_shirt.dae</filename>
-      </skin>
-      <animation name="animation">
-        <filename>model://actor/meshes/ANIMATION_talking_b.dae</filename>
-      </animation>
-      <script>
-        <trajectory id="0" type="animation">
-          <!-- Needs trajectory otherwise it doesn't stay at initial pose and goes to 000 -->
-          <!-- But with a trajectory we have to get the duration right to loop nicely -->
-          <waypoint>
-            <time>0</time>
-            <pose>5 5.5 0 0 0 0</pose>
-          </waypoint>
-          <waypoint>
-            <time>100</time>
-            <pose>5 5.5 0 0 0 0</pose>
-          </waypoint>
-        </trajectory>
-      </script>
-    </actor>
 
   </world>
 </sdf>
