@@ -1,6 +1,24 @@
 <?xml version="1.0" ?>
+
+
+
+
 <sdf version="1.6">
   <world name="default">
+    <gui>
+     <camera name="user_camera">
+       <pose>-119 -102 90 0 0.3 0.52</pose>
+     </camera>
+    </gui>
+    <scene>
+      <grid>false</grid>
+      <origin_visual>false</origin_visual>
+      <sky>
+        <clouds>
+          <speed>12</speed>
+        </clouds>
+      </sky>
+    </scene>
     <!-- A global light source -->
     <include>
       <uri>model://sun</uri>
@@ -34,10 +52,8 @@
             </plane>
           </geometry>
           <material>
-            <script>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Grey</name>
-            </script>
+            <ambient>0.52 0.37 0.26 1.0</ambient>
+            <diffuse>0.52 0.37 0.26 1.0</diffuse>
           </material>
         </visual>
       </link>
@@ -49,6 +65,20 @@
       <point>0 103.7 0.01</point>
       <point>0 -103.7 0.01</point>
     </road>
+
+    <road name="sidewalk_left">
+      <width>3</width>
+      <point>5.2 103.7 0.005</point>
+      <point>5.2 -103.7 0.005</point>
+
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Pedestrian</name>
+        </script>
+      </material>
+    </road>
+
     <road name="road_right">
       <width>7.4</width>
       <point>100 -103.7 0.01</point>
@@ -73,31 +103,37 @@
     <!-- Buildings in block #1-->
     <include>
       <pose>86 -83 0 0 0 1.57</pose>
+      <name>house_1_0</name>
       <uri>model://house_1</uri>
     </include>
 
     <include>
       <pose>86 -51 0 0 0 1.57</pose>
+      <name>house_1_1</name>
       <uri>model://house_1</uri>
     </include>
 
     <include>
       <pose>86 -18 0 0 0 1.57</pose>
+      <name>house_1_2</name>
       <uri>model://house_1</uri>
     </include>
 
     <include>
       <pose>15 -83 0 0 0 -1.57</pose>
+      <name>house_1_3</name>
       <uri>model://house_1</uri>
     </include>
 
     <include>
       <pose>15 -51 0 0 0 -1.57</pose>
+      <name>house_1_4</name>
       <uri>model://house_1</uri>
     </include>
 
     <include>
       <pose>15 -18 0 0 0 -1.57</pose>
+      <name>house_1_5</name>
       <uri>model://house_1</uri>
     </include>
 
@@ -562,28 +598,642 @@
     <!-- East perimeter -->
     <include>
       <pose>2 114 0 0 0 3.1416</pose>
+      <name>house_2_0</name>
       <uri>model://house_2</uri>
     </include>
 
     <include>
       <pose>27 114 0 0 0 3.1416</pose>
+      <name>house_2_1</name>
       <uri>model://house_2</uri>
     </include>
 
     <include>
       <pose>52 114 0 0 0 3.1416</pose>
+      <name>house_2_2</name>
       <uri>model://house_2</uri>
     </include>
 
     <include>
       <pose>77 114 0 0 0 3.1416</pose>
+      <name>house_2_3</name>
       <uri>model://house_2</uri>
     </include>
 
     <include>
       <pose>102 114 0 0 0 3.1416</pose>
+      <name>house_2_4</name>
       <uri>model://house_2</uri>
     </include>
+
+    <!-- Actors -->
+    
+      <actor name="walking_0">
+        <!-- Starting pose -->
+        <pose>85 95 0.6 0 0 0</pose>
+        <skin>
+          <filename>model://actor/meshes/SKIN_man_blue_shirt.dae</filename>
+        </skin>
+        <animation name="animation">
+          <filename>model://actor/meshes/ANIMATION_walking.dae</filename>
+          
+            <interpolate_x>true</interpolate_x>
+          
+        </animation>
+          <script>
+            <trajectory id="0" type="animation">
+              
+                <waypoint>
+                  <time>0.0</time>
+                  <pose>85 95 0 0 0 0</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>11.732912903050149</time>
+                  <pose>95 85 0 0 0 -1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>52.79810806372567</time>
+                  <pose>95 15 0 0 0 -1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>64.53102096677583</time>
+                  <pose>85 5 0 0 0 3.141592653589793</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>105.59621612745136</time>
+                  <pose>15 5 0 0 0 3.141592653589793</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>117.3291290305015</time>
+                  <pose>5 15 0 0 0 1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>129.06204193355165</time>
+                  <pose>5 15 0 0 0 1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>170.12723709422718</time>
+                  <pose>5 85 0 0 0 1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>181.86014999727735</time>
+                  <pose>15 95 0 0 0 0</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>222.92534515795288</time>
+                  <pose>85 95 0 0 0 0</pose>
+                </waypoint>
+              
+            </trajectory>
+          </script>
+      </actor>
+    
+      <actor name="walking_1">
+        <!-- Starting pose -->
+        <pose>5 15 0.6 0 0 1.5707963267948966</pose>
+        <skin>
+          <filename>model://actor/meshes/SKIN_man_red_shirt.dae</filename>
+        </skin>
+        <animation name="animation">
+          <filename>model://actor/meshes/ANIMATION_walking.dae</filename>
+          
+            <interpolate_x>true</interpolate_x>
+          
+        </animation>
+          <script>
+            <trajectory id="0" type="animation">
+              
+                <waypoint>
+                  <time>0.0</time>
+                  <pose>5 15 0 0 0 1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>31.602430611371897</time>
+                  <pose>5 85 0 0 0 1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>40.631696500335295</time>
+                  <pose>15 95 0 0 0 0</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>72.2341271117072</time>
+                  <pose>85 95 0 0 0 0</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>81.26339300067059</time>
+                  <pose>95 85 0 0 0 -1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>112.86582361204249</time>
+                  <pose>95 15 0 0 0 -1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>121.89508950100588</time>
+                  <pose>85 5 0 0 0 3.141592653589793</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>153.49752011237777</time>
+                  <pose>15 5 0 0 0 3.141592653589793</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>162.52678600134118</time>
+                  <pose>5 15 0 0 0 1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>171.5560518903046</time>
+                  <pose>5 15 0 0 0 1.5707963267948966</pose>
+                </waypoint>
+              
+            </trajectory>
+          </script>
+      </actor>
+    
+      <actor name="walking_2">
+        <!-- Starting pose -->
+        <pose>95 85 0.6 0 0 -1.5707963267948966</pose>
+        <skin>
+          <filename>model://actor/meshes/SKIN_man_blue_shirt.dae</filename>
+        </skin>
+        <animation name="animation">
+          <filename>model://actor/meshes/ANIMATION_walking.dae</filename>
+          
+            <interpolate_x>true</interpolate_x>
+          
+        </animation>
+          <script>
+            <trajectory id="0" type="animation">
+              
+                <waypoint>
+                  <time>0.0</time>
+                  <pose>95 85 0 0 0 -1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>35.17805880077361</time>
+                  <pose>95 15 0 0 0 -1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>45.228932743851786</time>
+                  <pose>85 5 0 0 0 3.141592653589793</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>80.4069915446254</time>
+                  <pose>15 5 0 0 0 3.141592653589793</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>90.45786548770357</time>
+                  <pose>5 15 0 0 0 1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>100.50873943078174</time>
+                  <pose>5 15 0 0 0 1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>135.68679823155537</time>
+                  <pose>5 85 0 0 0 1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>145.73767217463356</time>
+                  <pose>15 95 0 0 0 0</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>180.91573097540717</time>
+                  <pose>85 95 0 0 0 0</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>190.96660491848536</time>
+                  <pose>95 85 0 0 0 -1.5707963267948966</pose>
+                </waypoint>
+              
+            </trajectory>
+          </script>
+      </actor>
+    
+      <actor name="walking_3">
+        <!-- Starting pose -->
+        <pose>15 5 0.6 0 0 3.141592653589793</pose>
+        <skin>
+          <filename>model://actor/meshes/SKIN_man_blue_shirt.dae</filename>
+        </skin>
+        <animation name="animation">
+          <filename>model://actor/meshes/ANIMATION_walking.dae</filename>
+          
+            <interpolate_x>true</interpolate_x>
+          
+        </animation>
+          <script>
+            <trajectory id="0" type="animation">
+              
+                <waypoint>
+                  <time>0.0</time>
+                  <pose>15 5 0 0 0 3.141592653589793</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>10.925763233334616</time>
+                  <pose>5 15 0 0 0 1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>21.85152646666923</time>
+                  <pose>5 15 0 0 0 1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>60.09169778334039</time>
+                  <pose>5 85 0 0 0 1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>71.01746101667501</time>
+                  <pose>15 95 0 0 0 0</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>109.25763233334618</time>
+                  <pose>85 95 0 0 0 0</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>120.1833955666808</time>
+                  <pose>95 85 0 0 0 -1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>158.42356688335195</time>
+                  <pose>95 15 0 0 0 -1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>169.34933011668656</time>
+                  <pose>85 5 0 0 0 3.141592653589793</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>207.58950143335773</time>
+                  <pose>15 5 0 0 0 3.141592653589793</pose>
+                </waypoint>
+              
+            </trajectory>
+          </script>
+      </actor>
+    
+      <actor name="running_0">
+        <!-- Starting pose -->
+        <pose>5 -15 0.6 0 0 1.5707963267948966</pose>
+        <skin>
+          <filename>model://actor/meshes/SKIN_man_red_shirt.dae</filename>
+        </skin>
+        <animation name="animation">
+          <filename>model://actor/meshes/ANIMATION_running.dae</filename>
+          
+            <interpolate_x>true</interpolate_x>
+          
+        </animation>
+          <script>
+            <trajectory id="0" type="animation">
+              
+                <waypoint>
+                  <time>0.0</time>
+                  <pose>5 -15 0 0 0 1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>4.894773956587811</time>
+                  <pose>15 -5 0 0 0 0</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>22.02648280464515</time>
+                  <pose>85 -5 0 0 0 0</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>26.92125676123296</time>
+                  <pose>95 -15 0 0 0 -1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>44.0529656092903</time>
+                  <pose>95 -85 0 0 0 -1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>48.94773956587811</time>
+                  <pose>85 -95 0 0 0 3.141592653589793</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>66.07944841393544</time>
+                  <pose>15 -95 0 0 0 3.141592653589793</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>70.97422237052325</time>
+                  <pose>5 -85 0 0 0 1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>75.86899632711106</time>
+                  <pose>5 -85 0 0 0 1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>93.0007051751684</time>
+                  <pose>5 -15 0 0 0 1.5707963267948966</pose>
+                </waypoint>
+              
+            </trajectory>
+          </script>
+      </actor>
+    
+      <actor name="running_1">
+        <!-- Starting pose -->
+        <pose>85 5 0.6 0 0 3.141592653589793</pose>
+        <skin>
+          <filename>model://actor/meshes/SKIN_man_blue_shirt.dae</filename>
+        </skin>
+        <animation name="animation">
+          <filename>model://actor/meshes/ANIMATION_running.dae</filename>
+          
+            <interpolate_x>true</interpolate_x>
+          
+        </animation>
+          <script>
+            <trajectory id="0" type="animation">
+              
+                <waypoint>
+                  <time>0.0</time>
+                  <pose>85 5 0 0 0 3.141592653589793</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>15.704839312688996</time>
+                  <pose>15 5 0 0 0 3.141592653589793</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>20.191936259171566</time>
+                  <pose>5 15 0 0 0 1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>24.679033205654136</time>
+                  <pose>5 15 0 0 0 1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>40.38387251834313</time>
+                  <pose>5 85 0 0 0 1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>44.870969464825706</time>
+                  <pose>15 95 0 0 0 0</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>60.5758087775147</time>
+                  <pose>85 95 0 0 0 0</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>65.06290572399728</time>
+                  <pose>95 85 0 0 0 -1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>80.76774503668628</time>
+                  <pose>95 15 0 0 0 -1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>85.25484198316884</time>
+                  <pose>85 5 0 0 0 3.141592653589793</pose>
+                </waypoint>
+              
+            </trajectory>
+          </script>
+      </actor>
+    
+      <actor name="running_2">
+        <!-- Starting pose -->
+        <pose>95 -85 0.6 0 0 -1.5707963267948966</pose>
+        <skin>
+          <filename>model://actor/meshes/SKIN_man_green_shirt.dae</filename>
+        </skin>
+        <animation name="animation">
+          <filename>model://actor/meshes/ANIMATION_running.dae</filename>
+          
+            <interpolate_x>true</interpolate_x>
+          
+        </animation>
+          <script>
+            <trajectory id="0" type="animation">
+              
+                <waypoint>
+                  <time>0.0</time>
+                  <pose>95 -85 0 0 0 -1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>5.064708443070979</time>
+                  <pose>85 -95 0 0 0 3.141592653589793</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>22.791187993819406</time>
+                  <pose>15 -95 0 0 0 3.141592653589793</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>27.855896436890383</time>
+                  <pose>5 -85 0 0 0 1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>32.92060487996136</time>
+                  <pose>5 -85 0 0 0 1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>50.64708443070978</time>
+                  <pose>5 -15 0 0 0 1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>55.71179287378076</time>
+                  <pose>15 -5 0 0 0 0</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>73.43827242452919</time>
+                  <pose>85 -5 0 0 0 0</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>78.50298086760017</time>
+                  <pose>95 -15 0 0 0 -1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>96.2294604183486</time>
+                  <pose>95 -85 0 0 0 -1.5707963267948966</pose>
+                </waypoint>
+              
+            </trajectory>
+          </script>
+      </actor>
+    
+      <actor name="running_3">
+        <!-- Starting pose -->
+        <pose>15 -5 0.6 0 0 0</pose>
+        <skin>
+          <filename>model://actor/meshes/SKIN_man_blue_shirt.dae</filename>
+        </skin>
+        <animation name="animation">
+          <filename>model://actor/meshes/ANIMATION_running.dae</filename>
+          
+            <interpolate_x>true</interpolate_x>
+          
+        </animation>
+          <script>
+            <trajectory id="0" type="animation">
+              
+                <waypoint>
+                  <time>0.0</time>
+                  <pose>15 -5 0 0 0 0</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>17.48704261800557</time>
+                  <pose>85 -5 0 0 0 0</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>22.483340508864305</time>
+                  <pose>95 -15 0 0 0 -1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>39.970383126869876</time>
+                  <pose>95 -85 0 0 0 -1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>44.96668101772861</time>
+                  <pose>85 -95 0 0 0 3.141592653589793</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>62.45372363573418</time>
+                  <pose>15 -95 0 0 0 3.141592653589793</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>67.4500215265929</time>
+                  <pose>5 -85 0 0 0 1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>72.44631941745163</time>
+                  <pose>5 -85 0 0 0 1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>89.93336203545721</time>
+                  <pose>5 -15 0 0 0 1.5707963267948966</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>94.92965992631594</time>
+                  <pose>15 -5 0 0 0 0</pose>
+                </waypoint>
+              
+            </trajectory>
+          </script>
+      </actor>
+    
+      <actor name="talkingA">
+        <!-- Starting pose -->
+        <pose>5 5 0.6 0 0 0</pose>
+        <skin>
+          <filename>model://actor/meshes/SKIN_man_blue_shirt.dae</filename>
+        </skin>
+        <animation name="animation">
+          <filename>model://actor/meshes/ANIMATION_talking_a.dae</filename>
+          
+        </animation>
+          <script>
+            <trajectory id="0" type="animation">
+              
+                <waypoint>
+                  <time>100</time>
+                  <pose>5 5 0 0 0 0</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>100</time>
+                  <pose>5 5 0 0 0 0</pose>
+                </waypoint>
+              
+            </trajectory>
+          </script>
+      </actor>
+    
+      <actor name="talkingB">
+        <!-- Starting pose -->
+        <pose>5 5.5 0.6 0 0 0</pose>
+        <skin>
+          <filename>model://actor/meshes/SKIN_man_green_shirt.dae</filename>
+        </skin>
+        <animation name="animation">
+          <filename>model://actor/meshes/ANIMATION_talking_b.dae</filename>
+          
+        </animation>
+          <script>
+            <trajectory id="0" type="animation">
+              
+                <waypoint>
+                  <time>100</time>
+                  <pose>5 5.5 0 0 0 0</pose>
+                </waypoint>
+              
+                <waypoint>
+                  <time>100</time>
+                  <pose>5 5.5 0 0 0 0</pose>
+                </waypoint>
+              
+            </trajectory>
+          </script>
+      </actor>
+    
 
   </world>
 </sdf>

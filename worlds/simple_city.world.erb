@@ -1,0 +1,812 @@
+<?xml version="1.0" ?>
+
+<%
+  # Simple city
+
+  # Actors
+  mesh_path = "model://actor/meshes/"
+
+  skins =
+  [
+    "SKIN_man_blue_shirt.dae",
+    "SKIN_man_green_shirt.dae",
+    "SKIN_man_red_shirt.dae"
+  ]
+
+  animations =
+  [
+    "ANIMATION_running.dae",
+    "ANIMATION_talking_a.dae",
+    "ANIMATION_talking_b.dae",
+    "ANIMATION_walking.dae"
+  ]
+
+  # From a rectangle (min, max)
+  def trajectory(traj, speed, start)
+    minX = traj[:minX]
+    minY = traj[:minY]
+    maxX = traj[:maxX]
+    maxY = traj[:maxY]
+
+    # Orientation
+    plusX = 0
+    minusX = Math::PI
+    plusY = Math::PI*0.5
+    minusY = -Math::PI*0.5
+
+    margin = 5
+    turn = 10
+
+    # Time
+    edgeX_length = maxX - minX - margin*2.0 - turn*2.0
+    edgeX_time = edgeX_length / speed
+
+    edgeY_length = maxY - minY - margin*2.0 - turn*2.0
+    edgeY_time = edgeY_length / speed
+
+    turn_time = (turn*2) / speed
+
+    # poses starting from min
+    allPoses =
+    [
+      {:x => minX + margin,        :y => minY + margin + turn, :yaw => plusY},
+      {:x => minX + margin,        :y => maxY - margin - turn, :yaw => plusY},
+      {:x => minX + margin + turn, :y => maxY - margin,        :yaw => plusX},
+      {:x => maxX - margin - turn, :y => maxY - margin,        :yaw => plusX},
+      {:x => maxX - margin,        :y => maxY - margin - turn, :yaw => minusY},
+      {:x => maxX - margin,        :y => minY + margin + turn, :yaw => minusY},
+      {:x => maxX - margin - turn, :y => minY + margin,        :yaw => minusX},
+      {:x => minX + margin + turn, :y => minY + margin,        :yaw => minusX},
+      {:x => minX + margin,        :y => minY + margin + turn, :yaw => plusY},
+    ]
+
+    trajectory = Array.new
+
+    time = 0.0
+    current = start
+    for i in 0..8
+      if current == start
+        time = 0.0
+      elsif current == 1 or current == 5
+        time = time + edgeY_time
+      elsif current == 3 or current == 7
+        time = time + edgeX_time
+      else
+        time = time + turn_time
+      end
+
+      pose = allPoses[current]
+
+      trajectory.push({:x => pose[:x], :y => pose[:y], :yaw => pose[:yaw], :time => time})
+
+      if current > 7
+        current = 0
+      else
+        current = current + 1
+      end
+    end
+
+    # repeat first
+    if start == 1 || start == 5
+      time = time + edgeY_time
+    elsif start == 3 || start == 7
+      time = time + edgeX_time
+    else
+      time = time + turn_time
+    end
+
+    pose = allPoses[start]
+    trajectory.push({:x => pose[:x], :y => pose[:y], :yaw => pose[:yaw], :time => time})
+
+    return trajectory
+  end
+
+  # Blocks
+  block_size = 100
+
+  blocks =
+  [
+    {:minX => 0, :maxX => block_size, :minY => -block_size, :maxY => 0},
+    {:minX => 0, :maxX => block_size, :minY => 0,           :maxY => block_size}
+  ]
+
+  actors = Hash.new
+
+  # walking
+  starts = [0, 1, 2, 3, 4, 5, 6, 7].shuffle
+  for i in 0..3
+    actors["walking_"+i.to_s] = {:skin => skins.sample,
+                                 :anim => animations[3],
+                                 :traj => trajectory(blocks.sample, rand(1.5..2.5), starts[i])}
+  end
+
+  # running
+  for i in 0..3
+    actors["running_"+i.to_s] = {:skin => skins.sample,
+                                 :anim => animations[0],
+                                 :traj => trajectory(blocks.sample, rand(3.5..4.5), starts[i+4])}
+  end
+
+  actors["talkingA"] = {:skin => skins[0],
+                        :anim => animations[1],
+                        :traj => [{:x => 5, :y => 5, :yaw => 0, :time => 0}]}
+  actors["talkingB"] = {:skin => skins[1],
+                        :anim => animations[2],
+                        :traj => [{:x => 5, :y => 5.5, :yaw => 0, :time => 0}]}
+
+%>
+
+
+<sdf version="1.6">
+  <world name="default">
+    <gui>
+     <camera name="user_camera">
+       <pose>-119 -102 90 0 0.3 0.52</pose>
+     </camera>
+    </gui>
+    <scene>
+      <grid>false</grid>
+      <origin_visual>false</origin_visual>
+      <sky>
+        <clouds>
+          <speed>12</speed>
+        </clouds>
+      </sky>
+    </scene>
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <!-- A ground plane -->
+    <model name="large_ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>300 300</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <cast_shadows>false</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>300 300</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.52 0.37 0.26 1.0</ambient>
+            <diffuse>0.52 0.37 0.26 1.0</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Roads -->
+    <road name="road_left">
+      <width>7.4</width>
+      <point>0 103.7 0.01</point>
+      <point>0 -103.7 0.01</point>
+    </road>
+
+    <road name="sidewalk_left">
+      <width>3</width>
+      <point>5.2 103.7 0.005</point>
+      <point>5.2 -103.7 0.005</point>
+
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Pedestrian</name>
+        </script>
+      </material>
+    </road>
+
+    <road name="road_right">
+      <width>7.4</width>
+      <point>100 -103.7 0.01</point>
+      <point>100 103.7 0.01</point>
+    </road>
+    <road name="road_top">
+      <width>7.4</width>
+      <point>3.7 100 0.01</point>
+      <point>96.3 100 0.01</point>
+    </road>
+    <road name="road_bottom">
+      <width>7.4</width>
+      <point>3.7 -100 0.01</point>
+      <point>96.3 -100 0.01</point>
+    </road>
+    <road name="road_mid">
+      <width>7.4</width>
+      <point>3.7 0 0.01</point>
+      <point>96.3 0 0.01</point>
+    </road>
+
+    <!-- Buildings in block #1-->
+    <include>
+      <pose>86 -83 0 0 0 1.57</pose>
+      <name>house_1_0</name>
+      <uri>model://house_1</uri>
+    </include>
+
+    <include>
+      <pose>86 -51 0 0 0 1.57</pose>
+      <name>house_1_1</name>
+      <uri>model://house_1</uri>
+    </include>
+
+    <include>
+      <pose>86 -18 0 0 0 1.57</pose>
+      <name>house_1_2</name>
+      <uri>model://house_1</uri>
+    </include>
+
+    <include>
+      <pose>15 -83 0 0 0 -1.57</pose>
+      <name>house_1_3</name>
+      <uri>model://house_1</uri>
+    </include>
+
+    <include>
+      <pose>15 -51 0 0 0 -1.57</pose>
+      <name>house_1_4</name>
+      <uri>model://house_1</uri>
+    </include>
+
+    <include>
+      <pose>15 -18 0 0 0 -1.57</pose>
+      <name>house_1_5</name>
+      <uri>model://house_1</uri>
+    </include>
+
+    <!-- Warehouses in block #2-->
+    <model name="warehouse_0">
+      <pose>84 22 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>20 30 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>20 30 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="warehouse_1">
+      <pose>84 70 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>20 45 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>20 45 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="warehouse_2">
+      <pose>33 50 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>50 82 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>50 82 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <!-- A park -->
+    <model name="park_0">
+      <pose>50 -51 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>40 70 .1</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>40 70 .1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Green</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- North perimeter -->
+    <model name="north_perimenter_house_0">
+      <pose>-13 -83 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="north_perimenter_house_1">
+      <pose>-13 -58 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="north_perimenter_house_2">
+      <pose>-13 -33 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="north_perimenter_house_3">
+      <pose>-13 -8 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="north_perimenter_house_4">
+      <pose>-13 17 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="north_perimenter_house_5">
+      <pose>-13 42 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="north_perimenter_house_6">
+      <pose>-13 67 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="north_perimenter_house_7">
+      <pose>-13 92 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <!-- South perimenter -->
+    <model name="south_perimenter_house_0">
+      <pose>114 -83 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="south_perimenter_house_1">
+      <pose>114 -58 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="south_perimenter_house_2">
+      <pose>114 -33 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="south_perimenter_house_3">
+      <pose>114 -8 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="south_perimenter_house_4">
+      <pose>114 17 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="south_perimenter_house_5">
+      <pose>114 42 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="south_perimenter_house_6">
+      <pose>114 67 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <model name="south_perimenter_house_7">
+      <pose>114 92 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 15 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+
+    <!-- West perimeter -->
+    <include>
+      <pose>-14 -120 0 0 0 1.57</pose>
+      <uri>model://gas_station</uri>
+    </include>
+
+    <model name="west_perimenter_building_0">
+      <pose>64 -115 0.05 0 0 0</pose>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>80 10 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>80 10 10</size>
+            </box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+
+    <!-- East perimeter -->
+    <include>
+      <pose>2 114 0 0 0 3.1416</pose>
+      <name>house_2_0</name>
+      <uri>model://house_2</uri>
+    </include>
+
+    <include>
+      <pose>27 114 0 0 0 3.1416</pose>
+      <name>house_2_1</name>
+      <uri>model://house_2</uri>
+    </include>
+
+    <include>
+      <pose>52 114 0 0 0 3.1416</pose>
+      <name>house_2_2</name>
+      <uri>model://house_2</uri>
+    </include>
+
+    <include>
+      <pose>77 114 0 0 0 3.1416</pose>
+      <name>house_2_3</name>
+      <uri>model://house_2</uri>
+    </include>
+
+    <include>
+      <pose>102 114 0 0 0 3.1416</pose>
+      <name>house_2_4</name>
+      <uri>model://house_2</uri>
+    </include>
+
+    <!-- Actors -->
+    <%
+      actors.keys.each do |name|
+        skin = actors[name][:skin]
+        anim = actors[name][:anim]
+        traj = actors[name][:traj]
+    %>
+      <actor name="<%= name  %>">
+        <!-- Starting pose -->
+        <pose><%= traj[0][:x] %> <%= traj[0][:y] %> 0.6 0 0 <%= traj[0][:yaw] %></pose>
+        <skin>
+          <filename><%= mesh_path + skin %></filename>
+        </skin>
+        <animation name="animation">
+          <filename><%= mesh_path + anim %></filename>
+          <% if traj.length > 1 %>
+            <interpolate_x>true</interpolate_x>
+          <% end %>
+        </animation>
+          <script>
+            <trajectory id="0" type="animation">
+              <%
+                # Needs trajectory otherwise it doesn't stay at initial pose and goes to 000
+                # But with a trajectory we have to get the duration right to loop nicely
+
+                if traj.length == 1
+                  front = traj.at(0)
+                  front[:time] = 100
+
+                  traj.push(front)
+                end
+
+                traj.each do |t|
+                  x = t[:x]
+                  y = t[:y]
+                  yaw = t[:yaw]
+                  time = t[:time]
+              %>
+                <waypoint>
+                  <time><%= time %></time>
+                  <pose><%= x %> <%= y %> 0 0 0 <%= yaw %></pose>
+                </waypoint>
+              <% end %>
+            </trajectory>
+          </script>
+      </actor>
+    <% end %>
+
+  </world>
+</sdf>
