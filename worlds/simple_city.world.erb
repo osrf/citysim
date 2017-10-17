@@ -193,7 +193,42 @@
       </link>
     </model>
 
-    <!-- Roads -->
+    <%
+      # Roads
+      road_width = 7.4
+      road_z_offset = 0.01
+
+      road_x = [-50, -25, 25, 50]
+      road_y = [-100, -50, 0, 50, 100]
+
+      count = 0
+
+      # Along y
+      for x in road_x
+        count = count + 1
+    %>
+
+    <road name="road_y_<%= count %>">
+      <width><%= road_width %></width>
+      <point><%= x %> <%= road_y[0] %> <%= road_z_offset %></point>
+      <point><%= x %> <%= road_y[4] %> <%= road_z_offset %></point>
+    </road>
+    <% end
+
+      count = 0
+
+      # Along x
+      for y in road_y
+        count = count + 1
+    %>
+
+    <road name="road_x_<%= count %>">
+      <width><%= road_width %></width>
+      <point><%= road_x[0] %> <%= y %> <%= road_z_offset %></point>
+      <point><%= road_x[3] %> <%= y %> <%= road_z_offset %></point>
+    </road>
+    <% end %>
+
     <road name="road_left">
       <width>7.4</width>
       <point>0 103.7 0.01</point>
