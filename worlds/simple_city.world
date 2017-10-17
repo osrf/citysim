@@ -7,7 +7,7 @@
   <world name="default">
     <gui>
      <camera name="user_camera">
-       <pose>-119 -102 90 0 0.3 0.52</pose>
+       <pose>-61.60 -2.05 10.325 0 0.25 0</pose>
      </camera>
     </gui>
     <scene>
@@ -19,10 +19,22 @@
         </clouds>
       </sky>
     </scene>
+
     <!-- A global light source -->
-    <include>
-      <uri>model://sun</uri>
-    </include>
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 1000 -0.6 -1.2 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
     <!-- A ground plane -->
     <model name="large_ground_plane">
       <static>true</static>
@@ -31,7 +43,7 @@
           <geometry>
             <plane>
               <normal>0 0 1</normal>
-              <size>300 300</size>
+              <size>200 300</size>
             </plane>
           </geometry>
           <surface>
@@ -48,12 +60,14 @@
           <geometry>
             <plane>
               <normal>0 0 1</normal>
-              <size>300 300</size>
+              <size>200 300</size>
             </plane>
           </geometry>
           <material>
-            <ambient>0.52 0.37 0.26 1.0</ambient>
-            <diffuse>0.52 0.37 0.26 1.0</diffuse>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grass</name>
+            </script>
           </material>
         </visual>
       </link>
@@ -63,77 +77,80 @@
 
     <road name="road_y_1">
       <width>7.4</width>
-      <point>-50 -100 0.01</point>
-      <point>-50 100 0.01</point>
+      <point>-45 -103.7 0.01</point>
+      <point>-45 103.7 0.01</point>
     </road>
     
 
     <road name="road_y_2">
       <width>7.4</width>
-      <point>-25 -100 0.01</point>
-      <point>-25 100 0.01</point>
+      <point>-15 -103.7 0.01</point>
+      <point>-15 103.7 0.01</point>
     </road>
     
 
     <road name="road_y_3">
       <width>7.4</width>
-      <point>25 -100 0.01</point>
-      <point>25 100 0.01</point>
+      <point>15 -103.7 0.01</point>
+      <point>15 103.7 0.01</point>
     </road>
     
 
     <road name="road_y_4">
       <width>7.4</width>
-      <point>50 -100 0.01</point>
-      <point>50 100 0.01</point>
+      <point>50 -103.7 0.01</point>
+      <point>50 103.7 0.01</point>
+    </road>
+    
+
+    <road name="road_y_5">
+      <width>7.4</width>
+      <point>60 -103.7 0.01</point>
+      <point>60 103.7 0.01</point>
     </road>
     
 
     <road name="road_x_1">
       <width>7.4</width>
-      <point>-50 -100 0.01</point>
-      <point>50 -100 0.01</point>
+      <point>-41.3 -100 0.01</point>
+      <point>56.3 -100 0.01</point>
     </road>
     
 
     <road name="road_x_2">
       <width>7.4</width>
-      <point>-50 -50 0.01</point>
-      <point>50 -50 0.01</point>
+      <point>-41.3 -45 0.01</point>
+      <point>56.3 -45 0.01</point>
     </road>
     
 
     <road name="road_x_3">
       <width>7.4</width>
-      <point>-50 0 0.01</point>
-      <point>50 0 0.01</point>
+      <point>-41.3 0 0.01</point>
+      <point>56.3 0 0.01</point>
     </road>
     
 
     <road name="road_x_4">
       <width>7.4</width>
-      <point>-50 50 0.01</point>
-      <point>50 50 0.01</point>
+      <point>-41.3 45 0.01</point>
+      <point>56.3 45 0.01</point>
     </road>
     
 
     <road name="road_x_5">
       <width>7.4</width>
-      <point>-50 100 0.01</point>
-      <point>50 100 0.01</point>
+      <point>-41.3 100 0.01</point>
+      <point>56.3 100 0.01</point>
     </road>
     
 
-    <road name="road_left">
-      <width>7.4</width>
-      <point>0 103.7 0.01</point>
-      <point>0 -103.7 0.01</point>
-    </road>
+    
 
-    <road name="sidewalk_left">
+    <road name="sidewalk_x_1">
       <width>3</width>
-      <point>5.2 103.7 0.005</point>
-      <point>5.2 -103.7 0.005</point>
+      <point>-41.3 -5.2 0.005</point>
+      <point>46.3 -5.2 0.005</point>
 
       <material>
         <script>
@@ -142,1107 +159,227 @@
         </script>
       </material>
     </road>
+    
 
-    <road name="road_right">
-      <width>7.4</width>
-      <point>100 -103.7 0.01</point>
-      <point>100 103.7 0.01</point>
+    <road name="sidewalk_x_2">
+      <width>3</width>
+      <point>-41.3 5.2 0.005</point>
+      <point>46.3 5.2 0.005</point>
+
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Pedestrian</name>
+        </script>
+      </material>
     </road>
-    <road name="road_top">
-      <width>7.4</width>
-      <point>3.7 100 0.01</point>
-      <point>96.3 100 0.01</point>
-    </road>
-    <road name="road_bottom">
-      <width>7.4</width>
-      <point>3.7 -100 0.01</point>
-      <point>96.3 -100 0.01</point>
-    </road>
-    <road name="road_mid">
-      <width>7.4</width>
-      <point>3.7 0 0.01</point>
-      <point>96.3 0 0.01</point>
-    </road>
+    
 
-    <!-- Buildings in block #1-->
+    <!-- Buildings -->
+
+    <!-- North block -->
+
     <include>
-      <pose>86 -83 0 0 0 1.57</pose>
-      <name>house_1_0</name>
-      <uri>model://house_1</uri>
+      <pose>84.04 57.67 0 0 0 -1.57</pose>
+      <uri>model://parking_garage</uri>
     </include>
 
     <include>
-      <pose>86 -51 0 0 0 1.57</pose>
-      <name>house_1_1</name>
-      <uri>model://house_1</uri>
+      <pose>75.5 0 0 0 0 0</pose>
+      <uri>model://fountain</uri>
     </include>
 
     <include>
-      <pose>86 -18 0 0 0 1.57</pose>
-      <name>house_1_2</name>
-      <uri>model://house_1</uri>
+      <pose>75.87 -101.6 0.05 0 0 1.57</pose>
+      <uri>model://robocup_3Dsim_field</uri>
+    </include>
+
+    <!-- Block 0 0 -->
+
+    <include>
+      <pose>24.6 59 0 0 0 1.57</pose>
+      <uri>model://fire_station</uri>
+    </include>
+
+    <!-- Block 0 1 -->
+
+    <!-- Block 0 2 -->
+
+    <include>
+      <pose>30.35 -16 0 0 0 0</pose>
+      <uri>model://office_building</uri>
+    </include>
+
+    <!-- Block 0 3 -->
+
+    <!-- Block 1 0 -->
+
+    <!-- Block 1 1 -->
+
+    <include>
+      <name>law_office_1</name>
+      <pose>0 10 0 0 0 0</pose>
+      <uri>model://law_office</uri>
     </include>
 
     <include>
-      <pose>15 -83 0 0 0 -1.57</pose>
-      <name>house_1_3</name>
-      <uri>model://house_1</uri>
+      <name>thrift_shop_1</name>
+      <pose>-7.35 10 0 0 0 0</pose>
+      <uri>model://thrift_shop</uri>
     </include>
 
     <include>
-      <pose>15 -51 0 0 0 -1.57</pose>
-      <name>house_1_4</name>
-      <uri>model://house_1</uri>
+      <name>salon_1</name>
+      <pose>7.35 10 0 0 0 0</pose>
+      <uri>model://salon</uri>
     </include>
 
     <include>
-      <pose>15 -18 0 0 0 -1.57</pose>
-      <name>house_1_5</name>
-      <uri>model://house_1</uri>
+      <name>apartment_1</name>
+      <pose>0 28.5 0 0 0 0</pose>
+      <uri>model://apartment</uri>
     </include>
 
-    <!-- Warehouses in block #2-->
-    <model name="warehouse_0">
-      <pose>84 22 0.05 0 0 0</pose>
-      <link name="link">
-        <kinematic>true</kinematic>
-        <collision name="collision">
-          <geometry>
-            <box>
-              <size>20 30 10</size>
-            </box>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <box>
-              <size>20 30 10</size>
-            </box>
-          </geometry>
-        </visual>
-      </link>
-    </model>
+    <!-- Block 1 2 -->
 
-    <model name="warehouse_1">
-      <pose>84 70 0.05 0 0 0</pose>
-      <link name="link">
-        <kinematic>true</kinematic>
-        <collision name="collision">
-          <geometry>
-            <box>
-              <size>20 45 10</size>
-            </box>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <box>
-              <size>20 45 10</size>
-            </box>
-          </geometry>
-        </visual>
-      </link>
-    </model>
-
-    <model name="warehouse_2">
-      <pose>33 50 0.05 0 0 0</pose>
-      <link name="link">
-        <kinematic>true</kinematic>
-        <collision name="collision">
-          <geometry>
-            <box>
-              <size>50 82 10</size>
-            </box>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <box>
-              <size>50 82 10</size>
-            </box>
-          </geometry>
-        </visual>
-      </link>
-    </model>
-
-    <!-- A park -->
-    <model name="park_0">
-      <pose>50 -51 0.05 0 0 0</pose>
-      <link name="link">
-        <kinematic>true</kinematic>
-        <collision name="collision">
-          <geometry>
-            <box>
-              <size>40 70 .1</size>
-            </box>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <box>
-              <size>40 70 .1</size>
-            </box>
-          </geometry>
-          <material>
-            <script>
-              <name>Gazebo/Green</name>
-            </script>
-          </material>
-        </visual>
-      </link>
-    </model>
-
-    <!-- North perimeter -->
-    <model name="north_perimenter_house_0">
-      <pose>-13 -83 0.05 0 0 0</pose>
-      <link name="link">
-        <kinematic>true</kinematic>
-        <collision name="collision">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </visual>
-      </link>
-    </model>
-
-    <model name="north_perimenter_house_1">
-      <pose>-13 -58 0.05 0 0 0</pose>
-      <link name="link">
-        <kinematic>true</kinematic>
-        <collision name="collision">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </visual>
-      </link>
-    </model>
-
-    <model name="north_perimenter_house_2">
-      <pose>-13 -33 0.05 0 0 0</pose>
-      <link name="link">
-        <kinematic>true</kinematic>
-        <collision name="collision">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </visual>
-      </link>
-    </model>
-
-    <model name="north_perimenter_house_3">
-      <pose>-13 -8 0.05 0 0 0</pose>
-      <link name="link">
-        <kinematic>true</kinematic>
-        <collision name="collision">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </visual>
-      </link>
-    </model>
-
-    <model name="north_perimenter_house_4">
-      <pose>-13 17 0.05 0 0 0</pose>
-      <link name="link">
-        <kinematic>true</kinematic>
-        <collision name="collision">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </visual>
-      </link>
-    </model>
-
-    <model name="north_perimenter_house_5">
-      <pose>-13 42 0.05 0 0 0</pose>
-      <link name="link">
-        <kinematic>true</kinematic>
-        <collision name="collision">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </visual>
-      </link>
-    </model>
-
-    <model name="north_perimenter_house_6">
-      <pose>-13 67 0.05 0 0 0</pose>
-      <link name="link">
-        <kinematic>true</kinematic>
-        <collision name="collision">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </visual>
-      </link>
-    </model>
-
-    <model name="north_perimenter_house_7">
-      <pose>-13 92 0.05 0 0 0</pose>
-      <link name="link">
-        <kinematic>true</kinematic>
-        <collision name="collision">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </visual>
-      </link>
-    </model>
-
-    <!-- South perimenter -->
-    <model name="south_perimenter_house_0">
-      <pose>114 -83 0.05 0 0 0</pose>
-      <link name="link">
-        <kinematic>true</kinematic>
-        <collision name="collision">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </visual>
-      </link>
-    </model>
-
-    <model name="south_perimenter_house_1">
-      <pose>114 -58 0.05 0 0 0</pose>
-      <link name="link">
-        <kinematic>true</kinematic>
-        <collision name="collision">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </visual>
-      </link>
-    </model>
-
-    <model name="south_perimenter_house_2">
-      <pose>114 -33 0.05 0 0 0</pose>
-      <link name="link">
-        <kinematic>true</kinematic>
-        <collision name="collision">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </visual>
-      </link>
-    </model>
-
-    <model name="south_perimenter_house_3">
-      <pose>114 -8 0.05 0 0 0</pose>
-      <link name="link">
-        <kinematic>true</kinematic>
-        <collision name="collision">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </visual>
-      </link>
-    </model>
-
-    <model name="south_perimenter_house_4">
-      <pose>114 17 0.05 0 0 0</pose>
-      <link name="link">
-        <kinematic>true</kinematic>
-        <collision name="collision">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </visual>
-      </link>
-    </model>
-
-    <model name="south_perimenter_house_5">
-      <pose>114 42 0.05 0 0 0</pose>
-      <link name="link">
-        <kinematic>true</kinematic>
-        <collision name="collision">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </visual>
-      </link>
-    </model>
-
-    <model name="south_perimenter_house_6">
-      <pose>114 67 0.05 0 0 0</pose>
-      <link name="link">
-        <kinematic>true</kinematic>
-        <collision name="collision">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </visual>
-      </link>
-    </model>
-
-    <model name="south_perimenter_house_7">
-      <pose>114 92 0.05 0 0 0</pose>
-      <link name="link">
-        <kinematic>true</kinematic>
-        <collision name="collision">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <box>
-              <size>10 15 10</size>
-            </box>
-          </geometry>
-        </visual>
-      </link>
-    </model>
-
-
-    <!-- West perimeter -->
     <include>
-      <pose>-14 -120 0 0 0 1.57</pose>
-      <uri>model://gas_station</uri>
+      <pose>-6.4 -9.35 0 0 0 0</pose>
+      <uri>model://fast_food</uri>
     </include>
 
-    <model name="west_perimenter_building_0">
-      <pose>64 -115 0.05 0 0 0</pose>
-      <link name="link">
-        <kinematic>true</kinematic>
-        <collision name="collision">
-          <geometry>
-            <box>
-              <size>80 10 10</size>
-            </box>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <box>
-              <size>80 10 10</size>
-            </box>
-          </geometry>
-        </visual>
-      </link>
-    </model>
+    <!-- Block 1 3 -->
 
-
-    <!-- East perimeter -->
     <include>
-      <pose>2 114 0 0 0 3.1416</pose>
-      <name>house_2_0</name>
-      <uri>model://house_2</uri>
+      <pose>1.62 -65.73 0 0 0 1.57</pose>
+      <uri>model://grocery_store</uri>
+    </include>
+
+    <!-- Block 2 0 -->
+
+    <include>
+      <pose>-26.6 73.3 0 0 0 -1.57</pose>
+      <uri>model://school</uri>
+    </include>
+
+    <!-- Block 2 1 -->
+
+    <include>
+      <pose>-24.3 11.4 0 0 0 3.14</pose>
+      <uri>model://post_office</uri>
+    </include>
+
+    <!-- Block 2 2 -->
+
+    <include>
+      <name>thrift_shop_2</name>
+      <pose>-22.6 -10 0 0 0 3.14</pose>
+      <uri>model://thrift_shop</uri>
     </include>
 
     <include>
-      <pose>27 114 0 0 0 3.1416</pose>
-      <name>house_2_1</name>
-      <uri>model://house_2</uri>
+      <name>salon_2</name>
+      <pose>-30.17 -10 0 0 0 3.14</pose>
+      <uri>model://salon</uri>
     </include>
 
     <include>
-      <pose>52 114 0 0 0 3.1416</pose>
-      <name>house_2_2</name>
-      <uri>model://house_2</uri>
+      <name>law_office_2</name>
+      <pose>-37.5 -10 0 0 0 3.14</pose>
+      <uri>model://law_office</uri>
     </include>
 
-    <include>
-      <pose>77 114 0 0 0 3.1416</pose>
-      <name>house_2_3</name>
-      <uri>model://house_2</uri>
-    </include>
+    <!-- Block 2 3 -->
 
-    <include>
-      <pose>102 114 0 0 0 3.1416</pose>
-      <name>house_2_4</name>
-      <uri>model://house_2</uri>
-    </include>
+
+    <!-- Trees -->
+    
+      <include>
+        <name>tree_1</name>
+        <pose>69 -16.3 0 0 0 0</pose>
+        <uri>model://oak_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_2</name>
+        <pose>89.3 -15.6 0 0 0 1</pose>
+        <uri>model://oak_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_3</name>
+        <pose>80 5.8 0 0 0 0.5</pose>
+        <uri>model://oak_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_4</name>
+        <pose>68.5 9.7 0 0 0 -0.3</pose>
+        <uri>model://oak_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_5</name>
+        <pose>92 10.9 0 0 0 1.57</pose>
+        <uri>model://oak_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_6</name>
+        <pose>74.5 -6.6 0 0 0 -0.6</pose>
+        <uri>model://oak_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_7</name>
+        <pose>-7.973997779927448 71.85939475909812 0 0 0 0.025672781728689305</pose>
+        <uri>model://pine_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_8</name>
+        <pose>0.8315498655029518 52.96960311486474 0 0 0 0.7073152082375315</pose>
+        <uri>model://pine_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_9</name>
+        <pose>-6.892510337744673 93.48519908288954 0 0 0 0.9038561681536752</pose>
+        <uri>model://pine_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_10</name>
+        <pose>-5.165561968985454 85.89785843708314 0 0 0 0.436958561633835</pose>
+        <uri>model://pine_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_11</name>
+        <pose>6.724148917772345 59.01954029015509 0 0 0 2.7606017305817923</pose>
+        <uri>model://pine_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_12</name>
+        <pose>-4.6618222616080915 92.70408618260501 0 0 0 1.5401531070845682</pose>
+        <uri>model://pine_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_13</name>
+        <pose>7.168756623744201 53.30717239284167 0 0 0 1.662121508268699</pose>
+        <uri>model://pine_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_14</name>
+        <pose>1.1388268617309478 71.29369027421194 0 0 0 0.4187812736294031</pose>
+        <uri>model://pine_tree</uri>
+      </include>
+    
+
 
     <!-- Actors -->
-    
-      <actor name="walking_0">
-        <!-- Starting pose -->
-        <pose>15 -95 0.6 0 0 3.141592653589793</pose>
-        <skin>
-          <filename>model://actor/meshes/SKIN_man_blue_shirt.dae</filename>
-        </skin>
-        <animation name="animation">
-          <filename>model://actor/meshes/ANIMATION_walking.dae</filename>
-          
-            <interpolate_x>true</interpolate_x>
-          
-        </animation>
-          <script>
-            <trajectory id="0" type="animation">
-              
-                <waypoint>
-                  <time>0.0</time>
-                  <pose>15 -95 0 0 0 3.141592653589793</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>9.651015899351357</time>
-                  <pose>5 -85 0 0 0 1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>19.302031798702714</time>
-                  <pose>5 -85 0 0 0 1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>53.08058744643247</time>
-                  <pose>5 -15 0 0 0 1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>62.731603345783824</time>
-                  <pose>15 -5 0 0 0 0</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>96.51015899351358</time>
-                  <pose>85 -5 0 0 0 0</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>106.16117489286495</time>
-                  <pose>95 -15 0 0 0 -1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>139.9397305405947</time>
-                  <pose>95 -85 0 0 0 -1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>149.59074643994606</time>
-                  <pose>85 -95 0 0 0 3.141592653589793</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>183.3693020876758</time>
-                  <pose>15 -95 0 0 0 3.141592653589793</pose>
-                </waypoint>
-              
-            </trajectory>
-          </script>
-      </actor>
-    
-      <actor name="walking_1">
-        <!-- Starting pose -->
-        <pose>15 95 0.6 0 0 0</pose>
-        <skin>
-          <filename>model://actor/meshes/SKIN_man_green_shirt.dae</filename>
-        </skin>
-        <animation name="animation">
-          <filename>model://actor/meshes/ANIMATION_walking.dae</filename>
-          
-            <interpolate_x>true</interpolate_x>
-          
-        </animation>
-          <script>
-            <trajectory id="0" type="animation">
-              
-                <waypoint>
-                  <time>0.0</time>
-                  <pose>15 95 0 0 0 0</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>34.132046241419246</time>
-                  <pose>85 95 0 0 0 0</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>43.884059453253315</time>
-                  <pose>95 85 0 0 0 -1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>78.01610569467256</time>
-                  <pose>95 15 0 0 0 -1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>87.76811890650663</time>
-                  <pose>85 5 0 0 0 3.141592653589793</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>121.90016514792588</time>
-                  <pose>15 5 0 0 0 3.141592653589793</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>131.65217835975994</time>
-                  <pose>5 15 0 0 0 1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>141.40419157159403</time>
-                  <pose>5 15 0 0 0 1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>175.53623781301326</time>
-                  <pose>5 85 0 0 0 1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>185.28825102484734</time>
-                  <pose>15 95 0 0 0 0</pose>
-                </waypoint>
-              
-            </trajectory>
-          </script>
-      </actor>
-    
-      <actor name="walking_2">
-        <!-- Starting pose -->
-        <pose>5 -15 0.6 0 0 1.5707963267948966</pose>
-        <skin>
-          <filename>model://actor/meshes/SKIN_man_blue_shirt.dae</filename>
-        </skin>
-        <animation name="animation">
-          <filename>model://actor/meshes/ANIMATION_walking.dae</filename>
-          
-            <interpolate_x>true</interpolate_x>
-          
-        </animation>
-          <script>
-            <trajectory id="0" type="animation">
-              
-                <waypoint>
-                  <time>0.0</time>
-                  <pose>5 -15 0 0 0 1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>13.137974623400952</time>
-                  <pose>15 -5 0 0 0 0</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>59.12088580530428</time>
-                  <pose>85 -5 0 0 0 0</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>72.25886042870523</time>
-                  <pose>95 -15 0 0 0 -1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>118.24177161060857</time>
-                  <pose>95 -85 0 0 0 -1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>131.37974623400953</time>
-                  <pose>85 -95 0 0 0 3.141592653589793</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>177.36265741591285</time>
-                  <pose>15 -95 0 0 0 3.141592653589793</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>190.5006320393138</time>
-                  <pose>5 -85 0 0 0 1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>203.63860666271478</time>
-                  <pose>5 -85 0 0 0 1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>249.6215178446181</time>
-                  <pose>5 -15 0 0 0 1.5707963267948966</pose>
-                </waypoint>
-              
-            </trajectory>
-          </script>
-      </actor>
-    
-      <actor name="walking_3">
-        <!-- Starting pose -->
-        <pose>85 95 0.6 0 0 0</pose>
-        <skin>
-          <filename>model://actor/meshes/SKIN_man_green_shirt.dae</filename>
-        </skin>
-        <animation name="animation">
-          <filename>model://actor/meshes/ANIMATION_walking.dae</filename>
-          
-            <interpolate_x>true</interpolate_x>
-          
-        </animation>
-          <script>
-            <trajectory id="0" type="animation">
-              
-                <waypoint>
-                  <time>0.0</time>
-                  <pose>85 95 0 0 0 0</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>9.942895645639242</time>
-                  <pose>95 85 0 0 0 -1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>44.74303040537659</time>
-                  <pose>95 15 0 0 0 -1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>54.68592605101583</time>
-                  <pose>85 5 0 0 0 3.141592653589793</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>89.48606081075317</time>
-                  <pose>15 5 0 0 0 3.141592653589793</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>99.42895645639241</time>
-                  <pose>5 15 0 0 0 1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>109.37185210203165</time>
-                  <pose>5 15 0 0 0 1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>144.171986861769</time>
-                  <pose>5 85 0 0 0 1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>154.11488250740825</time>
-                  <pose>15 95 0 0 0 0</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>188.9150172671456</time>
-                  <pose>85 95 0 0 0 0</pose>
-                </waypoint>
-              
-            </trajectory>
-          </script>
-      </actor>
-    
-      <actor name="running_0">
-        <!-- Starting pose -->
-        <pose>95 85 0.6 0 0 -1.5707963267948966</pose>
-        <skin>
-          <filename>model://actor/meshes/SKIN_man_blue_shirt.dae</filename>
-        </skin>
-        <animation name="animation">
-          <filename>model://actor/meshes/ANIMATION_running.dae</filename>
-          
-            <interpolate_x>true</interpolate_x>
-          
-        </animation>
-          <script>
-            <trajectory id="0" type="animation">
-              
-                <waypoint>
-                  <time>0.0</time>
-                  <pose>95 85 0 0 0 -1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>15.595898671537391</time>
-                  <pose>95 15 0 0 0 -1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>20.051869720548076</time>
-                  <pose>85 5 0 0 0 3.141592653589793</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>35.64776839208547</time>
-                  <pose>15 5 0 0 0 3.141592653589793</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>40.10373944109615</time>
-                  <pose>5 15 0 0 0 1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>44.55971049010684</time>
-                  <pose>5 15 0 0 0 1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>60.15560916164423</time>
-                  <pose>5 85 0 0 0 1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>64.6115802106549</time>
-                  <pose>15 95 0 0 0 0</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>80.2074788821923</time>
-                  <pose>85 95 0 0 0 0</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>84.66344993120299</time>
-                  <pose>95 85 0 0 0 -1.5707963267948966</pose>
-                </waypoint>
-              
-            </trajectory>
-          </script>
-      </actor>
-    
-      <actor name="running_1">
-        <!-- Starting pose -->
-        <pose>5 -85 0.6 0 0 1.5707963267948966</pose>
-        <skin>
-          <filename>model://actor/meshes/SKIN_man_blue_shirt.dae</filename>
-        </skin>
-        <animation name="animation">
-          <filename>model://actor/meshes/ANIMATION_running.dae</filename>
-          
-            <interpolate_x>true</interpolate_x>
-          
-        </animation>
-          <script>
-            <trajectory id="0" type="animation">
-              
-                <waypoint>
-                  <time>0.0</time>
-                  <pose>5 -85 0 0 0 1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>17.823522803249762</time>
-                  <pose>5 -15 0 0 0 1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>22.915957889892553</time>
-                  <pose>15 -5 0 0 0 0</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>40.73948069314231</time>
-                  <pose>85 -5 0 0 0 0</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>45.8319157797851</time>
-                  <pose>95 -15 0 0 0 -1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>63.655438583034865</time>
-                  <pose>95 -85 0 0 0 -1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>68.74787366967766</time>
-                  <pose>85 -95 0 0 0 3.141592653589793</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>86.57139647292742</time>
-                  <pose>15 -95 0 0 0 3.141592653589793</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>91.66383155957021</time>
-                  <pose>5 -85 0 0 0 1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>96.756266646213</time>
-                  <pose>5 -85 0 0 0 1.5707963267948966</pose>
-                </waypoint>
-              
-            </trajectory>
-          </script>
-      </actor>
-    
-      <actor name="running_2">
-        <!-- Starting pose -->
-        <pose>85 -95 0.6 0 0 3.141592653589793</pose>
-        <skin>
-          <filename>model://actor/meshes/SKIN_man_red_shirt.dae</filename>
-        </skin>
-        <animation name="animation">
-          <filename>model://actor/meshes/ANIMATION_running.dae</filename>
-          
-            <interpolate_x>true</interpolate_x>
-          
-        </animation>
-          <script>
-            <trajectory id="0" type="animation">
-              
-                <waypoint>
-                  <time>0.0</time>
-                  <pose>85 -95 0 0 0 3.141592653589793</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>18.302473904001044</time>
-                  <pose>15 -95 0 0 0 3.141592653589793</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>23.531752162287056</time>
-                  <pose>5 -85 0 0 0 1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>28.761030420573068</time>
-                  <pose>5 -85 0 0 0 1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>47.06350432457411</time>
-                  <pose>5 -15 0 0 0 1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>52.29278258286013</time>
-                  <pose>15 -5 0 0 0 0</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>70.59525648686117</time>
-                  <pose>85 -5 0 0 0 0</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>75.82453474514719</time>
-                  <pose>95 -15 0 0 0 -1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>94.12700864914824</time>
-                  <pose>95 -85 0 0 0 -1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>99.35628690743425</time>
-                  <pose>85 -95 0 0 0 3.141592653589793</pose>
-                </waypoint>
-              
-            </trajectory>
-          </script>
-      </actor>
-    
-      <actor name="running_3">
-        <!-- Starting pose -->
-        <pose>95 15 0.6 0 0 -1.5707963267948966</pose>
-        <skin>
-          <filename>model://actor/meshes/SKIN_man_green_shirt.dae</filename>
-        </skin>
-        <animation name="animation">
-          <filename>model://actor/meshes/ANIMATION_running.dae</filename>
-          
-            <interpolate_x>true</interpolate_x>
-          
-        </animation>
-          <script>
-            <trajectory id="0" type="animation">
-              
-                <waypoint>
-                  <time>0.0</time>
-                  <pose>95 15 0 0 0 -1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>5.310879661221663</time>
-                  <pose>85 5 0 0 0 3.141592653589793</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>23.898958475497484</time>
-                  <pose>15 5 0 0 0 3.141592653589793</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>29.209838136719146</time>
-                  <pose>5 15 0 0 0 1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>34.52071779794081</time>
-                  <pose>5 15 0 0 0 1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>53.108796612216636</time>
-                  <pose>5 85 0 0 0 1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>58.4196762734383</time>
-                  <pose>15 95 0 0 0 0</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>77.00775508771412</time>
-                  <pose>85 95 0 0 0 0</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>82.31863474893578</time>
-                  <pose>95 85 0 0 0 -1.5707963267948966</pose>
-                </waypoint>
-              
-                <waypoint>
-                  <time>100.9067135632116</time>
-                  <pose>95 15 0 0 0 -1.5707963267948966</pose>
-                </waypoint>
-              
-            </trajectory>
-          </script>
-      </actor>
     
       <actor name="talkingA">
         <!-- Starting pose -->
@@ -1298,6 +435,13 @@
           </script>
       </actor>
     
+
+    <!-- Vehicles -->
+
+    <include>
+      <pose>-40 -1.9 0 0 0 1.57</pose>
+      <uri>model://prius_hybrid</uri>
+    </include>
 
   </world>
 </sdf>
