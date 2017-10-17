@@ -45,7 +45,8 @@
               <name>Gazebo/Grey</name>
             </script>
           </material>
-          <plugin name="lensflare" filename="libLensFlareVisualPlugin.so" />
+<!--          <plugin name="lensflare" filename="libLensFlareVisualPlugin.so" />-->
+          <plugin name="bloom" filename="libBloomVisualPlugin.so" />
         </visual>
       </link>
     </model>
