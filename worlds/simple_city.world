@@ -406,26 +406,195 @@
     <!-- North block -->
 
     <include>
-      <pose>146.778 57.67 0 0 0 -1.57</pose>
+      <name>parking_garage_1</name>
+      <pose>
+      146.778
+      57.67
+      0.0
+      0
+      0
+      -1.57
+      </pose>
       <uri>model://parking_garage</uri>
     </include>
 
     <include>
-      <pose>135.5 0 0 0 0 0</pose>
+      <name>fountain_2</name>
+      <pose>
+      135.5
+      0
+      0.0
+      0
+      0
+      0
+      </pose>
       <uri>model://fountain</uri>
     </include>
 
+
     <include>
-      <pose>138.5 -86.6 0.05 0 0 1.57</pose>
+      <name>oak_tree_3</name>
+      <pose>
+      129
+      -16.3
+      0.0
+      0
+      0
+      2.856049664629397
+      </pose>
+      <uri>model://oak_tree</uri>
+    </include>
+
+    <include>
+      <name>oak_tree_4</name>
+      <pose>
+      149.3
+      -15.6
+      0.0
+      0
+      0
+      0.8218585271453434
+      </pose>
+      <uri>model://oak_tree</uri>
+    </include>
+
+    <include>
+      <name>oak_tree_5</name>
+      <pose>
+      140
+      5.8
+      0.0
+      0
+      0
+      0.700785216787534
+      </pose>
+      <uri>model://oak_tree</uri>
+    </include>
+
+    <include>
+      <name>oak_tree_6</name>
+      <pose>
+      128.5
+      9.7
+      0.0
+      0
+      0
+      0.2225033698731034
+      </pose>
+      <uri>model://oak_tree</uri>
+    </include>
+
+    <include>
+      <name>oak_tree_7</name>
+      <pose>
+      152
+      10.9
+      0.0
+      0
+      0
+      2.152288234785895
+      </pose>
+      <uri>model://oak_tree</uri>
+    </include>
+
+    <include>
+      <name>oak_tree_8</name>
+      <pose>
+      134.5
+      -6.6
+      0.0
+      0
+      0
+      1.9465351615425688
+      </pose>
+      <uri>model://oak_tree</uri>
+    </include>
+
+
+    <include>
+      <name>robocup_3Dsim_field_9</name>
+      <pose>
+      138.5
+      -86.6
+      0.05
+      0
+      0
+      1.57
+      </pose>
       <uri>model://robocup_3Dsim_field</uri>
     </include>
+
+
+    <!-- North road -->
+
+    <include>
+      <name>pine_tree_10</name>
+      <pose>
+      115.0
+      93
+      0.0
+      0
+      0
+      0.26914929701692447
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
+    <include>
+      <name>pine_tree_11</name>
+      <pose>
+      115.0
+      81
+      0.0
+      0
+      0
+      1.630097335199898
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
+    <include>
+      <name>pine_tree_12</name>
+      <pose>
+      115.0
+      69
+      0.0
+      0
+      0
+      2.432471028832289
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
+    <include>
+      <name>pine_tree_13</name>
+      <pose>
+      115.0
+      57
+      0.0
+      0
+      0
+      2.599633191268657
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
 
     <!-- Block 0 0 -->
 
     <include>
-      <pose>56.84 61.56 0 0 0 1.57</pose>
+      <name>fire_station_14</name>
+      <pose>
+      56.84
+      61.56
+      0.0
+      0
+      0
+      1.57
+      </pose>
       <uri>model://fire_station</uri>
     </include>
+
 
     <include>
       <pose>65.4415 54.097 0 0 0 0</pose>
@@ -442,177 +611,749 @@
     <!-- Block 0 2 -->
 
     <include>
-      <pose>60.19 -15.294 0 0 0 0</pose>
+      <name>office_building_15</name>
+      <pose>
+      60.19
+      -15.294
+      0.0
+      0
+      0
+      0
+      </pose>
       <uri>model://office_building</uri>
     </include>
+
 
     <!-- Block 0 3 -->
 
     <include>
-      <pose>61.88 -75.82 0 0 0 3.14</pose>
+      <name>gas_station_16</name>
+      <pose>
+      61.88
+      -75.82
+      0.0
+      0
+      0
+      3.14
+      </pose>
       <uri>model://gas_station</uri>
     </include>
 
     <include>
-      <pose>61.581 -61.664 0 0 0 0</pose>
+      <name>asphalt_plane_17</name>
+      <pose>
+      61.581
+      -61.664
+      0.0
+      0
+      0
+      0
+      </pose>
       <uri>model://asphalt_plane</uri>
     </include>
 
+
     <!-- Block 1 0 -->
+
+    <include>
+      <name>pine_tree_18</name>
+      <pose>
+      25.60541775251547
+      87.17982565531057
+      0.0
+      0
+      0
+      1.7370445956799945
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
+    <include>
+      <name>pine_tree_19</name>
+      <pose>
+      34.88736535787776
+      59.11794622316002
+      0.0
+      0
+      0
+      0.6604346612038284
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
+    <include>
+      <name>pine_tree_20</name>
+      <pose>
+      -3.474637667827184
+      81.49353808985221
+      0.0
+      0
+      0
+      0.12611342004216555
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
+    <include>
+      <name>pine_tree_21</name>
+      <pose>
+      3.0189588342111797
+      80.97870392830009
+      0.0
+      0
+      0
+      1.7929492747689684
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
+    <include>
+      <name>pine_tree_22</name>
+      <pose>
+      -5.393730198028081
+      69.79883567430687
+      0.0
+      0
+      0
+      2.046242606602065
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
+    <include>
+      <name>pine_tree_23</name>
+      <pose>
+      13.258639349825865
+      72.06813786394089
+      0.0
+      0
+      0
+      1.3121289773073195
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
+    <include>
+      <name>pine_tree_24</name>
+      <pose>
+      33.671037991139585
+      65.91034999289609
+      0.0
+      0
+      0
+      0.31254687976472684
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
+    <include>
+      <name>pine_tree_25</name>
+      <pose>
+      30.901127183005883
+      83.4948008864018
+      0.0
+      0
+      0
+      0.3945926641040291
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
+    <include>
+      <name>pine_tree_26</name>
+      <pose>
+      0.4040570638642036
+      64.31638611087621
+      0.0
+      0
+      0
+      2.1853468418246806
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
+    <include>
+      <name>pine_tree_27</name>
+      <pose>
+      -5.809032065798171
+      80.7561981101779
+      0.0
+      0
+      0
+      2.1317929201364656
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
+    <include>
+      <name>pine_tree_28</name>
+      <pose>
+      27.191518952654782
+      78.60829096693008
+      0.0
+      0
+      0
+      1.774657674666883
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
+    <include>
+      <name>pine_tree_29</name>
+      <pose>
+      5.172233077470128
+      58.952187356895536
+      0.0
+      0
+      0
+      0.31559077874454916
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
+    <include>
+      <name>pine_tree_30</name>
+      <pose>
+      9.35220528497584
+      87.87626951105676
+      0.0
+      0
+      0
+      0.25257093231225397
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
+    <include>
+      <name>pine_tree_31</name>
+      <pose>
+      7.537612037893931
+      68.06510599986808
+      0.0
+      0
+      0
+      1.447499743249003
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
+    <include>
+      <name>pine_tree_32</name>
+      <pose>
+      11.62947682792444
+      84.80301932276791
+      0.0
+      0
+      0
+      1.1497038602210568
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
+    <include>
+      <name>pine_tree_33</name>
+      <pose>
+      27.885346243439642
+      70.99202091142584
+      0.0
+      0
+      0
+      2.0929160581164323
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
+    <include>
+      <name>pine_tree_34</name>
+      <pose>
+      18.6848956010871
+      57.5508054926679
+      0.0
+      0
+      0
+      0.9171668329090576
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
 
     <!-- Block 1 1 -->
 
     <include>
-      <name>law_office_1</name>
-      <pose>8.47 9.356 0 0 0 0</pose>
+      <name>law_office_35</name>
+      <pose>
+      8.47
+      9.356
+      0.0
+      0
+      0
+      0
+      </pose>
       <uri>model://law_office</uri>
     </include>
 
     <include>
-      <name>thrift_shop_1</name>
-      <pose>1.35 9.356 0 0 0 0</pose>
+      <name>thrift_shop_36</name>
+      <pose>
+      1.35
+      9.356
+      0.0
+      0
+      0
+      0
+      </pose>
       <uri>model://thrift_shop</uri>
     </include>
 
     <include>
-      <name>salon_1</name>
-      <pose>15.7 9.356 0 0 0 0</pose>
+      <name>salon_37</name>
+      <pose>
+      15.7
+      9.356
+      0.0
+      0
+      0
+      0
+      </pose>
       <uri>model://salon</uri>
     </include>
 
     <include>
-      <name>apartment_1</name>
-      <pose>1.573 27.565 0 0 0 0</pose>
+      <name>oak_tree_38</name>
+      <pose>
+      -6.418
+      10.37
+      0.0
+      0
+      0
+      0.55
+      </pose>
+      <uri>model://oak_tree</uri>
+    </include>
+
+    <include>
+      <name>apartment_39</name>
+      <pose>
+      1.573
+      27.565
+      0.0
+      0
+      0
+      0
+      </pose>
       <uri>model://apartment</uri>
     </include>
 
     <include>
-      <pose>27.003 20.15 0 0 0 1.57</pose>
+      <name>osrf_first_office_40</name>
+      <pose>
+      27.003
+      20.15
+      0.0
+      0
+      0
+      1.57
+      </pose>
       <uri>model://osrf_first_office</uri>
     </include>
+
 
     <!-- Block 1 2 -->
 
     <include>
-      <pose>-3.73 -9.08 0 0 0 0</pose>
+      <name>fast_food_41</name>
+      <pose>
+      -3.73
+      -9.08
+      0.0
+      0
+      0
+      0
+      </pose>
       <uri>model://fast_food</uri>
     </include>
+
 
     <!-- Block 1 3 -->
 
     <include>
-      <pose>4.12 -67.758 0 0 0 1.57</pose>
+      <name>grocery_store_42</name>
+      <pose>
+      4.12
+      -67.758
+      0.0
+      0
+      0
+      1.57
+      </pose>
       <uri>model://grocery_store</uri>
     </include>
+
 
     <!-- Block 2 0 -->
 
     <include>
-      <pose>-27.309 67.823 0 0 0 -1.57</pose>
+      <name>school_43</name>
+      <pose>
+      -27.309
+      67.823
+      0.0
+      0
+      0
+      -1.57
+      </pose>
       <uri>model://school</uri>
     </include>
+
+    <include>
+      <name>oak_tree_44</name>
+      <pose>
+      -28.916
+      89.604
+      0.0
+      0
+      0
+      -0.51
+      </pose>
+      <uri>model://oak_tree</uri>
+    </include>
+
+    <include>
+      <name>oak_tree_45</name>
+      <pose>
+      -34.077
+      89.854
+      0.0
+      0
+      0
+      0.51
+      </pose>
+      <uri>model://oak_tree</uri>
+    </include>
+
 
     <!-- Block 2 1 -->
 
     <include>
-      <pose>-26.686 11.119 0 0 0 3.14</pose>
+      <name>post_office_46</name>
+      <pose>
+      -26.686
+      11.119
+      0.0
+      0
+      0
+      3.14
+      </pose>
       <uri>model://post_office</uri>
     </include>
+
+    <include>
+      <name>pine_tree_47</name>
+      <pose>
+      -30.709
+      7.15
+      0.0
+      0
+      0
+      2.5779469506701376
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
 
     <!-- Block 2 2 -->
 
     <include>
-      <name>salon_2</name>
-      <pose>-27.65 -9.35 0 0 0 3.14</pose>
+      <name>salon_48</name>
+      <pose>
+      -27.65
+      -9.35
+      0.0
+      0
+      0
+      3.14
+      </pose>
       <uri>model://salon</uri>
     </include>
 
     <include>
-      <name>law_office_2</name>
-      <pose>-34.886 -9.408 0 0 0 3.14</pose>
+      <name>law_office_49</name>
+      <pose>
+      -34.886
+      -9.408
+      0.0
+      0
+      0
+      3.14
+      </pose>
       <uri>model://law_office</uri>
     </include>
+
 
     <!-- Block 2 3 -->
 
     <include>
-      <pose>-31.838 -59.696 0 0 0 0</pose>
+      <name>police_station_50</name>
+      <pose>
+      -31.838
+      -59.696
+      0.0
+      0
+      0
+      0
+      </pose>
       <uri>model://police_station</uri>
     </include>
 
     <include>
-      <pose frame=''>-29.8725 -83.9104 0 0 -0 1.5708</pose>
+      <name>collapsed_industrial_51</name>
+      <pose>
+      -29.8725
+      -83.9104
+      0.0
+      0
+      0
+      1.5708
+      </pose>
       <uri>model://collapsed_industrial</uri>
     </include>
 
-    
-      <include>
-        <name>cone_1</name>
-        <pose>-40.748 -90.1868 0 0 0 2.498289826456464</pose>
-        <uri>model://construction_cone</uri>
-      </include>
-    
-      <include>
-        <name>cone_2</name>
-        <pose>-40.692 -95.2899 0 0 0 0.8612092099275055</pose>
-        <uri>model://construction_cone</uri>
-      </include>
-    
-      <include>
-        <name>cone_3</name>
-        <pose>-37.8997 -95.3521 0 0 0 2.123399359580257</pose>
-        <uri>model://construction_cone</uri>
-      </include>
-    
-      <include>
-        <name>cone_4</name>
-        <pose>-35.2603 -95.3721 0 0 0 0.6569867891863702</pose>
-        <uri>model://construction_cone</uri>
-      </include>
-    
-      <include>
-        <name>cone_5</name>
-        <pose>-31.8118 -95.4314 0 0 0 0.3702687444427706</pose>
-        <uri>model://construction_cone</uri>
-      </include>
-    
-      <include>
-        <name>cone_6</name>
-        <pose>-40.1918 -74.491 0 0 0 2.736510768937383</pose>
-        <uri>model://construction_cone</uri>
-      </include>
-    
-      <include>
-        <name>cone_7</name>
-        <pose>-40.6878 -80.629 0 0 0 0.4002086606283252</pose>
-        <uri>model://construction_cone</uri>
-      </include>
-    
+    <include>
+      <name>construction_cone_52</name>
+      <pose>
+      -40.748
+      -90.1868
+      0.0
+      0
+      0
+      2.792413695463432
+      </pose>
+      <uri>model://construction_cone</uri>
+    </include>
+
 
     <include>
-      <pose frame=''>-39.8294 -93.3183 0 0 0 -0.45084</pose>
+      <name>construction_cone_53</name>
+      <pose>
+      -40.692
+      -95.2899
+      0.0
+      0
+      0
+      1.8254024437872678
+      </pose>
+      <uri>model://construction_cone</uri>
+    </include>
+
+    <include>
+      <name>construction_cone_54</name>
+      <pose>
+      -37.8997
+      -95.3521
+      0.0
+      0
+      0
+      1.7489454278904406
+      </pose>
+      <uri>model://construction_cone</uri>
+    </include>
+
+    <include>
+      <name>construction_cone_55</name>
+      <pose>
+      -35.2603
+      -95.3721
+      0.0
+      0
+      0
+      1.3477469538103029
+      </pose>
+      <uri>model://construction_cone</uri>
+    </include>
+
+    <include>
+      <name>construction_cone_56</name>
+      <pose>
+      -31.8118
+      -95.4314
+      0.0
+      0
+      0
+      0.5381275597102133
+      </pose>
+      <uri>model://construction_cone</uri>
+    </include>
+
+    <include>
+      <name>construction_cone_57</name>
+      <pose>
+      -40.1918
+      -74.491
+      0.0
+      0
+      0
+      1.6270304625752263
+      </pose>
+      <uri>model://construction_cone</uri>
+    </include>
+
+    <include>
+      <name>construction_cone_58</name>
+      <pose>
+      -40.6878
+      -80.629
+      0.0
+      0
+      0
+      2.745879221929479
+      </pose>
+      <uri>model://construction_cone</uri>
+    </include>
+
+
+    <include>
+      <name>cinder_block_59</name>
+      <pose>
+      -39.241410160976926
+      -89.21265107767023
+      0.0
+      0
+      0
+      0.37987096478856786
+      </pose>
       <uri>model://cinder_block</uri>
     </include>
 
     <include>
-      <pose frame=''>-40.0204 -94.8219 0 0 -0 0</pose>
+      <name>cinder_block_60</name>
+      <pose>
+      -39.50119854191282
+      -92.3089007848856
+      0.0
+      0
+      0
+      0.6206251378678752
+      </pose>
       <uri>model://cinder_block</uri>
     </include>
 
     <include>
-      <pose frame=''>-36.7887 -92.6503 0 0 -0 0</pose>
+      <name>cinder_block_61</name>
+      <pose>
+      -37.894554475637875
+      -88.03438882467795
+      0.0
+      0
+      0
+      1.0029346235813639
+      </pose>
       <uri>model://cinder_block</uri>
     </include>
 
     <include>
-      <pose frame=''>-39.4614 -91.4595 0 0 -0 0</pose>
+      <name>cinder_block_62</name>
+      <pose>
+      -35.4612328893248
+      -89.67365359577867
+      0.0
+      0
+      0
+      2.26596040531244
+      </pose>
       <uri>model://cinder_block</uri>
     </include>
 
     <include>
-      <pose frame=''>-37.6122 -94.084 0 0 -0 0</pose>
+      <name>cinder_block_63</name>
+      <pose>
+      -36.956532034036115
+      -89.59612640616227
+      0.0
+      0
+      0
+      0.8417889313105643
+      </pose>
       <uri>model://cinder_block</uri>
     </include>
+
+    <include>
+      <name>cinder_block_64</name>
+      <pose>
+      -38.51125671714658
+      -88.30114420391904
+      0.0
+      0
+      0
+      1.8058474820758454
+      </pose>
+      <uri>model://cinder_block</uri>
+    </include>
+
+    <include>
+      <name>cinder_block_2_65</name>
+      <pose>
+      -35.270462794116426
+      -93.83351190858019
+      0.0
+      0
+      0
+      2.51547774118698
+      </pose>
+      <uri>model://cinder_block_2</uri>
+    </include>
+
+    <include>
+      <name>cinder_block_2_66</name>
+      <pose>
+      -35.96938815376696
+      -91.02434875416323
+      0.0
+      0
+      0
+      1.7626495695355857
+      </pose>
+      <uri>model://cinder_block_2</uri>
+    </include>
+
+    <include>
+      <name>cinder_block_2_67</name>
+      <pose>
+      -36.96964470846512
+      -93.69744896682114
+      0.0
+      0
+      0
+      1.5478290138124633
+      </pose>
+      <uri>model://cinder_block_2</uri>
+    </include>
+
+    <include>
+      <name>cinder_block_2_68</name>
+      <pose>
+      -36.47962031239136
+      -88.74018942176542
+      0.0
+      0
+      0
+      2.5502111321270835
+      </pose>
+      <uri>model://cinder_block_2</uri>
+    </include>
+
+    <include>
+      <name>cinder_block_2_69</name>
+      <pose>
+      -36.502395480852506
+      -90.49270392899527
+      0.0
+      0
+      0
+      0.9107177448862711
+      </pose>
+      <uri>model://cinder_block_2</uri>
+    </include>
+
 
     <!-- West block -->
 
@@ -624,443 +1365,573 @@
     <!-- East block -->
 
     <include>
-      <pose>-6.09 -134.33 0 0 0 3.14</pose>
+      <name>powerplant_70</name>
+      <pose>
+      -6.09
+      -134.33
+      0.0
+      0
+      0
+      3.14
+      </pose>
       <uri>model://powerplant</uri>
     </include>
+
 
     <!-- Construction zone -->
 
     <include>
-      <pose frame=''>-46.2805 -101.493 0 0 -0 1.60214</pose>
+      <name>tower_crane_71</name>
+      <pose>
+      -46.2805
+      -101.493
+      0.0
+      0
+      0
+      1.60214
+      </pose>
       <uri>model://tower_crane</uri>
     </include>
 
     <include>
-      <pose frame=''>-37.2216 -100.588 0 0 -0 3.14159</pose>
+      <name>drc_practice_angled_barrier_45_72</name>
+      <pose>
+      -37.2216
+      -100.588
+      0.0
+      0
+      0
+      3.14159
+      </pose>
       <uri>model://drc_practice_angled_barrier_45</uri>
     </include>
 
     <include>
-      <pose frame=''>-34.8405 -101.725 0 0 -0 0.867273</pose>
+      <name>drc_practice_orange_jersey_barrier_73</name>
+      <pose>
+      -34.8405
+      -101.725
+      0.0
+      0
+      0
+      0.867273
+      </pose>
       <uri>model://drc_practice_orange_jersey_barrier</uri>
     </include>
 
     <include>
-      <pose frame=''>-47.7276 -90.7959 0 0 -0 0</pose>
+      <name>construction_barrel_74</name>
+      <pose>
+      -47.7276
+      -90.7959
+      0.0
+      0
+      0
+      0
+      </pose>
       <uri>model://construction_barrel</uri>
     </include>
 
+
     <!-- Stop lights -->
-    
-      <include>
-        <name>light_1</name>
-        <pose>-11.3 -3.7 0 0 0 -1.57</pose>
-        <uri>model://stop_light_post</uri>
-      </include>
-    
-      <include>
-        <name>light_2</name>
-        <pose>48.7 -3.7 0 0 0 -1.57</pose>
-        <uri>model://stop_light_post</uri>
-      </include>
-    
-      <include>
-        <name>light_3</name>
-        <pose>123.7 -3.7 0 0 0 -1.57</pose>
-        <uri>model://stop_light_post</uri>
-      </include>
-    
-      <include>
-        <name>light_4</name>
-        <pose>-48.7 3.7 0 0 0 1.57</pose>
-        <uri>model://stop_light_post</uri>
-      </include>
-    
-      <include>
-        <name>light_5</name>
-        <pose>-18.7 3.7 0 0 0 1.57</pose>
-        <uri>model://stop_light_post</uri>
-      </include>
-    
-      <include>
-        <name>light_6</name>
-        <pose>41.3 3.7 0 0 0 1.57</pose>
-        <uri>model://stop_light_post</uri>
-      </include>
-    
-      <include>
-        <name>light_7</name>
-        <pose>-41.3 3.7 0 0 0 0.0</pose>
-        <uri>model://stop_light_post</uri>
-      </include>
-    
-      <include>
-        <name>light_8</name>
-        <pose>-11.3 3.7 0 0 0 0.0</pose>
-        <uri>model://stop_light_post</uri>
-      </include>
-    
-      <include>
-        <name>light_9</name>
-        <pose>48.7 3.7 0 0 0 0.0</pose>
-        <uri>model://stop_light_post</uri>
-      </include>
-    
-      <include>
-        <name>light_10</name>
-        <pose>123.7 3.7 0 0 0 0.0</pose>
-        <uri>model://stop_light_post</uri>
-      </include>
-    
-      <include>
-        <name>light_11</name>
-        <pose>-48.7 -3.7 0 0 0 3.14</pose>
-        <uri>model://stop_light_post</uri>
-      </include>
-    
-      <include>
-        <name>light_12</name>
-        <pose>-18.7 -3.7 0 0 0 3.14</pose>
-        <uri>model://stop_light_post</uri>
-      </include>
-    
-      <include>
-        <name>light_13</name>
-        <pose>41.3 -3.7 0 0 0 3.14</pose>
-        <uri>model://stop_light_post</uri>
-      </include>
-    
-      <include>
-        <name>light_14</name>
-        <pose>106.3 -3.7 0 0 0 3.14</pose>
-        <uri>model://stop_light_post</uri>
-      </include>
-    
+
+    <include>
+      <name>stop_light_post_75</name>
+      <pose>
+      -11.3
+      -3.7
+      0.0
+      0
+      0
+      -1.57
+      </pose>
+      <uri>model://stop_light_post</uri>
+    </include>
+
+
+    <include>
+      <name>stop_light_post_76</name>
+      <pose>
+      48.7
+      -3.7
+      0.0
+      0
+      0
+      -1.57
+      </pose>
+      <uri>model://stop_light_post</uri>
+    </include>
+
+    <include>
+      <name>stop_light_post_77</name>
+      <pose>
+      123.7
+      -3.7
+      0.0
+      0
+      0
+      -1.57
+      </pose>
+      <uri>model://stop_light_post</uri>
+    </include>
+
+    <include>
+      <name>stop_light_post_78</name>
+      <pose>
+      -48.7
+      3.7
+      0.0
+      0
+      0
+      1.57
+      </pose>
+      <uri>model://stop_light_post</uri>
+    </include>
+
+    <include>
+      <name>stop_light_post_79</name>
+      <pose>
+      -18.7
+      3.7
+      0.0
+      0
+      0
+      1.57
+      </pose>
+      <uri>model://stop_light_post</uri>
+    </include>
+
+    <include>
+      <name>stop_light_post_80</name>
+      <pose>
+      41.3
+      3.7
+      0.0
+      0
+      0
+      1.57
+      </pose>
+      <uri>model://stop_light_post</uri>
+    </include>
+
+    <include>
+      <name>stop_light_post_81</name>
+      <pose>
+      -41.3
+      3.7
+      0.0
+      0
+      0
+      0.0
+      </pose>
+      <uri>model://stop_light_post</uri>
+    </include>
+
+    <include>
+      <name>stop_light_post_82</name>
+      <pose>
+      -11.3
+      3.7
+      0.0
+      0
+      0
+      0.0
+      </pose>
+      <uri>model://stop_light_post</uri>
+    </include>
+
+    <include>
+      <name>stop_light_post_83</name>
+      <pose>
+      48.7
+      3.7
+      0.0
+      0
+      0
+      0.0
+      </pose>
+      <uri>model://stop_light_post</uri>
+    </include>
+
+    <include>
+      <name>stop_light_post_84</name>
+      <pose>
+      123.7
+      3.7
+      0.0
+      0
+      0
+      0.0
+      </pose>
+      <uri>model://stop_light_post</uri>
+    </include>
+
+    <include>
+      <name>stop_light_post_85</name>
+      <pose>
+      -48.7
+      -3.7
+      0.0
+      0
+      0
+      3.14
+      </pose>
+      <uri>model://stop_light_post</uri>
+    </include>
+
+    <include>
+      <name>stop_light_post_86</name>
+      <pose>
+      -18.7
+      -3.7
+      0.0
+      0
+      0
+      3.14
+      </pose>
+      <uri>model://stop_light_post</uri>
+    </include>
+
+    <include>
+      <name>stop_light_post_87</name>
+      <pose>
+      41.3
+      -3.7
+      0.0
+      0
+      0
+      3.14
+      </pose>
+      <uri>model://stop_light_post</uri>
+    </include>
+
+    <include>
+      <name>stop_light_post_88</name>
+      <pose>
+      106.3
+      -3.7
+      0.0
+      0
+      0
+      3.14
+      </pose>
+      <uri>model://stop_light_post</uri>
+    </include>
+
 
     <!-- Stop signs -->
-    
-      <include>
-        <name>sign_1</name>
-        <pose>-41.3 -41.3 0 0 0 1.57</pose>
-        <uri>model://stop_sign</uri>
-      </include>
-    
-      <include>
-        <name>sign_2</name>
-        <pose>-11.3 -41.3 0 0 0 1.57</pose>
-        <uri>model://stop_sign</uri>
-      </include>
-    
-      <include>
-        <name>sign_3</name>
-        <pose>48.7 -41.3 0 0 0 1.57</pose>
-        <uri>model://stop_sign</uri>
-      </include>
-    
-      <include>
-        <name>sign_4</name>
-        <pose>-41.3 48.7 0 0 0 1.57</pose>
-        <uri>model://stop_sign</uri>
-      </include>
-    
-      <include>
-        <name>sign_5</name>
-        <pose>-11.3 48.7 0 0 0 1.57</pose>
-        <uri>model://stop_sign</uri>
-      </include>
-    
-      <include>
-        <name>sign_6</name>
-        <pose>48.7 48.7 0 0 0 1.57</pose>
-        <uri>model://stop_sign</uri>
-      </include>
-    
-      <include>
-        <name>sign_7</name>
-        <pose>-11.3 -48.7 0 0 0 0.0</pose>
-        <uri>model://stop_sign</uri>
-      </include>
-    
-      <include>
-        <name>sign_8</name>
-        <pose>-11.3 41.3 0 0 0 0.0</pose>
-        <uri>model://stop_sign</uri>
-      </include>
-    
-      <include>
-        <name>sign_9</name>
-        <pose>-11.3 96.3 0 0 0 0.0</pose>
-        <uri>model://stop_sign</uri>
-      </include>
-    
-      <include>
-        <name>sign_10</name>
-        <pose>48.7 -48.7 0 0 0 0.0</pose>
-        <uri>model://stop_sign</uri>
-      </include>
-    
-      <include>
-        <name>sign_11</name>
-        <pose>48.7 41.3 0 0 0 0.0</pose>
-        <uri>model://stop_sign</uri>
-      </include>
-    
-      <include>
-        <name>sign_12</name>
-        <pose>48.7 96.3 0 0 0 0.0</pose>
-        <uri>model://stop_sign</uri>
-      </include>
-    
-      <include>
-        <name>sign_13</name>
-        <pose>-18.7 -96.3 0 0 0 3.14</pose>
-        <uri>model://stop_sign</uri>
-      </include>
-    
-      <include>
-        <name>sign_14</name>
-        <pose>-18.7 -41.3 0 0 0 3.14</pose>
-        <uri>model://stop_sign</uri>
-      </include>
-    
-      <include>
-        <name>sign_15</name>
-        <pose>-18.7 48.7 0 0 0 3.14</pose>
-        <uri>model://stop_sign</uri>
-      </include>
-    
-      <include>
-        <name>sign_16</name>
-        <pose>41.3 -96.3 0 0 0 3.14</pose>
-        <uri>model://stop_sign</uri>
-      </include>
-    
-      <include>
-        <name>sign_17</name>
-        <pose>41.3 -41.3 0 0 0 3.14</pose>
-        <uri>model://stop_sign</uri>
-      </include>
-    
-      <include>
-        <name>sign_18</name>
-        <pose>41.3 48.7 0 0 0 3.14</pose>
-        <uri>model://stop_sign</uri>
-      </include>
-    
-      <include>
-        <name>sign_19</name>
-        <pose>-18.7 -48.7 0 0 0 -1.57</pose>
-        <uri>model://stop_sign</uri>
-      </include>
-    
-      <include>
-        <name>sign_20</name>
-        <pose>-18.7 41.3 0 0 0 -1.57</pose>
-        <uri>model://stop_sign</uri>
-      </include>
-    
-      <include>
-        <name>sign_21</name>
-        <pose>41.3 -48.7 0 0 0 -1.57</pose>
-        <uri>model://stop_sign</uri>
-      </include>
-    
-      <include>
-        <name>sign_22</name>
-        <pose>41.3 41.3 0 0 0 -1.57</pose>
-        <uri>model://stop_sign</uri>
-      </include>
-    
-      <include>
-        <name>sign_23</name>
-        <pose>106.3 -48.7 0 0 0 -1.57</pose>
-        <uri>model://stop_sign</uri>
-      </include>
-    
-      <include>
-        <name>sign_24</name>
-        <pose>106.3 41.3 0 0 0 -1.57</pose>
-        <uri>model://stop_sign</uri>
-      </include>
-    
 
+    <include>
+      <name>stop_sign_89</name>
+      <pose>
+      -41.3
+      -41.3
+      0.0
+      0
+      0
+      1.57
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
 
-    <!-- Trees -->
-    
-      <include>
-        <name>tree_1</name>
-        <pose>129 -16.3 0 0 0 0</pose>
-        <uri>model://oak_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_2</name>
-        <pose>149.3 -15.6 0 0 0 1</pose>
-        <uri>model://oak_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_3</name>
-        <pose>140 5.8 0 0 0 0.5</pose>
-        <uri>model://oak_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_4</name>
-        <pose>128.5 9.7 0 0 0 -0.3</pose>
-        <uri>model://oak_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_5</name>
-        <pose>152 10.9 0 0 0 1.57</pose>
-        <uri>model://oak_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_6</name>
-        <pose>134.5 -6.6 0 0 0 -0.6</pose>
-        <uri>model://oak_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_7</name>
-        <pose>-6.418 10.37 0 0 0 0.55</pose>
-        <uri>model://oak_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_8</name>
-        <pose>-28.916 89.604 0 0 0 -0.51</pose>
-        <uri>model://oak_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_9</name>
-        <pose>-34.077 89.854 0 0 0 0.51</pose>
-        <uri>model://oak_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_10</name>
-        <pose>-30.709 7.15 0 0 0 0.036613696851274094</pose>
-        <uri>model://pine_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_11</name>
-        <pose>26.132137460307135 74.52365088718119 0 0 0 1.2327840784331576</pose>
-        <uri>model://pine_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_12</name>
-        <pose>-6.671680187671399 86.17336263848719 0 0 0 0.8272588144690525</pose>
-        <uri>model://pine_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_13</name>
-        <pose>17.292222355834 67.85896308357896 0 0 0 1.130313810679213</pose>
-        <uri>model://pine_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_14</name>
-        <pose>-0.9067618777289752 88.6503890750651 0 0 0 1.0811022453912207</pose>
-        <uri>model://pine_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_15</name>
-        <pose>35.948133128070566 60.31617025150384 0 0 0 2.408616800098609</pose>
-        <uri>model://pine_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_16</name>
-        <pose>-0.8622376232222564 59.1989143718604 0 0 0 0.6483051347117507</pose>
-        <uri>model://pine_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_17</name>
-        <pose>-5.488688600144538 57.07105867456071 0 0 0 1.950336806831876</pose>
-        <uri>model://pine_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_18</name>
-        <pose>29.990902451888275 91.51198485812091 0 0 0 0.8408139424049478</pose>
-        <uri>model://pine_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_19</name>
-        <pose>24.52836005352321 88.13805325197387 0 0 0 1.9579621224172605</pose>
-        <uri>model://pine_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_20</name>
-        <pose>-2.8494192777866596 78.76169076245738 0 0 0 1.33902807520403</pose>
-        <uri>model://pine_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_21</name>
-        <pose>19.153618108014008 72.43701798369898 0 0 0 1.9119036508109826</pose>
-        <uri>model://pine_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_22</name>
-        <pose>36.123107016964894 71.4801469070471 0 0 0 1.8432232762188585</pose>
-        <uri>model://pine_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_23</name>
-        <pose>17.409783560556072 72.87507701547003 0 0 0 0.8903267447328527</pose>
-        <uri>model://pine_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_24</name>
-        <pose>20.70928458244316 83.76853483651894 0 0 0 0.46476000703265413</pose>
-        <uri>model://pine_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_25</name>
-        <pose>22.210271046562497 58.821134461602206 0 0 0 1.7516141392672473</pose>
-        <uri>model://pine_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_26</name>
-        <pose>115.0 93 0 0 0 2.328971641983193</pose>
-        <uri>model://pine_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_27</name>
-        <pose>115.0 81 0 0 0 1.8331946992939188</pose>
-        <uri>model://pine_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_28</name>
-        <pose>115.0 69 0 0 0 0.38592628656970124</pose>
-        <uri>model://pine_tree</uri>
-      </include>
-    
-      <include>
-        <name>tree_29</name>
-        <pose>115.0 57 0 0 0 1.6735549752921097</pose>
-        <uri>model://pine_tree</uri>
-      </include>
-    
+    <include>
+      <name>stop_sign_90</name>
+      <pose>
+      -11.3
+      -41.3
+      0.0
+      0
+      0
+      1.57
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
+
+    <include>
+      <name>stop_sign_91</name>
+      <pose>
+      48.7
+      -41.3
+      0.0
+      0
+      0
+      1.57
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
+
+    <include>
+      <name>stop_sign_92</name>
+      <pose>
+      -41.3
+      48.7
+      0.0
+      0
+      0
+      1.57
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
+
+    <include>
+      <name>stop_sign_93</name>
+      <pose>
+      -11.3
+      48.7
+      0.0
+      0
+      0
+      1.57
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
+
+    <include>
+      <name>stop_sign_94</name>
+      <pose>
+      48.7
+      48.7
+      0.0
+      0
+      0
+      1.57
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
+
+    <include>
+      <name>stop_sign_95</name>
+      <pose>
+      -11.3
+      -48.7
+      0.0
+      0
+      0
+      0.0
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
+
+    <include>
+      <name>stop_sign_96</name>
+      <pose>
+      -11.3
+      41.3
+      0.0
+      0
+      0
+      0.0
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
+
+    <include>
+      <name>stop_sign_97</name>
+      <pose>
+      -11.3
+      96.3
+      0.0
+      0
+      0
+      0.0
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
+
+    <include>
+      <name>stop_sign_98</name>
+      <pose>
+      48.7
+      -48.7
+      0.0
+      0
+      0
+      0.0
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
+
+    <include>
+      <name>stop_sign_99</name>
+      <pose>
+      48.7
+      41.3
+      0.0
+      0
+      0
+      0.0
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
+
+    <include>
+      <name>stop_sign_100</name>
+      <pose>
+      48.7
+      96.3
+      0.0
+      0
+      0
+      0.0
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
+
+    <include>
+      <name>stop_sign_101</name>
+      <pose>
+      -18.7
+      -96.3
+      0.0
+      0
+      0
+      3.14
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
+
+    <include>
+      <name>stop_sign_102</name>
+      <pose>
+      -18.7
+      -41.3
+      0.0
+      0
+      0
+      3.14
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
+
+    <include>
+      <name>stop_sign_103</name>
+      <pose>
+      -18.7
+      48.7
+      0.0
+      0
+      0
+      3.14
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
+
+    <include>
+      <name>stop_sign_104</name>
+      <pose>
+      41.3
+      -96.3
+      0.0
+      0
+      0
+      3.14
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
+
+    <include>
+      <name>stop_sign_105</name>
+      <pose>
+      41.3
+      -41.3
+      0.0
+      0
+      0
+      3.14
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
+
+    <include>
+      <name>stop_sign_106</name>
+      <pose>
+      41.3
+      48.7
+      0.0
+      0
+      0
+      3.14
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
+
+    <include>
+      <name>stop_sign_107</name>
+      <pose>
+      -18.7
+      -48.7
+      0.0
+      0
+      0
+      -1.57
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
+
+    <include>
+      <name>stop_sign_108</name>
+      <pose>
+      -18.7
+      41.3
+      0.0
+      0
+      0
+      -1.57
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
+
+    <include>
+      <name>stop_sign_109</name>
+      <pose>
+      41.3
+      -48.7
+      0.0
+      0
+      0
+      -1.57
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
+
+    <include>
+      <name>stop_sign_110</name>
+      <pose>
+      41.3
+      41.3
+      0.0
+      0
+      0
+      -1.57
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
+
+    <include>
+      <name>stop_sign_111</name>
+      <pose>
+      106.3
+      -48.7
+      0.0
+      0
+      0
+      -1.57
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
+
+    <include>
+      <name>stop_sign_112</name>
+      <pose>
+      106.3
+      41.3
+      0.0
+      0
+      0
+      -1.57
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
 
 
     <!-- Actors -->

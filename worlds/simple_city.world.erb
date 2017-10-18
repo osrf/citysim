@@ -3,6 +3,34 @@
 <%
   # Simple city
 
+  # Global model count used to generate unique names
+  $count = 0
+
+  # Print a model include
+  # Sets $count
+  # Parameters:
+  # _model: Model file (without "model://", such as "pine_tree")
+  # _posX: Position X in the world
+  # _posY: Position Y in the world
+  # _yaw: Yaw in the world
+  # _posZ: Optional position Z in the world
+  def includeModel(_model, _posX, _posY, _yaw, _posZ = 0.0)
+    $count += 1
+
+    "<include>\n"\
+    "      <name>" + _model + "_" + $count.to_s() + "</name>\n"\
+    "      <pose>\n"\
+    "      " + _posX.to_s() + "\n"\
+    "      " + _posY.to_s() + "\n"\
+    "      " + _posZ.to_s() + "\n"\
+    "      " + 0.to_s() + "\n"\
+    "      " + 0.to_s() + "\n"\
+    "      " + _yaw.to_s() + "\n"\
+    "      </pose>\n"\
+    "      <uri>model://" + _model + "</uri>\n"\
+    "    </include>\n"
+  end
+
   # Actors
   mesh_path = "model://actor/meshes/"
 
@@ -324,27 +352,28 @@
 
     <!-- North block -->
 
-    <include>
-      <pose>146.778 57.67 0 0 0 -1.57</pose>
-      <uri>model://parking_garage</uri>
-    </include>
+    <%= includeModel("parking_garage", 146.778, 57.67, -1.57) %>
+    <%= includeModel("fountain", 135.5, 0, 0) %>
 
-    <include>
-      <pose>135.5 0 0 0 0 0</pose>
-      <uri>model://fountain</uri>
-    </include>
+    <%= includeModel("oak_tree", 129, -16.3, rand(0.0..3.14)) %>
+    <%= includeModel("oak_tree", 149.3, -15.6, rand(0.0..3.14)) %>
+    <%= includeModel("oak_tree", 140, 5.8, rand(0.0..3.14)) %>
+    <%= includeModel("oak_tree", 128.5, 9.7, rand(0.0..3.14)) %>
+    <%= includeModel("oak_tree", 152, 10.9, rand(0.0..3.14)) %>
+    <%= includeModel("oak_tree", 134.5, -6.6, rand(0.0..3.14)) %>
 
-    <include>
-      <pose>138.5 -86.6 0.05 0 0 1.57</pose>
-      <uri>model://robocup_3Dsim_field</uri>
-    </include>
+    <%= includeModel("robocup_3Dsim_field", 138.5, -86.6, 1.57, 0.05) %>
+
+    <!-- North road -->
+
+    <%= includeModel("pine_tree", (road_x[3] + road_x[4]) * 0.5, 93, rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", (road_x[3] + road_x[4]) * 0.5, 81, rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", (road_x[3] + road_x[4]) * 0.5, 69, rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", (road_x[3] + road_x[4]) * 0.5, 57, rand(0.0..3.14)) %>
 
     <!-- Block 0 0 -->
 
-    <include>
-      <pose>56.84 61.56 0 0 0 1.57</pose>
-      <uri>model://fire_station</uri>
-    </include>
+    <%= includeModel("fire_station", 56.84, 61.56, 1.57) %>
 
     <include>
       <pose>65.4415 54.097 0 0 0 0</pose>
@@ -360,161 +389,90 @@
 
     <!-- Block 0 2 -->
 
-    <include>
-      <pose>60.19 -15.294 0 0 0 0</pose>
-      <uri>model://office_building</uri>
-    </include>
+    <%= includeModel("office_building", 60.19, -15.294, 0) %>
 
     <!-- Block 0 3 -->
 
-    <include>
-      <pose>61.88 -75.82 0 0 0 3.14</pose>
-      <uri>model://gas_station</uri>
-    </include>
-
-    <include>
-      <pose>61.581 -61.664 0 0 0 0</pose>
-      <uri>model://asphalt_plane</uri>
-    </include>
+    <%= includeModel("gas_station", 61.88, -75.82, 3.14) %>
+    <%= includeModel("asphalt_plane", 61.581, -61.664, 0) %>
 
     <!-- Block 1 0 -->
 
+    <%= includeModel("pine_tree", rand(-7.4..36.35), rand(53.3..91.8), rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", rand(-7.4..36.35), rand(53.3..91.8), rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", rand(-7.4..36.35), rand(53.3..91.8), rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", rand(-7.4..36.35), rand(53.3..91.8), rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", rand(-7.4..36.35), rand(53.3..91.8), rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", rand(-7.4..36.35), rand(53.3..91.8), rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", rand(-7.4..36.35), rand(53.3..91.8), rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", rand(-7.4..36.35), rand(53.3..91.8), rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", rand(-7.4..36.35), rand(53.3..91.8), rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", rand(-7.4..36.35), rand(53.3..91.8), rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", rand(-7.4..36.35), rand(53.3..91.8), rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", rand(-7.4..36.35), rand(53.3..91.8), rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", rand(-7.4..36.35), rand(53.3..91.8), rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", rand(-7.4..36.35), rand(53.3..91.8), rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", rand(-7.4..36.35), rand(53.3..91.8), rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", rand(-7.4..36.35), rand(53.3..91.8), rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", rand(-7.4..36.35), rand(53.3..91.8), rand(0.0..3.14)) %>
+
     <!-- Block 1 1 -->
 
-    <include>
-      <name>law_office_1</name>
-      <pose>8.47 9.356 0 0 0 0</pose>
-      <uri>model://law_office</uri>
-    </include>
-
-    <include>
-      <name>thrift_shop_1</name>
-      <pose>1.35 9.356 0 0 0 0</pose>
-      <uri>model://thrift_shop</uri>
-    </include>
-
-    <include>
-      <name>salon_1</name>
-      <pose>15.7 9.356 0 0 0 0</pose>
-      <uri>model://salon</uri>
-    </include>
-
-    <include>
-      <name>apartment_1</name>
-      <pose>1.573 27.565 0 0 0 0</pose>
-      <uri>model://apartment</uri>
-    </include>
-
-    <include>
-      <pose>27.003 20.15 0 0 0 1.57</pose>
-      <uri>model://osrf_first_office</uri>
-    </include>
+    <%= includeModel("law_office", 8.47, 9.356, 0) %>
+    <%= includeModel("thrift_shop", 1.35, 9.356, 0) %>
+    <%= includeModel("salon", 15.7, 9.356, 0) %>
+    <%= includeModel("oak_tree", -6.418, 10.37, 0.55) %>
+    <%= includeModel("apartment", 1.573, 27.565, 0) %>
+    <%= includeModel("osrf_first_office", 27.003, 20.15, 1.57) %>
 
     <!-- Block 1 2 -->
 
-    <include>
-      <pose>-3.73 -9.08 0 0 0 0</pose>
-      <uri>model://fast_food</uri>
-    </include>
+    <%= includeModel("fast_food", -3.73, -9.08, 0) %>
 
     <!-- Block 1 3 -->
 
-    <include>
-      <pose>4.12 -67.758 0 0 0 1.57</pose>
-      <uri>model://grocery_store</uri>
-    </include>
+    <%= includeModel("grocery_store", 4.12, -67.758, 1.57) %>
 
     <!-- Block 2 0 -->
 
-    <include>
-      <pose>-27.309 67.823 0 0 0 -1.57</pose>
-      <uri>model://school</uri>
-    </include>
+    <%= includeModel("school", -27.309, 67.823, -1.57) %>
+    <%= includeModel("oak_tree", -28.916, 89.604, -0.51) %>
+    <%= includeModel("oak_tree", -34.077, 89.854, 0.51) %>
 
     <!-- Block 2 1 -->
 
-    <include>
-      <pose>-26.686 11.119 0 0 0 3.14</pose>
-      <uri>model://post_office</uri>
-    </include>
+    <%= includeModel("post_office", -26.686, 11.119, 3.14) %>
+    <%= includeModel("pine_tree", -30.709, 7.15, rand(0.0..3.14)) %>
 
     <!-- Block 2 2 -->
 
-    <include>
-      <name>salon_2</name>
-      <pose>-27.65 -9.35 0 0 0 3.14</pose>
-      <uri>model://salon</uri>
-    </include>
-
-    <include>
-      <name>law_office_2</name>
-      <pose>-34.886 -9.408 0 0 0 3.14</pose>
-      <uri>model://law_office</uri>
-    </include>
+    <%= includeModel("salon", -27.65, -9.35, 3.14) %>
+    <%= includeModel("law_office", -34.886, -9.408, 3.14) %>
 
     <!-- Block 2 3 -->
 
-    <include>
-      <pose>-31.838 -59.696 0 0 0 0</pose>
-      <uri>model://police_station</uri>
-    </include>
+    <%= includeModel("police_station", -31.838, -59.696, 0) %>
+    <%= includeModel("collapsed_industrial", -29.8725, -83.9104, 1.5708) %>
+    <%= includeModel("construction_cone", -40.748, -90.1868, rand(0.0..3.14)) %>
 
-    <include>
-      <pose frame=''>-29.8725 -83.9104 0 0 -0 1.5708</pose>
-      <uri>model://collapsed_industrial</uri>
-    </include>
+    <%= includeModel("construction_cone", -40.692, -95.2899, rand(0.0..3.14)) %>
+    <%= includeModel("construction_cone", -37.8997, -95.3521, rand(0.0..3.14)) %>
+    <%= includeModel("construction_cone", -35.2603, -95.3721, rand(0.0..3.14)) %>
+    <%= includeModel("construction_cone", -31.8118, -95.4314, rand(0.0..3.14)) %>
+    <%= includeModel("construction_cone", -40.1918, -74.491, rand(0.0..3.14)) %>
+    <%= includeModel("construction_cone", -40.6878, -80.629, rand(0.0..3.14)) %>
 
-    <%
-      cones = [
-        {:model => "construction_cone", :pos_x => -40.748, :pos_y => -90.1868, :yaw => rand(0.0..3.14)},
-        {:model => "construction_cone", :pos_x => -40.692, :pos_y => -95.2899, :yaw => rand(0.0..3.14)},
-        {:model => "construction_cone", :pos_x => -37.8997, :pos_y => -95.3521, :yaw => rand(0.0..3.14)},
-        {:model => "construction_cone", :pos_x => -35.2603, :pos_y => -95.3721, :yaw => rand(0.0..3.14)},
-        {:model => "construction_cone", :pos_x => -31.8118, :pos_y => -95.4314, :yaw => rand(0.0..3.14)},
-        {:model => "construction_cone", :pos_x => -40.1918, :pos_y => -74.491, :yaw => rand(0.0..3.14)},
-        {:model => "construction_cone", :pos_x => -40.6878, :pos_y => -80.629, :yaw => rand(0.0..3.14)},
-      ]
-
-      count = 0
-
-      cones.each do |cone|
-        model = cone[:model]
-        pos_x = cone[:pos_x]
-        pos_y = cone[:pos_y]
-        yaw = cone[:yaw]
-        count = count + 1
-    %>
-      <include>
-        <name>cone_<%= count %></name>
-        <pose><%= pos_x %> <%= pos_y %> 0 0 0 <%= yaw %></pose>
-        <uri>model://<%= model %></uri>
-      </include>
-    <% end %>
-
-    <include>
-      <pose frame=''>-39.8294 -93.3183 0 0 0 -0.45084</pose>
-      <uri>model://cinder_block</uri>
-    </include>
-
-    <include>
-      <pose frame=''>-40.0204 -94.8219 0 0 -0 0</pose>
-      <uri>model://cinder_block</uri>
-    </include>
-
-    <include>
-      <pose frame=''>-36.7887 -92.6503 0 0 -0 0</pose>
-      <uri>model://cinder_block</uri>
-    </include>
-
-    <include>
-      <pose frame=''>-39.4614 -91.4595 0 0 -0 0</pose>
-      <uri>model://cinder_block</uri>
-    </include>
-
-    <include>
-      <pose frame=''>-37.6122 -94.084 0 0 -0 0</pose>
-      <uri>model://cinder_block</uri>
-    </include>
+    <%= includeModel("cinder_block", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14)) %>
+    <%= includeModel("cinder_block", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14)) %>
+    <%= includeModel("cinder_block", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14)) %>
+    <%= includeModel("cinder_block", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14)) %>
+    <%= includeModel("cinder_block", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14)) %>
+    <%= includeModel("cinder_block", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14)) %>
+    <%= includeModel("cinder_block_2", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14)) %>
+    <%= includeModel("cinder_block_2", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14)) %>
+    <%= includeModel("cinder_block_2", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14)) %>
+    <%= includeModel("cinder_block_2", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14)) %>
+    <%= includeModel("cinder_block_2", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14)) %>
 
     <!-- West block -->
 
@@ -525,164 +483,59 @@
 
     <!-- East block -->
 
-    <include>
-      <pose>-6.09 -134.33 0 0 0 3.14</pose>
-      <uri>model://powerplant</uri>
-    </include>
+    <%= includeModel("powerplant", -6.09, -134.33, 3.14) %>
 
     <!-- Construction zone -->
 
-    <include>
-      <pose frame=''>-46.2805 -101.493 0 0 -0 1.60214</pose>
-      <uri>model://tower_crane</uri>
-    </include>
-
-    <include>
-      <pose frame=''>-37.2216 -100.588 0 0 -0 3.14159</pose>
-      <uri>model://drc_practice_angled_barrier_45</uri>
-    </include>
-
-    <include>
-      <pose frame=''>-34.8405 -101.725 0 0 -0 0.867273</pose>
-      <uri>model://drc_practice_orange_jersey_barrier</uri>
-    </include>
-
-    <include>
-      <pose frame=''>-47.7276 -90.7959 0 0 -0 0</pose>
-      <uri>model://construction_barrel</uri>
-    </include>
+    <%= includeModel("tower_crane", -46.2805, -101.493, 1.60214) %>
+    <%= includeModel("drc_practice_angled_barrier_45", -37.2216, -100.588, 3.14159) %>
+    <%= includeModel("drc_practice_orange_jersey_barrier", -34.8405, -101.725, 0.867273) %>
+    <%= includeModel("construction_barrel", -47.7276, -90.7959, 0) %>
 
     <!-- Stop lights -->
-    <%
-      lights = [
-        {:model => "stop_light_post", :pos_x => road_x[1] + road_width * 0.5, :pos_y => -road_width * 0.5, :yaw => -1.57},
-        {:model => "stop_light_post", :pos_x => road_x[2] + road_width * 0.5, :pos_y => -road_width * 0.5, :yaw => -1.57},
-        {:model => "stop_light_post", :pos_x => road_x[4] + road_width * 0.5, :pos_y => -road_width * 0.5, :yaw => -1.57},
-        {:model => "stop_light_post", :pos_x => road_x[0] - road_width * 0.5, :pos_y => +road_width * 0.5, :yaw => 1.57},
-        {:model => "stop_light_post", :pos_x => road_x[1] - road_width * 0.5, :pos_y => +road_width * 0.5, :yaw => 1.57},
-        {:model => "stop_light_post", :pos_x => road_x[2] - road_width * 0.5, :pos_y => +road_width * 0.5, :yaw => 1.57},
-        {:model => "stop_light_post", :pos_x => road_x[0] + road_width * 0.5, :pos_y => +road_width * 0.5, :yaw => 0.0},
-        {:model => "stop_light_post", :pos_x => road_x[1] + road_width * 0.5, :pos_y => +road_width * 0.5, :yaw => 0.0},
-        {:model => "stop_light_post", :pos_x => road_x[2] + road_width * 0.5, :pos_y => +road_width * 0.5, :yaw => 0.0},
-        {:model => "stop_light_post", :pos_x => road_x[4] + road_width * 0.5, :pos_y => +road_width * 0.5, :yaw => 0.0},
-        {:model => "stop_light_post", :pos_x => road_x[0] - road_width * 0.5, :pos_y => -road_width * 0.5, :yaw => 3.14},
-        {:model => "stop_light_post", :pos_x => road_x[1] - road_width * 0.5, :pos_y => -road_width * 0.5, :yaw => 3.14},
-        {:model => "stop_light_post", :pos_x => road_x[2] - road_width * 0.5, :pos_y => -road_width * 0.5, :yaw => 3.14},
-        {:model => "stop_light_post", :pos_x => road_x[3] - road_width * 0.5, :pos_y => -road_width * 0.5, :yaw => 3.14},
-      ]
 
-      count = 0
+    <%= includeModel("stop_light_post", road_x[1] + road_width * 0.5, -road_width * 0.5, -1.57) %>
 
-      lights.each do |light|
-        model = light[:model]
-        pos_x = light[:pos_x]
-        pos_y = light[:pos_y]
-        yaw = light[:yaw]
-        count = count + 1
-    %>
-      <include>
-        <name>light_<%= count %></name>
-        <pose><%= pos_x %> <%= pos_y %> 0 0 0 <%= yaw %></pose>
-        <uri>model://<%= model %></uri>
-      </include>
-    <% end %>
+    <%= includeModel("stop_light_post", road_x[2] + road_width * 0.5, -road_width * 0.5, -1.57) %>
+    <%= includeModel("stop_light_post", road_x[4] + road_width * 0.5, -road_width * 0.5, -1.57) %>
+    <%= includeModel("stop_light_post", road_x[0] - road_width * 0.5, +road_width * 0.5, 1.57) %>
+    <%= includeModel("stop_light_post", road_x[1] - road_width * 0.5, +road_width * 0.5, 1.57) %>
+    <%= includeModel("stop_light_post", road_x[2] - road_width * 0.5, +road_width * 0.5, 1.57) %>
+    <%= includeModel("stop_light_post", road_x[0] + road_width * 0.5, +road_width * 0.5, 0.0) %>
+    <%= includeModel("stop_light_post", road_x[1] + road_width * 0.5, +road_width * 0.5, 0.0) %>
+    <%= includeModel("stop_light_post", road_x[2] + road_width * 0.5, +road_width * 0.5, 0.0) %>
+    <%= includeModel("stop_light_post", road_x[4] + road_width * 0.5, +road_width * 0.5, 0.0) %>
+    <%= includeModel("stop_light_post", road_x[0] - road_width * 0.5, -road_width * 0.5, 3.14) %>
+    <%= includeModel("stop_light_post", road_x[1] - road_width * 0.5, -road_width * 0.5, 3.14) %>
+    <%= includeModel("stop_light_post", road_x[2] - road_width * 0.5, -road_width * 0.5, 3.14) %>
+    <%= includeModel("stop_light_post", road_x[3] - road_width * 0.5, -road_width * 0.5, 3.14) %>
 
     <!-- Stop signs -->
-    <%
-      signs = [
-        {:model => "stop_sign", :pos_x => road_x[0] + road_width * 0.5, :pos_y => road_y[1]+road_width * 0.5, :yaw => 1.57},
-        {:model => "stop_sign", :pos_x => road_x[1] + road_width * 0.5, :pos_y => road_y[1]+road_width * 0.5, :yaw => 1.57},
-        {:model => "stop_sign", :pos_x => road_x[2] + road_width * 0.5, :pos_y => road_y[1]+road_width * 0.5, :yaw => 1.57},
-        {:model => "stop_sign", :pos_x => road_x[0] + road_width * 0.5, :pos_y => road_y[3]+road_width * 0.5, :yaw => 1.57},
-        {:model => "stop_sign", :pos_x => road_x[1] + road_width * 0.5, :pos_y => road_y[3]+road_width * 0.5, :yaw => 1.57},
-        {:model => "stop_sign", :pos_x => road_x[2] + road_width * 0.5, :pos_y => road_y[3]+road_width * 0.5, :yaw => 1.57},
-        {:model => "stop_sign", :pos_x => road_x[1] + road_width * 0.5, :pos_y => road_y[1]-road_width * 0.5, :yaw => 0.0},
-        {:model => "stop_sign", :pos_x => road_x[1] + road_width * 0.5, :pos_y => road_y[3]-road_width * 0.5, :yaw => 0.0},
-        {:model => "stop_sign", :pos_x => road_x[1] + road_width * 0.5, :pos_y => road_y[4]-road_width * 0.5, :yaw => 0.0},
-        {:model => "stop_sign", :pos_x => road_x[2] + road_width * 0.5, :pos_y => road_y[1]-road_width * 0.5, :yaw => 0.0},
-        {:model => "stop_sign", :pos_x => road_x[2] + road_width * 0.5, :pos_y => road_y[3]-road_width * 0.5, :yaw => 0.0},
-        {:model => "stop_sign", :pos_x => road_x[2] + road_width * 0.5, :pos_y => road_y[4]-road_width * 0.5, :yaw => 0.0},
-        {:model => "stop_sign", :pos_x => road_x[1] - road_width * 0.5, :pos_y => road_y[0]+road_width * 0.5, :yaw => 3.14},
-        {:model => "stop_sign", :pos_x => road_x[1] - road_width * 0.5, :pos_y => road_y[1]+road_width * 0.5, :yaw => 3.14},
-        {:model => "stop_sign", :pos_x => road_x[1] - road_width * 0.5, :pos_y => road_y[3]+road_width * 0.5, :yaw => 3.14},
-        {:model => "stop_sign", :pos_x => road_x[2] - road_width * 0.5, :pos_y => road_y[0]+road_width * 0.5, :yaw => 3.14},
-        {:model => "stop_sign", :pos_x => road_x[2] - road_width * 0.5, :pos_y => road_y[1]+road_width * 0.5, :yaw => 3.14},
-        {:model => "stop_sign", :pos_x => road_x[2] - road_width * 0.5, :pos_y => road_y[3]+road_width * 0.5, :yaw => 3.14},
-        {:model => "stop_sign", :pos_x => road_x[1] - road_width * 0.5, :pos_y => road_y[1]-road_width * 0.5, :yaw => -1.57},
-        {:model => "stop_sign", :pos_x => road_x[1] - road_width * 0.5, :pos_y => road_y[3]-road_width * 0.5, :yaw => -1.57},
-        {:model => "stop_sign", :pos_x => road_x[2] - road_width * 0.5, :pos_y => road_y[1]-road_width * 0.5, :yaw => -1.57},
-        {:model => "stop_sign", :pos_x => road_x[2] - road_width * 0.5, :pos_y => road_y[3]-road_width * 0.5, :yaw => -1.57},
-        {:model => "stop_sign", :pos_x => road_x[3] - road_width * 0.5, :pos_y => road_y[1]-road_width * 0.5, :yaw => -1.57},
-        {:model => "stop_sign", :pos_x => road_x[3] - road_width * 0.5, :pos_y => road_y[3]-road_width * 0.5, :yaw => -1.57},
-      ]
 
-      count = 0
-
-      signs.each do |sign|
-        model = sign[:model]
-        pos_x = sign[:pos_x]
-        pos_y = sign[:pos_y]
-        yaw = sign[:yaw]
-        count = count + 1
-    %>
-      <include>
-        <name>sign_<%= count %></name>
-        <pose><%= pos_x %> <%= pos_y %> 0 0 0 <%= yaw %></pose>
-        <uri>model://<%= model %></uri>
-      </include>
-    <% end %>
-
-
-    <!-- Trees -->
-    <%
-      trees = [
-        {:model => "oak_tree", :pos_x => 129, :pos_y => -16.3, :yaw => 0},
-        {:model => "oak_tree", :pos_x => 149.3, :pos_y => -15.6, :yaw => 1},
-        {:model => "oak_tree", :pos_x => 140, :pos_y => 5.8, :yaw => 0.5},
-        {:model => "oak_tree", :pos_x => 128.5, :pos_y => 9.7, :yaw => -0.3},
-        {:model => "oak_tree", :pos_x => 152, :pos_y => 10.9, :yaw => 1.57},
-        {:model => "oak_tree", :pos_x => 134.5, :pos_y => -6.6, :yaw => -0.6},
-        {:model => "oak_tree", :pos_x => -6.418, :pos_y => 10.37, :yaw => 0.55},
-        {:model => "oak_tree", :pos_x => -28.916, :pos_y => 89.604, :yaw => -0.51},
-        {:model => "oak_tree", :pos_x => -34.077, :pos_y => 89.854, :yaw => 0.51},
-        {:model => "pine_tree", :pos_x => -30.709, :pos_y => 7.15, :yaw => rand(0.0..3.14)},
-        {:model => "pine_tree", :pos_x => rand(-7.4..36.35), :pos_y => rand(53.3..91.8), :yaw => rand(0.0..3.14)},
-        {:model => "pine_tree", :pos_x => rand(-7.4..36.35), :pos_y => rand(53.3..91.8), :yaw => rand(0.0..3.14)},
-        {:model => "pine_tree", :pos_x => rand(-7.4..36.35), :pos_y => rand(53.3..91.8), :yaw => rand(0.0..3.14)},
-        {:model => "pine_tree", :pos_x => rand(-7.4..36.35), :pos_y => rand(53.3..91.8), :yaw => rand(0.0..3.14)},
-        {:model => "pine_tree", :pos_x => rand(-7.4..36.35), :pos_y => rand(53.3..91.8), :yaw => rand(0.0..3.14)},
-        {:model => "pine_tree", :pos_x => rand(-7.4..36.35), :pos_y => rand(53.3..91.8), :yaw => rand(0.0..3.14)},
-        {:model => "pine_tree", :pos_x => rand(-7.4..36.35), :pos_y => rand(53.3..91.8), :yaw => rand(0.0..3.14)},
-        {:model => "pine_tree", :pos_x => rand(-7.4..36.35), :pos_y => rand(53.3..91.8), :yaw => rand(0.0..3.14)},
-        {:model => "pine_tree", :pos_x => rand(-7.4..36.35), :pos_y => rand(53.3..91.8), :yaw => rand(0.0..3.14)},
-        {:model => "pine_tree", :pos_x => rand(-7.4..36.35), :pos_y => rand(53.3..91.8), :yaw => rand(0.0..3.14)},
-        {:model => "pine_tree", :pos_x => rand(-7.4..36.35), :pos_y => rand(53.3..91.8), :yaw => rand(0.0..3.14)},
-        {:model => "pine_tree", :pos_x => rand(-7.4..36.35), :pos_y => rand(53.3..91.8), :yaw => rand(0.0..3.14)},
-        {:model => "pine_tree", :pos_x => rand(-7.4..36.35), :pos_y => rand(53.3..91.8), :yaw => rand(0.0..3.14)},
-        {:model => "pine_tree", :pos_x => rand(-7.4..36.35), :pos_y => rand(53.3..91.8), :yaw => rand(0.0..3.14)},
-        {:model => "pine_tree", :pos_x => rand(-7.4..36.35), :pos_y => rand(53.3..91.8), :yaw => rand(0.0..3.14)},
-        {:model => "pine_tree", :pos_x => (road_x[3] + road_x[4]) * 0.5, :pos_y => 93, :yaw => rand(0.0..3.14)},
-        {:model => "pine_tree", :pos_x => (road_x[3] + road_x[4]) * 0.5, :pos_y => 81, :yaw => rand(0.0..3.14)},
-        {:model => "pine_tree", :pos_x => (road_x[3] + road_x[4]) * 0.5, :pos_y => 69, :yaw => rand(0.0..3.14)},
-        {:model => "pine_tree", :pos_x => (road_x[3] + road_x[4]) * 0.5, :pos_y => 57, :yaw => rand(0.0..3.14)},
-      ]
-
-      count = 0
-
-      trees.each do |tree|
-        model = tree[:model]
-        pos_x = tree[:pos_x]
-        pos_y = tree[:pos_y]
-        yaw = tree[:yaw]
-        count = count + 1
-    %>
-      <include>
-        <name>tree_<%= count %></name>
-        <pose><%= pos_x %> <%= pos_y %> 0 0 0 <%= yaw %></pose>
-        <uri>model://<%= model %></uri>
-      </include>
-    <% end %>
-
+    <%= includeModel("stop_sign", road_x[0] + road_width * 0.5, road_y[1]+road_width * 0.5, 1.57) %>
+    <%= includeModel("stop_sign", road_x[1] + road_width * 0.5, road_y[1]+road_width * 0.5, 1.57) %>
+    <%= includeModel("stop_sign", road_x[2] + road_width * 0.5, road_y[1]+road_width * 0.5, 1.57) %>
+    <%= includeModel("stop_sign", road_x[0] + road_width * 0.5, road_y[3]+road_width * 0.5, 1.57) %>
+    <%= includeModel("stop_sign", road_x[1] + road_width * 0.5, road_y[3]+road_width * 0.5, 1.57) %>
+    <%= includeModel("stop_sign", road_x[2] + road_width * 0.5, road_y[3]+road_width * 0.5, 1.57) %>
+    <%= includeModel("stop_sign", road_x[1] + road_width * 0.5, road_y[1]-road_width * 0.5, 0.0) %>
+    <%= includeModel("stop_sign", road_x[1] + road_width * 0.5, road_y[3]-road_width * 0.5, 0.0) %>
+    <%= includeModel("stop_sign", road_x[1] + road_width * 0.5, road_y[4]-road_width * 0.5, 0.0) %>
+    <%= includeModel("stop_sign", road_x[2] + road_width * 0.5, road_y[1]-road_width * 0.5, 0.0) %>
+    <%= includeModel("stop_sign", road_x[2] + road_width * 0.5, road_y[3]-road_width * 0.5, 0.0) %>
+    <%= includeModel("stop_sign", road_x[2] + road_width * 0.5, road_y[4]-road_width * 0.5, 0.0) %>
+    <%= includeModel("stop_sign", road_x[1] - road_width * 0.5, road_y[0]+road_width * 0.5, 3.14) %>
+    <%= includeModel("stop_sign", road_x[1] - road_width * 0.5, road_y[1]+road_width * 0.5, 3.14) %>
+    <%= includeModel("stop_sign", road_x[1] - road_width * 0.5, road_y[3]+road_width * 0.5, 3.14) %>
+    <%= includeModel("stop_sign", road_x[2] - road_width * 0.5, road_y[0]+road_width * 0.5, 3.14) %>
+    <%= includeModel("stop_sign", road_x[2] - road_width * 0.5, road_y[1]+road_width * 0.5, 3.14) %>
+    <%= includeModel("stop_sign", road_x[2] - road_width * 0.5, road_y[3]+road_width * 0.5, 3.14) %>
+    <%= includeModel("stop_sign", road_x[1] - road_width * 0.5, road_y[1]-road_width * 0.5, -1.57) %>
+    <%= includeModel("stop_sign", road_x[1] - road_width * 0.5, road_y[3]-road_width * 0.5, -1.57) %>
+    <%= includeModel("stop_sign", road_x[2] - road_width * 0.5, road_y[1]-road_width * 0.5, -1.57) %>
+    <%= includeModel("stop_sign", road_x[2] - road_width * 0.5, road_y[3]-road_width * 0.5, -1.57) %>
+    <%= includeModel("stop_sign", road_x[3] - road_width * 0.5, road_y[1]-road_width * 0.5, -1.57) %>
+    <%= includeModel("stop_sign", road_x[3] - road_width * 0.5, road_y[3]-road_width * 0.5, -1.57) %>
 
     <!-- Actors -->
     <%
