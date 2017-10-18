@@ -386,6 +386,41 @@
 
     <!-- Block 2 3 -->
 
+    <!-- Stop lights -->
+    <%
+      lights = [
+        {:model => "stop_light_post", :pos_x => road_x[1] + road_width * 0.5, :pos_y => -road_width * 0.5, :yaw => -1.57},
+        {:model => "stop_light_post", :pos_x => road_x[2] + road_width * 0.5, :pos_y => -road_width * 0.5, :yaw => -1.57},
+        {:model => "stop_light_post", :pos_x => road_x[4] + road_width * 0.5, :pos_y => -road_width * 0.5, :yaw => -1.57},
+        {:model => "stop_light_post", :pos_x => road_x[0] - road_width * 0.5, :pos_y => +road_width * 0.5, :yaw => 1.57},
+        {:model => "stop_light_post", :pos_x => road_x[1] - road_width * 0.5, :pos_y => +road_width * 0.5, :yaw => 1.57},
+        {:model => "stop_light_post", :pos_x => road_x[2] - road_width * 0.5, :pos_y => +road_width * 0.5, :yaw => 1.57},
+        {:model => "stop_light_post", :pos_x => road_x[0] + road_width * 0.5, :pos_y => +road_width * 0.5, :yaw => 0.0},
+        {:model => "stop_light_post", :pos_x => road_x[1] + road_width * 0.5, :pos_y => +road_width * 0.5, :yaw => 0.0},
+        {:model => "stop_light_post", :pos_x => road_x[2] + road_width * 0.5, :pos_y => +road_width * 0.5, :yaw => 0.0},
+        {:model => "stop_light_post", :pos_x => road_x[4] + road_width * 0.5, :pos_y => +road_width * 0.5, :yaw => 0.0},
+        {:model => "stop_light_post", :pos_x => road_x[0] - road_width * 0.5, :pos_y => -road_width * 0.5, :yaw => 3.14},
+        {:model => "stop_light_post", :pos_x => road_x[1] - road_width * 0.5, :pos_y => -road_width * 0.5, :yaw => 3.14},
+        {:model => "stop_light_post", :pos_x => road_x[2] - road_width * 0.5, :pos_y => -road_width * 0.5, :yaw => 3.14},
+        {:model => "stop_light_post", :pos_x => road_x[3] - road_width * 0.5, :pos_y => -road_width * 0.5, :yaw => 3.14},
+      ]
+
+      count = 0
+
+      lights.each do |light|
+        model = light[:model]
+        pos_x = light[:pos_x]
+        pos_y = light[:pos_y]
+        yaw = light[:yaw]
+        count = count + 1
+    %>
+      <include>
+        <name>light_<%= count %></name>
+        <pose><%= pos_x %> <%= pos_y %> 0 0 0 <%= yaw %></pose>
+        <uri>model://<%= model %></uri>
+      </include>
+    <% end %>
+
 
     <!-- Trees -->
     <%
