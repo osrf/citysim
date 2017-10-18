@@ -197,8 +197,18 @@
     <!-- Block 0 0 -->
 
     <include>
-      <pose>24.6 59 0 0 0 1.57</pose>
+      <pose>24.6 60.13 0 0 0 1.57</pose>
       <uri>model://fire_station</uri>
+    </include>
+
+    <include>
+      <pose>33.266 52.679 0 0 0 0</pose>
+      <uri>model://house_2</uri>
+    </include>
+
+    <include>
+      <pose>43.192 55.39 0 0 0 0</pose>
+      <uri>model://house_3</uri>
     </include>
 
     <!-- Block 0 1 -->
@@ -211,6 +221,11 @@
     </include>
 
     <!-- Block 0 3 -->
+
+    <include>
+      <pose>33.14 -73.78 0 0 0 3.14</pose>
+      <uri>model://gas_station</uri>
+    </include>
 
     <!-- Block 1 0 -->
 
@@ -268,6 +283,11 @@
       <uri>model://post_office</uri>
     </include>
 
+    <include>
+      <pose>-28.3 26 0 0 0 -1.57</pose>
+      <uri>model://osrf_first_office</uri>
+    </include>
+
     <!-- Block 2 2 -->
 
     <include>
@@ -289,6 +309,102 @@
     </include>
 
     <!-- Block 2 3 -->
+
+    <include>
+      <pose>-33.81 -59.9 0 0 0 0</pose>
+      <uri>model://police_station</uri>
+    </include>
+
+    <include>
+      <pose frame=''>-29.8725 -83.9104 0 0 -0 1.5708</pose>
+      <uri>model://collapsed_industrial</uri>
+    </include>
+
+    <include>
+      <pose frame=''>-40.748 -90.1868 0 0 -0 0</pose>
+      <uri>model://construction_cone</uri>
+    </include>
+
+    <include>
+      <pose frame=''>-40.6923 -95.2899 0 0 -0 0</pose>
+      <uri>model://construction_cone</uri>
+    </include>
+
+    <include>
+      <pose frame=''>-37.8997 -95.3521 0 0 -0 0</pose>
+      <uri>model://construction_cone</uri>
+    </include>
+
+    <include>
+      <pose frame=''>-35.2603 -95.3721 0 0 -0 0</pose>
+      <uri>model://construction_cone</uri>
+    </include>
+
+    <include>
+      <pose frame=''>-31.8118 -95.4314 0 0 -0 0</pose>
+      <uri>model://construction_cone</uri>
+    </include>
+
+    <include>
+      <pose frame=''>-39.8294 -93.3183 0 0 0 -0.45084</pose>
+      <uri>model://cinder_block</uri>
+    </include>
+
+    <include>
+      <pose frame=''>-40.0204 -94.8219 0 0 -0 0</pose>
+      <uri>model://cinder_block</uri>
+    </include>
+
+    <include>
+      <pose frame=''>-36.7887 -92.6503 0 0 -0 0</pose>
+      <uri>model://cinder_block</uri>
+    </include>
+
+    <include>
+      <pose frame=''>-39.4614 -91.4595 0 0 -0 0</pose>
+      <uri>model://cinder_block</uri>
+    </include>
+
+    <include>
+      <pose frame=''>-37.6122 -94.084 0 0 -0 0</pose>
+      <uri>model://cinder_block</uri>
+    </include>
+
+    <!-- West block -->
+
+    <include>
+      <pose>57.76 108.79 0 0 0 0</pose>
+      <uri>model://house_1</uri>
+    </include>
+
+    <!-- East block -->
+
+    <include>
+      <pose>-6.09 -134.33 0 0 0 3.14</pose>
+      <uri>model://powerplant</uri>
+    </include>
+
+    <!-- Construction zone -->
+
+    <include>
+      <pose frame=''>-46.2805 -101.493 0 0 -0 1.60214</pose>
+      <uri>model://tower_crane</uri>
+    </include>
+
+    <include>
+      <pose frame=''>-37.2216 -100.588 0 0 -0 3.14159</pose>
+      <uri>model://drc_practice_angled_barrier_45</uri>
+    </include>
+
+    <include>
+      <pose frame=''>-34.8405 -101.725 0 0 -0 0.867273</pose>
+      <uri>model://drc_practice_orange_jersey_barrier</uri>
+    </include>
+
+    <include>
+      <pose frame=''>-47.7276 -90.7959 0 0 -0 0</pose>
+      <uri>model://construction_barrel</uri>
+    </include>
 
     <!-- Stop lights -->
     
@@ -418,49 +534,49 @@
     
       <include>
         <name>tree_7</name>
-        <pose>-6.520283140069262 92.59877981250969 0 0 0 2.331156858776996</pose>
+        <pose>7.856902939027091 89.8888855839743 0 0 0 0.7053408260802715</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_8</name>
-        <pose>8.384310223272625 90.61711930573512 0 0 0 2.1555479910273223</pose>
+        <pose>3.2103834747671876 74.57041978130434 0 0 0 1.0671042314778967</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_9</name>
-        <pose>-3.16797561624693 78.04847159600973 0 0 0 0.47695755430235115</pose>
+        <pose>0.27560783101835895 69.31343600538187 0 0 0 2.073579400484855</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_10</name>
-        <pose>-8.17738752094468 53.78301397284797 0 0 0 2.786327476343356</pose>
+        <pose>-1.5737508319342721 64.3653944468614 0 0 0 1.4441300996450803</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_11</name>
-        <pose>-6.617550052647809 87.52674229462434 0 0 0 2.3764406944071865</pose>
+        <pose>0.11988458021568071 57.98732096967832 0 0 0 2.742046214206341</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_12</name>
-        <pose>-1.5344246094620182 56.98758418473139 0 0 0 2.5486728952173054</pose>
+        <pose>4.19942535304876 53.88496411334048 0 0 0 1.3710522496274928</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_13</name>
-        <pose>6.68248106122973 77.97334961118807 0 0 0 1.8550312167430536</pose>
+        <pose>7.52957751667611 91.61831317366031 0 0 0 1.9904139291800793</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_14</name>
-        <pose>-1.9957349524450931 63.77879587341853 0 0 0 0.908904002572109</pose>
+        <pose>-8.280037863325887 57.2959602069205 0 0 0 1.7213471969397554</pose>
         <uri>model://pine_tree</uri>
       </include>
     
