@@ -13,6 +13,7 @@
     <scene>
       <grid>false</grid>
       <origin_visual>false</origin_visual>
+      <ambient>0.54 0.558 0.4218 1</ambient>
       <sky>
         <clouds>
           <speed>12</speed>
@@ -37,13 +38,14 @@
 
     <!-- A ground plane -->
     <model name="large_ground_plane">
+      <pose>60 -30 -0.01 0 0 0</pose>
       <static>true</static>
       <link name="link">
         <collision name="collision">
           <geometry>
             <plane>
               <normal>0 0 1</normal>
-              <size>200 300</size>
+              <size>230 300</size>
             </plane>
           </geometry>
           <surface>
@@ -60,7 +62,7 @@
           <geometry>
             <plane>
               <normal>0 0 1</normal>
-              <size>200 300</size>
+              <size>230 300</size>
             </plane>
           </geometry>
           <material>
@@ -91,66 +93,178 @@
 
     <road name="road_y_3">
       <width>7.4</width>
-      <point>15 -103.7 0.01</point>
-      <point>15 103.7 0.01</point>
+      <point>45 -103.7 0.01</point>
+      <point>45 103.7 0.01</point>
     </road>
     
 
     <road name="road_y_4">
       <width>7.4</width>
-      <point>50 -103.7 0.01</point>
-      <point>50 103.7 0.01</point>
+      <point>110 -103.7 0.01</point>
+      <point>110 103.7 0.01</point>
     </road>
     
 
     <road name="road_y_5">
       <width>7.4</width>
-      <point>60 -103.7 0.01</point>
-      <point>60 103.7 0.01</point>
+      <point>120 -103.7 0.01</point>
+      <point>120 103.7 0.01</point>
     </road>
     
 
     <road name="road_x_1">
       <width>7.4</width>
       <point>-41.3 -100 0.01</point>
-      <point>56.3 -100 0.01</point>
+      <point>116.3 -100 0.01</point>
     </road>
     
 
     <road name="road_x_2">
       <width>7.4</width>
       <point>-41.3 -45 0.01</point>
-      <point>56.3 -45 0.01</point>
+      <point>116.3 -45 0.01</point>
     </road>
     
 
     <road name="road_x_3">
       <width>7.4</width>
       <point>-41.3 0 0.01</point>
-      <point>56.3 0 0.01</point>
+      <point>116.3 0 0.01</point>
     </road>
     
 
     <road name="road_x_4">
       <width>7.4</width>
       <point>-41.3 45 0.01</point>
-      <point>56.3 45 0.01</point>
+      <point>116.3 45 0.01</point>
     </road>
     
 
     <road name="road_x_5">
       <width>7.4</width>
       <point>-41.3 100 0.01</point>
-      <point>56.3 100 0.01</point>
+      <point>116.3 100 0.01</point>
     </road>
     
 
     
 
+    <road name="sidewalk_y_1">
+      <width>3</width>
+      <point>-39.8 -103.7 0.005</point>
+      <point>-39.8 103.7 0.005</point>
+
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Pedestrian</name>
+        </script>
+      </material>
+    </road>
+    
+
+    <road name="sidewalk_y_2">
+      <width>3</width>
+      <point>-9.8 -103.7 0.005</point>
+      <point>-9.8 103.7 0.005</point>
+
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Pedestrian</name>
+        </script>
+      </material>
+    </road>
+    
+
+    <road name="sidewalk_y_3">
+      <width>3</width>
+      <point>50.2 -103.7 0.005</point>
+      <point>50.2 103.7 0.005</point>
+
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Pedestrian</name>
+        </script>
+      </material>
+    </road>
+    
+
+    <road name="sidewalk_y_4">
+      <width>3</width>
+      <point>125.2 -103.7 0.005</point>
+      <point>125.2 103.7 0.005</point>
+
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Pedestrian</name>
+        </script>
+      </material>
+    </road>
+    
+
+    <road name="sidewalk_y_5">
+      <width>3</width>
+      <point>-50.2 -103.7 0.005</point>
+      <point>-50.2 103.7 0.005</point>
+
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Pedestrian</name>
+        </script>
+      </material>
+    </road>
+    
+
+    <road name="sidewalk_y_6">
+      <width>3</width>
+      <point>-20.2 -103.7 0.005</point>
+      <point>-20.2 103.7 0.005</point>
+
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Pedestrian</name>
+        </script>
+      </material>
+    </road>
+    
+
+    <road name="sidewalk_y_7">
+      <width>3</width>
+      <point>39.8 -103.7 0.005</point>
+      <point>39.8 103.7 0.005</point>
+
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Pedestrian</name>
+        </script>
+      </material>
+    </road>
+    
+
+    <road name="sidewalk_y_8">
+      <width>3</width>
+      <point>104.8 -103.7 0.005</point>
+      <point>104.8 103.7 0.005</point>
+
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Pedestrian</name>
+        </script>
+      </material>
+    </road>
+    
+
     <road name="sidewalk_x_1">
       <width>3</width>
-      <point>-41.3 -5.2 0.005</point>
-      <point>46.3 -5.2 0.005</point>
+      <point>-41.3 -94.8 0.005</point>
+      <point>106.3 -94.8 0.005</point>
 
       <material>
         <script>
@@ -163,8 +277,120 @@
 
     <road name="sidewalk_x_2">
       <width>3</width>
+      <point>-41.3 -39.8 0.005</point>
+      <point>106.3 -39.8 0.005</point>
+
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Pedestrian</name>
+        </script>
+      </material>
+    </road>
+    
+
+    <road name="sidewalk_x_3">
+      <width>3</width>
       <point>-41.3 5.2 0.005</point>
-      <point>46.3 5.2 0.005</point>
+      <point>106.3 5.2 0.005</point>
+
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Pedestrian</name>
+        </script>
+      </material>
+    </road>
+    
+
+    <road name="sidewalk_x_4">
+      <width>3</width>
+      <point>-41.3 50.2 0.005</point>
+      <point>106.3 50.2 0.005</point>
+
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Pedestrian</name>
+        </script>
+      </material>
+    </road>
+    
+
+    <road name="sidewalk_x_5">
+      <width>3</width>
+      <point>-41.3 105.2 0.005</point>
+      <point>106.3 105.2 0.005</point>
+
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Pedestrian</name>
+        </script>
+      </material>
+    </road>
+    
+
+    <road name="sidewalk_x_6">
+      <width>3</width>
+      <point>-41.3 -105.2 0.005</point>
+      <point>106.3 -105.2 0.005</point>
+
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Pedestrian</name>
+        </script>
+      </material>
+    </road>
+    
+
+    <road name="sidewalk_x_7">
+      <width>3</width>
+      <point>-41.3 -50.2 0.005</point>
+      <point>106.3 -50.2 0.005</point>
+
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Pedestrian</name>
+        </script>
+      </material>
+    </road>
+    
+
+    <road name="sidewalk_x_8">
+      <width>3</width>
+      <point>-41.3 -5.2 0.005</point>
+      <point>106.3 -5.2 0.005</point>
+
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Pedestrian</name>
+        </script>
+      </material>
+    </road>
+    
+
+    <road name="sidewalk_x_9">
+      <width>3</width>
+      <point>-41.3 39.8 0.005</point>
+      <point>106.3 39.8 0.005</point>
+
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Pedestrian</name>
+        </script>
+      </material>
+    </road>
+    
+
+    <road name="sidewalk_x_10">
+      <width>3</width>
+      <point>-41.3 94.8 0.005</point>
+      <point>106.3 94.8 0.005</point>
 
       <material>
         <script>
@@ -180,34 +406,34 @@
     <!-- North block -->
 
     <include>
-      <pose>84.04 57.67 0 0 0 -1.57</pose>
+      <pose>146.778 57.67 0 0 0 -1.57</pose>
       <uri>model://parking_garage</uri>
     </include>
 
     <include>
-      <pose>75.5 0 0 0 0 0</pose>
+      <pose>135.5 0 0 0 0 0</pose>
       <uri>model://fountain</uri>
     </include>
 
     <include>
-      <pose>75.87 -101.6 0.05 0 0 1.57</pose>
+      <pose>138.5 -86.6 0.05 0 0 1.57</pose>
       <uri>model://robocup_3Dsim_field</uri>
     </include>
 
     <!-- Block 0 0 -->
 
     <include>
-      <pose>24.6 60.13 0 0 0 1.57</pose>
+      <pose>56.84 61.56 0 0 0 1.57</pose>
       <uri>model://fire_station</uri>
     </include>
 
     <include>
-      <pose>33.266 52.679 0 0 0 0</pose>
+      <pose>65.4415 54.097 0 0 0 0</pose>
       <uri>model://house_2</uri>
     </include>
 
     <include>
-      <pose>43.192 55.39 0 0 0 0</pose>
+      <pose>75.734 53.01 0 0 0 0</pose>
       <uri>model://house_3</uri>
     </include>
 
@@ -216,15 +442,20 @@
     <!-- Block 0 2 -->
 
     <include>
-      <pose>30.35 -16 0 0 0 0</pose>
+      <pose>60.19 -15.294 0 0 0 0</pose>
       <uri>model://office_building</uri>
     </include>
 
     <!-- Block 0 3 -->
 
     <include>
-      <pose>33.14 -73.78 0 0 0 3.14</pose>
+      <pose>61.88 -75.82 0 0 0 3.14</pose>
       <uri>model://gas_station</uri>
+    </include>
+
+    <include>
+      <pose>61.581 -61.664 0 0 0 0</pose>
+      <uri>model://asphalt_plane</uri>
     </include>
 
     <!-- Block 1 0 -->
@@ -233,85 +464,79 @@
 
     <include>
       <name>law_office_1</name>
-      <pose>0 10 0 0 0 0</pose>
+      <pose>8.47 9.356 0 0 0 0</pose>
       <uri>model://law_office</uri>
     </include>
 
     <include>
       <name>thrift_shop_1</name>
-      <pose>-7.35 10 0 0 0 0</pose>
+      <pose>1.35 9.356 0 0 0 0</pose>
       <uri>model://thrift_shop</uri>
     </include>
 
     <include>
       <name>salon_1</name>
-      <pose>7.35 10 0 0 0 0</pose>
+      <pose>15.7 9.356 0 0 0 0</pose>
       <uri>model://salon</uri>
     </include>
 
     <include>
       <name>apartment_1</name>
-      <pose>0 28.5 0 0 0 0</pose>
+      <pose>1.573 27.565 0 0 0 0</pose>
       <uri>model://apartment</uri>
+    </include>
+
+    <include>
+      <pose>27.003 20.15 0 0 0 1.57</pose>
+      <uri>model://osrf_first_office</uri>
     </include>
 
     <!-- Block 1 2 -->
 
     <include>
-      <pose>-6.4 -9.35 0 0 0 0</pose>
+      <pose>-3.73 -9.08 0 0 0 0</pose>
       <uri>model://fast_food</uri>
     </include>
 
     <!-- Block 1 3 -->
 
     <include>
-      <pose>1.62 -65.73 0 0 0 1.57</pose>
+      <pose>4.12 -67.758 0 0 0 1.57</pose>
       <uri>model://grocery_store</uri>
     </include>
 
     <!-- Block 2 0 -->
 
     <include>
-      <pose>-26.6 73.3 0 0 0 -1.57</pose>
+      <pose>-27.309 67.823 0 0 0 -1.57</pose>
       <uri>model://school</uri>
     </include>
 
     <!-- Block 2 1 -->
 
     <include>
-      <pose>-24.3 11.4 0 0 0 3.14</pose>
+      <pose>-26.686 11.119 0 0 0 3.14</pose>
       <uri>model://post_office</uri>
-    </include>
-
-    <include>
-      <pose>-28.3 26 0 0 0 -1.57</pose>
-      <uri>model://osrf_first_office</uri>
     </include>
 
     <!-- Block 2 2 -->
 
     <include>
-      <name>thrift_shop_2</name>
-      <pose>-22.6 -10 0 0 0 3.14</pose>
-      <uri>model://thrift_shop</uri>
-    </include>
-
-    <include>
       <name>salon_2</name>
-      <pose>-30.17 -10 0 0 0 3.14</pose>
+      <pose>-27.65 -9.35 0 0 0 3.14</pose>
       <uri>model://salon</uri>
     </include>
 
     <include>
       <name>law_office_2</name>
-      <pose>-37.5 -10 0 0 0 3.14</pose>
+      <pose>-34.886 -9.408 0 0 0 3.14</pose>
       <uri>model://law_office</uri>
     </include>
 
     <!-- Block 2 3 -->
 
     <include>
-      <pose>-33.81 -59.9 0 0 0 0</pose>
+      <pose>-31.838 -59.696 0 0 0 0</pose>
       <uri>model://police_station</uri>
     </include>
 
@@ -320,30 +545,49 @@
       <uri>model://collapsed_industrial</uri>
     </include>
 
-    <include>
-      <pose frame=''>-40.748 -90.1868 0 0 -0 0</pose>
-      <uri>model://construction_cone</uri>
-    </include>
-
-    <include>
-      <pose frame=''>-40.6923 -95.2899 0 0 -0 0</pose>
-      <uri>model://construction_cone</uri>
-    </include>
-
-    <include>
-      <pose frame=''>-37.8997 -95.3521 0 0 -0 0</pose>
-      <uri>model://construction_cone</uri>
-    </include>
-
-    <include>
-      <pose frame=''>-35.2603 -95.3721 0 0 -0 0</pose>
-      <uri>model://construction_cone</uri>
-    </include>
-
-    <include>
-      <pose frame=''>-31.8118 -95.4314 0 0 -0 0</pose>
-      <uri>model://construction_cone</uri>
-    </include>
+    
+      <include>
+        <name>cone_1</name>
+        <pose>-40.748 -90.1868 0 0 0 2.659083001017066</pose>
+        <uri>model://construction_cone</uri>
+      </include>
+    
+      <include>
+        <name>cone_2</name>
+        <pose>-40.692 -95.2899 0 0 0 2.9669097273642104</pose>
+        <uri>model://construction_cone</uri>
+      </include>
+    
+      <include>
+        <name>cone_3</name>
+        <pose>-37.8997 -95.3521 0 0 0 1.128040803032968</pose>
+        <uri>model://construction_cone</uri>
+      </include>
+    
+      <include>
+        <name>cone_4</name>
+        <pose>-35.2603 -95.3721 0 0 0 0.24227227311064709</pose>
+        <uri>model://construction_cone</uri>
+      </include>
+    
+      <include>
+        <name>cone_5</name>
+        <pose>-31.8118 -95.4314 0 0 0 1.2156284464789353</pose>
+        <uri>model://construction_cone</uri>
+      </include>
+    
+      <include>
+        <name>cone_6</name>
+        <pose>-40.1918 -74.491 0 0 0 1.095974642345145</pose>
+        <uri>model://construction_cone</uri>
+      </include>
+    
+      <include>
+        <name>cone_7</name>
+        <pose>-40.6878 -80.629 0 0 0 0.3425946924586742</pose>
+        <uri>model://construction_cone</uri>
+      </include>
+    
 
     <include>
       <pose frame=''>-39.8294 -93.3183 0 0 0 -0.45084</pose>
@@ -373,7 +617,7 @@
     <!-- West block -->
 
     <include>
-      <pose>57.76 108.79 0 0 0 0</pose>
+      <pose>101.346 110.6999 0 0 0 0</pose>
       <uri>model://house_1</uri>
     </include>
 
@@ -416,13 +660,13 @@
     
       <include>
         <name>light_2</name>
-        <pose>18.7 -3.7 0 0 0 -1.57</pose>
+        <pose>48.7 -3.7 0 0 0 -1.57</pose>
         <uri>model://stop_light_post</uri>
       </include>
     
       <include>
         <name>light_3</name>
-        <pose>63.7 -3.7 0 0 0 -1.57</pose>
+        <pose>123.7 -3.7 0 0 0 -1.57</pose>
         <uri>model://stop_light_post</uri>
       </include>
     
@@ -440,7 +684,7 @@
     
       <include>
         <name>light_6</name>
-        <pose>11.3 3.7 0 0 0 1.57</pose>
+        <pose>41.3 3.7 0 0 0 1.57</pose>
         <uri>model://stop_light_post</uri>
       </include>
     
@@ -458,13 +702,13 @@
     
       <include>
         <name>light_9</name>
-        <pose>18.7 3.7 0 0 0 0.0</pose>
+        <pose>48.7 3.7 0 0 0 0.0</pose>
         <uri>model://stop_light_post</uri>
       </include>
     
       <include>
         <name>light_10</name>
-        <pose>63.7 3.7 0 0 0 0.0</pose>
+        <pose>123.7 3.7 0 0 0 0.0</pose>
         <uri>model://stop_light_post</uri>
       </include>
     
@@ -482,13 +726,13 @@
     
       <include>
         <name>light_13</name>
-        <pose>11.3 -3.7 0 0 0 3.14</pose>
+        <pose>41.3 -3.7 0 0 0 3.14</pose>
         <uri>model://stop_light_post</uri>
       </include>
     
       <include>
         <name>light_14</name>
-        <pose>46.3 -3.7 0 0 0 3.14</pose>
+        <pose>106.3 -3.7 0 0 0 3.14</pose>
         <uri>model://stop_light_post</uri>
       </include>
     
@@ -498,85 +742,175 @@
     
       <include>
         <name>tree_1</name>
-        <pose>69 -16.3 0 0 0 0</pose>
+        <pose>129 -16.3 0 0 0 0</pose>
         <uri>model://oak_tree</uri>
       </include>
     
       <include>
         <name>tree_2</name>
-        <pose>89.3 -15.6 0 0 0 1</pose>
+        <pose>149.3 -15.6 0 0 0 1</pose>
         <uri>model://oak_tree</uri>
       </include>
     
       <include>
         <name>tree_3</name>
-        <pose>80 5.8 0 0 0 0.5</pose>
+        <pose>140 5.8 0 0 0 0.5</pose>
         <uri>model://oak_tree</uri>
       </include>
     
       <include>
         <name>tree_4</name>
-        <pose>68.5 9.7 0 0 0 -0.3</pose>
+        <pose>128.5 9.7 0 0 0 -0.3</pose>
         <uri>model://oak_tree</uri>
       </include>
     
       <include>
         <name>tree_5</name>
-        <pose>92 10.9 0 0 0 1.57</pose>
+        <pose>152 10.9 0 0 0 1.57</pose>
         <uri>model://oak_tree</uri>
       </include>
     
       <include>
         <name>tree_6</name>
-        <pose>74.5 -6.6 0 0 0 -0.6</pose>
+        <pose>134.5 -6.6 0 0 0 -0.6</pose>
         <uri>model://oak_tree</uri>
       </include>
     
       <include>
         <name>tree_7</name>
-        <pose>7.856902939027091 89.8888855839743 0 0 0 0.7053408260802715</pose>
-        <uri>model://pine_tree</uri>
+        <pose>-6.418 10.37 0 0 0 0.55</pose>
+        <uri>model://oak_tree</uri>
       </include>
     
       <include>
         <name>tree_8</name>
-        <pose>3.2103834747671876 74.57041978130434 0 0 0 1.0671042314778967</pose>
-        <uri>model://pine_tree</uri>
+        <pose>-28.916 89.604 0 0 0 -0.51</pose>
+        <uri>model://oak_tree</uri>
       </include>
     
       <include>
         <name>tree_9</name>
-        <pose>0.27560783101835895 69.31343600538187 0 0 0 2.073579400484855</pose>
-        <uri>model://pine_tree</uri>
+        <pose>-34.077 89.854 0 0 0 0.51</pose>
+        <uri>model://oak_tree</uri>
       </include>
     
       <include>
         <name>tree_10</name>
-        <pose>-1.5737508319342721 64.3653944468614 0 0 0 1.4441300996450803</pose>
+        <pose>-30.709 7.15 0 0 0 1.4677338721853548</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_11</name>
-        <pose>0.11988458021568071 57.98732096967832 0 0 0 2.742046214206341</pose>
+        <pose>-3.899430784906235 71.58560193131945 0 0 0 1.4258464982926369</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_12</name>
-        <pose>4.19942535304876 53.88496411334048 0 0 0 1.3710522496274928</pose>
+        <pose>-4.130657661060603 74.18871773385644 0 0 0 1.9290276530977262</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_13</name>
-        <pose>7.52957751667611 91.61831317366031 0 0 0 1.9904139291800793</pose>
+        <pose>34.42644429915881 56.28826029707995 0 0 0 2.433721109775662</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_14</name>
-        <pose>-8.280037863325887 57.2959602069205 0 0 0 1.7213471969397554</pose>
+        <pose>18.395955346873578 66.87294043270589 0 0 0 2.1145953250817353</pose>
+        <uri>model://pine_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_15</name>
+        <pose>29.605152005958047 90.63084623649357 0 0 0 1.3541811122786551</pose>
+        <uri>model://pine_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_16</name>
+        <pose>12.515525061106606 57.70928734282838 0 0 0 2.230946550712025</pose>
+        <uri>model://pine_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_17</name>
+        <pose>16.616656084447293 85.67748810204401 0 0 0 1.163869217255064</pose>
+        <uri>model://pine_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_18</name>
+        <pose>34.3033657824421 81.54075244972888 0 0 0 0.8939507810808707</pose>
+        <uri>model://pine_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_19</name>
+        <pose>-0.9941536036625278 90.71132693799703 0 0 0 1.5052967772291572</pose>
+        <uri>model://pine_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_20</name>
+        <pose>28.610358988031457 59.356721350953535 0 0 0 0.24825343877638886</pose>
+        <uri>model://pine_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_21</name>
+        <pose>16.869676193223775 63.578252169308406 0 0 0 0.7678105323679479</pose>
+        <uri>model://pine_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_22</name>
+        <pose>11.982380424002601 72.383705880791 0 0 0 0.34186509229415113</pose>
+        <uri>model://pine_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_23</name>
+        <pose>-5.663600814128504 72.95171500562972 0 0 0 0.11724323122125078</pose>
+        <uri>model://pine_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_24</name>
+        <pose>-1.0346811189232472 64.90475660773727 0 0 0 2.8955433374839914</pose>
+        <uri>model://pine_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_25</name>
+        <pose>25.59985670455029 60.003581693730695 0 0 0 0.42783189627480056</pose>
+        <uri>model://pine_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_26</name>
+        <pose>115.0 93 0 0 0 2.8606726551560655</pose>
+        <uri>model://pine_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_27</name>
+        <pose>115.0 81 0 0 0 0.9944740422639206</pose>
+        <uri>model://pine_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_28</name>
+        <pose>115.0 69 0 0 0 3.0282546873342193</pose>
+        <uri>model://pine_tree</uri>
+      </include>
+    
+      <include>
+        <name>tree_29</name>
+        <pose>115.0 57 0 0 0 1.8527567824738997</pose>
         <uri>model://pine_tree</uri>
       </include>
     
