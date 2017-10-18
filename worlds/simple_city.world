@@ -548,43 +548,43 @@
     
       <include>
         <name>cone_1</name>
-        <pose>-40.748 -90.1868 0 0 0 2.659083001017066</pose>
+        <pose>-40.748 -90.1868 0 0 0 2.498289826456464</pose>
         <uri>model://construction_cone</uri>
       </include>
     
       <include>
         <name>cone_2</name>
-        <pose>-40.692 -95.2899 0 0 0 2.9669097273642104</pose>
+        <pose>-40.692 -95.2899 0 0 0 0.8612092099275055</pose>
         <uri>model://construction_cone</uri>
       </include>
     
       <include>
         <name>cone_3</name>
-        <pose>-37.8997 -95.3521 0 0 0 1.128040803032968</pose>
+        <pose>-37.8997 -95.3521 0 0 0 2.123399359580257</pose>
         <uri>model://construction_cone</uri>
       </include>
     
       <include>
         <name>cone_4</name>
-        <pose>-35.2603 -95.3721 0 0 0 0.24227227311064709</pose>
+        <pose>-35.2603 -95.3721 0 0 0 0.6569867891863702</pose>
         <uri>model://construction_cone</uri>
       </include>
     
       <include>
         <name>cone_5</name>
-        <pose>-31.8118 -95.4314 0 0 0 1.2156284464789353</pose>
+        <pose>-31.8118 -95.4314 0 0 0 0.3702687444427706</pose>
         <uri>model://construction_cone</uri>
       </include>
     
       <include>
         <name>cone_6</name>
-        <pose>-40.1918 -74.491 0 0 0 1.095974642345145</pose>
+        <pose>-40.1918 -74.491 0 0 0 2.736510768937383</pose>
         <uri>model://construction_cone</uri>
       </include>
     
       <include>
         <name>cone_7</name>
-        <pose>-40.6878 -80.629 0 0 0 0.3425946924586742</pose>
+        <pose>-40.6878 -80.629 0 0 0 0.4002086606283252</pose>
         <uri>model://construction_cone</uri>
       </include>
     
@@ -737,6 +737,153 @@
       </include>
     
 
+    <!-- Stop signs -->
+    
+      <include>
+        <name>sign_1</name>
+        <pose>-41.3 -41.3 0 0 0 1.57</pose>
+        <uri>model://stop_sign</uri>
+      </include>
+    
+      <include>
+        <name>sign_2</name>
+        <pose>-11.3 -41.3 0 0 0 1.57</pose>
+        <uri>model://stop_sign</uri>
+      </include>
+    
+      <include>
+        <name>sign_3</name>
+        <pose>48.7 -41.3 0 0 0 1.57</pose>
+        <uri>model://stop_sign</uri>
+      </include>
+    
+      <include>
+        <name>sign_4</name>
+        <pose>-41.3 48.7 0 0 0 1.57</pose>
+        <uri>model://stop_sign</uri>
+      </include>
+    
+      <include>
+        <name>sign_5</name>
+        <pose>-11.3 48.7 0 0 0 1.57</pose>
+        <uri>model://stop_sign</uri>
+      </include>
+    
+      <include>
+        <name>sign_6</name>
+        <pose>48.7 48.7 0 0 0 1.57</pose>
+        <uri>model://stop_sign</uri>
+      </include>
+    
+      <include>
+        <name>sign_7</name>
+        <pose>-11.3 -48.7 0 0 0 0.0</pose>
+        <uri>model://stop_sign</uri>
+      </include>
+    
+      <include>
+        <name>sign_8</name>
+        <pose>-11.3 41.3 0 0 0 0.0</pose>
+        <uri>model://stop_sign</uri>
+      </include>
+    
+      <include>
+        <name>sign_9</name>
+        <pose>-11.3 96.3 0 0 0 0.0</pose>
+        <uri>model://stop_sign</uri>
+      </include>
+    
+      <include>
+        <name>sign_10</name>
+        <pose>48.7 -48.7 0 0 0 0.0</pose>
+        <uri>model://stop_sign</uri>
+      </include>
+    
+      <include>
+        <name>sign_11</name>
+        <pose>48.7 41.3 0 0 0 0.0</pose>
+        <uri>model://stop_sign</uri>
+      </include>
+    
+      <include>
+        <name>sign_12</name>
+        <pose>48.7 96.3 0 0 0 0.0</pose>
+        <uri>model://stop_sign</uri>
+      </include>
+    
+      <include>
+        <name>sign_13</name>
+        <pose>-18.7 -96.3 0 0 0 3.14</pose>
+        <uri>model://stop_sign</uri>
+      </include>
+    
+      <include>
+        <name>sign_14</name>
+        <pose>-18.7 -41.3 0 0 0 3.14</pose>
+        <uri>model://stop_sign</uri>
+      </include>
+    
+      <include>
+        <name>sign_15</name>
+        <pose>-18.7 48.7 0 0 0 3.14</pose>
+        <uri>model://stop_sign</uri>
+      </include>
+    
+      <include>
+        <name>sign_16</name>
+        <pose>41.3 -96.3 0 0 0 3.14</pose>
+        <uri>model://stop_sign</uri>
+      </include>
+    
+      <include>
+        <name>sign_17</name>
+        <pose>41.3 -41.3 0 0 0 3.14</pose>
+        <uri>model://stop_sign</uri>
+      </include>
+    
+      <include>
+        <name>sign_18</name>
+        <pose>41.3 48.7 0 0 0 3.14</pose>
+        <uri>model://stop_sign</uri>
+      </include>
+    
+      <include>
+        <name>sign_19</name>
+        <pose>-18.7 -48.7 0 0 0 -1.57</pose>
+        <uri>model://stop_sign</uri>
+      </include>
+    
+      <include>
+        <name>sign_20</name>
+        <pose>-18.7 41.3 0 0 0 -1.57</pose>
+        <uri>model://stop_sign</uri>
+      </include>
+    
+      <include>
+        <name>sign_21</name>
+        <pose>41.3 -48.7 0 0 0 -1.57</pose>
+        <uri>model://stop_sign</uri>
+      </include>
+    
+      <include>
+        <name>sign_22</name>
+        <pose>41.3 41.3 0 0 0 -1.57</pose>
+        <uri>model://stop_sign</uri>
+      </include>
+    
+      <include>
+        <name>sign_23</name>
+        <pose>106.3 -48.7 0 0 0 -1.57</pose>
+        <uri>model://stop_sign</uri>
+      </include>
+    
+      <include>
+        <name>sign_24</name>
+        <pose>106.3 41.3 0 0 0 -1.57</pose>
+        <uri>model://stop_sign</uri>
+      </include>
+    
+
 
     <!-- Trees -->
     
@@ -796,121 +943,121 @@
     
       <include>
         <name>tree_10</name>
-        <pose>-30.709 7.15 0 0 0 1.4677338721853548</pose>
+        <pose>-30.709 7.15 0 0 0 0.036613696851274094</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_11</name>
-        <pose>-3.899430784906235 71.58560193131945 0 0 0 1.4258464982926369</pose>
+        <pose>26.132137460307135 74.52365088718119 0 0 0 1.2327840784331576</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_12</name>
-        <pose>-4.130657661060603 74.18871773385644 0 0 0 1.9290276530977262</pose>
+        <pose>-6.671680187671399 86.17336263848719 0 0 0 0.8272588144690525</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_13</name>
-        <pose>34.42644429915881 56.28826029707995 0 0 0 2.433721109775662</pose>
+        <pose>17.292222355834 67.85896308357896 0 0 0 1.130313810679213</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_14</name>
-        <pose>18.395955346873578 66.87294043270589 0 0 0 2.1145953250817353</pose>
+        <pose>-0.9067618777289752 88.6503890750651 0 0 0 1.0811022453912207</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_15</name>
-        <pose>29.605152005958047 90.63084623649357 0 0 0 1.3541811122786551</pose>
+        <pose>35.948133128070566 60.31617025150384 0 0 0 2.408616800098609</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_16</name>
-        <pose>12.515525061106606 57.70928734282838 0 0 0 2.230946550712025</pose>
+        <pose>-0.8622376232222564 59.1989143718604 0 0 0 0.6483051347117507</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_17</name>
-        <pose>16.616656084447293 85.67748810204401 0 0 0 1.163869217255064</pose>
+        <pose>-5.488688600144538 57.07105867456071 0 0 0 1.950336806831876</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_18</name>
-        <pose>34.3033657824421 81.54075244972888 0 0 0 0.8939507810808707</pose>
+        <pose>29.990902451888275 91.51198485812091 0 0 0 0.8408139424049478</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_19</name>
-        <pose>-0.9941536036625278 90.71132693799703 0 0 0 1.5052967772291572</pose>
+        <pose>24.52836005352321 88.13805325197387 0 0 0 1.9579621224172605</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_20</name>
-        <pose>28.610358988031457 59.356721350953535 0 0 0 0.24825343877638886</pose>
+        <pose>-2.8494192777866596 78.76169076245738 0 0 0 1.33902807520403</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_21</name>
-        <pose>16.869676193223775 63.578252169308406 0 0 0 0.7678105323679479</pose>
+        <pose>19.153618108014008 72.43701798369898 0 0 0 1.9119036508109826</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_22</name>
-        <pose>11.982380424002601 72.383705880791 0 0 0 0.34186509229415113</pose>
+        <pose>36.123107016964894 71.4801469070471 0 0 0 1.8432232762188585</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_23</name>
-        <pose>-5.663600814128504 72.95171500562972 0 0 0 0.11724323122125078</pose>
+        <pose>17.409783560556072 72.87507701547003 0 0 0 0.8903267447328527</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_24</name>
-        <pose>-1.0346811189232472 64.90475660773727 0 0 0 2.8955433374839914</pose>
+        <pose>20.70928458244316 83.76853483651894 0 0 0 0.46476000703265413</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_25</name>
-        <pose>25.59985670455029 60.003581693730695 0 0 0 0.42783189627480056</pose>
+        <pose>22.210271046562497 58.821134461602206 0 0 0 1.7516141392672473</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_26</name>
-        <pose>115.0 93 0 0 0 2.8606726551560655</pose>
+        <pose>115.0 93 0 0 0 2.328971641983193</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_27</name>
-        <pose>115.0 81 0 0 0 0.9944740422639206</pose>
+        <pose>115.0 81 0 0 0 1.8331946992939188</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_28</name>
-        <pose>115.0 69 0 0 0 3.0282546873342193</pose>
+        <pose>115.0 69 0 0 0 0.38592628656970124</pose>
         <uri>model://pine_tree</uri>
       </include>
     
       <include>
         <name>tree_29</name>
-        <pose>115.0 57 0 0 0 1.8527567824738997</pose>
+        <pose>115.0 57 0 0 0 1.6735549752921097</pose>
         <uri>model://pine_tree</uri>
       </include>
     

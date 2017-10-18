@@ -587,6 +587,51 @@
       </include>
     <% end %>
 
+    <!-- Stop signs -->
+    <%
+      signs = [
+        {:model => "stop_sign", :pos_x => road_x[0] + road_width * 0.5, :pos_y => road_y[1]+road_width * 0.5, :yaw => 1.57},
+        {:model => "stop_sign", :pos_x => road_x[1] + road_width * 0.5, :pos_y => road_y[1]+road_width * 0.5, :yaw => 1.57},
+        {:model => "stop_sign", :pos_x => road_x[2] + road_width * 0.5, :pos_y => road_y[1]+road_width * 0.5, :yaw => 1.57},
+        {:model => "stop_sign", :pos_x => road_x[0] + road_width * 0.5, :pos_y => road_y[3]+road_width * 0.5, :yaw => 1.57},
+        {:model => "stop_sign", :pos_x => road_x[1] + road_width * 0.5, :pos_y => road_y[3]+road_width * 0.5, :yaw => 1.57},
+        {:model => "stop_sign", :pos_x => road_x[2] + road_width * 0.5, :pos_y => road_y[3]+road_width * 0.5, :yaw => 1.57},
+        {:model => "stop_sign", :pos_x => road_x[1] + road_width * 0.5, :pos_y => road_y[1]-road_width * 0.5, :yaw => 0.0},
+        {:model => "stop_sign", :pos_x => road_x[1] + road_width * 0.5, :pos_y => road_y[3]-road_width * 0.5, :yaw => 0.0},
+        {:model => "stop_sign", :pos_x => road_x[1] + road_width * 0.5, :pos_y => road_y[4]-road_width * 0.5, :yaw => 0.0},
+        {:model => "stop_sign", :pos_x => road_x[2] + road_width * 0.5, :pos_y => road_y[1]-road_width * 0.5, :yaw => 0.0},
+        {:model => "stop_sign", :pos_x => road_x[2] + road_width * 0.5, :pos_y => road_y[3]-road_width * 0.5, :yaw => 0.0},
+        {:model => "stop_sign", :pos_x => road_x[2] + road_width * 0.5, :pos_y => road_y[4]-road_width * 0.5, :yaw => 0.0},
+        {:model => "stop_sign", :pos_x => road_x[1] - road_width * 0.5, :pos_y => road_y[0]+road_width * 0.5, :yaw => 3.14},
+        {:model => "stop_sign", :pos_x => road_x[1] - road_width * 0.5, :pos_y => road_y[1]+road_width * 0.5, :yaw => 3.14},
+        {:model => "stop_sign", :pos_x => road_x[1] - road_width * 0.5, :pos_y => road_y[3]+road_width * 0.5, :yaw => 3.14},
+        {:model => "stop_sign", :pos_x => road_x[2] - road_width * 0.5, :pos_y => road_y[0]+road_width * 0.5, :yaw => 3.14},
+        {:model => "stop_sign", :pos_x => road_x[2] - road_width * 0.5, :pos_y => road_y[1]+road_width * 0.5, :yaw => 3.14},
+        {:model => "stop_sign", :pos_x => road_x[2] - road_width * 0.5, :pos_y => road_y[3]+road_width * 0.5, :yaw => 3.14},
+        {:model => "stop_sign", :pos_x => road_x[1] - road_width * 0.5, :pos_y => road_y[1]-road_width * 0.5, :yaw => -1.57},
+        {:model => "stop_sign", :pos_x => road_x[1] - road_width * 0.5, :pos_y => road_y[3]-road_width * 0.5, :yaw => -1.57},
+        {:model => "stop_sign", :pos_x => road_x[2] - road_width * 0.5, :pos_y => road_y[1]-road_width * 0.5, :yaw => -1.57},
+        {:model => "stop_sign", :pos_x => road_x[2] - road_width * 0.5, :pos_y => road_y[3]-road_width * 0.5, :yaw => -1.57},
+        {:model => "stop_sign", :pos_x => road_x[3] - road_width * 0.5, :pos_y => road_y[1]-road_width * 0.5, :yaw => -1.57},
+        {:model => "stop_sign", :pos_x => road_x[3] - road_width * 0.5, :pos_y => road_y[3]-road_width * 0.5, :yaw => -1.57},
+      ]
+
+      count = 0
+
+      signs.each do |sign|
+        model = sign[:model]
+        pos_x = sign[:pos_x]
+        pos_y = sign[:pos_y]
+        yaw = sign[:yaw]
+        count = count + 1
+    %>
+      <include>
+        <name>sign_<%= count %></name>
+        <pose><%= pos_x %> <%= pos_y %> 0 0 0 <%= yaw %></pose>
+        <uri>model://<%= model %></uri>
+      </include>
+    <% end %>
+
 
     <!-- Trees -->
     <%
