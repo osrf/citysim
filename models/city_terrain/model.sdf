@@ -1,0 +1,58 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="city_terrain">
+    <static>true</static>
+    <link name="link">
+
+      <collision name="collision">
+        <geometry>          <heightmap>
+            <uri>model://city_terrain/materials/textures/city_terrain.jpg</uri>
+            <size>500 500 75</size>
+            <pos>40 -20 0</pos>
+          </heightmap>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+        <geometry>
+          <heightmap>
+            <use_terrain_paging>false</use_terrain_paging>
+
+            <texture>
+              <diffuse>model://ocean/materials/textures/soil_sand_0045_01.jpg</diffuse>
+              <normal>file://media/materials/textures/flat_normal.png</normal>
+              <size>10</size>
+            </texture>
+
+            <blend>
+              <min_height>0</min_height>
+              <fade_dist>1.5</fade_dist>
+            </blend>
+
+            <texture>
+              <diffuse>model://ocean/materials/textures/soil_sand_0045_01.jpg</diffuse>
+              <normal>file://media/materials/textures/flat_normal.png</normal>
+              <size>10</size>
+            </texture>
+
+            <blend>
+              <min_height>2.5</min_height>
+              <fade_dist>5</fade_dist>
+            </blend>
+
+            <texture>
+              <diffuse>model://city_terrain/materials/textures/forest.jpg</diffuse>
+              <normal>file://media/materials/textures/flat_normal.png</normal>
+              <size>10</size>
+            </texture>
+
+            <uri>model://city_terrain/materials/textures/city_terrain.jpg</uri>
+            <size>500 500 75</size>
+            <pos>40 -20 0</pos>
+          </heightmap>
+        </geometry>
+      </visual>
+
+    </link>
+  </model>
+</sdf>

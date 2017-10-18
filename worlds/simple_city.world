@@ -36,114 +36,103 @@
       <direction>-0.5 0.1 -0.9</direction>
     </light>
 
-    <!-- A ground plane -->
-    <model name="large_ground_plane">
-      <pose>60 -30 -0.01 0 0 0</pose>
-      <static>true</static>
-      <link name="link">
-        <collision name="collision">
-          <geometry>
-            <plane>
-              <normal>0 0 1</normal>
-              <size>230 300</size>
-            </plane>
-          </geometry>
-          <surface>
-            <friction>
-              <ode>
-                <mu>100</mu>
-                <mu2>50</mu2>
-              </ode>
-            </friction>
-          </surface>
-        </collision>
-        <visual name="visual">
-          <cast_shadows>false</cast_shadows>
-          <geometry>
-            <plane>
-              <normal>0 0 1</normal>
-              <size>230 300</size>
-            </plane>
-          </geometry>
-          <material>
-            <script>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Grass</name>
-            </script>
-          </material>
-        </visual>
-      </link>
-    </model>
+    <!-- Environment -->
+    <include>
+      <name>city_terrain_1</name>
+      <pose>
+      0
+      0
+      5.01
+      0
+      0
+      0
+      </pose>
+      <uri>model://city_terrain</uri>
+    </include>
+
+    <include>
+      <name>ocean_2</name>
+      <pose>
+      40
+      -20
+      3.0
+      0
+      0
+      0
+      </pose>
+      <uri>model://ocean</uri>
+    </include>
+
 
     
 
     <road name="road_y_1">
       <width>7.4</width>
-      <point>-45 -103.7 0.01</point>
-      <point>-45 103.7 0.01</point>
+      <point>-45 -103.7 5.02</point>
+      <point>-45 103.7 5.02</point>
     </road>
     
 
     <road name="road_y_2">
       <width>7.4</width>
-      <point>-15 -103.7 0.01</point>
-      <point>-15 103.7 0.01</point>
+      <point>-15 -103.7 5.02</point>
+      <point>-15 103.7 5.02</point>
     </road>
     
 
     <road name="road_y_3">
       <width>7.4</width>
-      <point>45 -103.7 0.01</point>
-      <point>45 103.7 0.01</point>
+      <point>45 -103.7 5.02</point>
+      <point>45 103.7 5.02</point>
     </road>
     
 
     <road name="road_y_4">
       <width>7.4</width>
-      <point>110 -103.7 0.01</point>
-      <point>110 103.7 0.01</point>
+      <point>110 -103.7 5.02</point>
+      <point>110 103.7 5.02</point>
     </road>
     
 
     <road name="road_y_5">
       <width>7.4</width>
-      <point>120 -103.7 0.01</point>
-      <point>120 103.7 0.01</point>
+      <point>120 -103.7 5.02</point>
+      <point>120 103.7 5.02</point>
     </road>
     
 
     <road name="road_x_1">
       <width>7.4</width>
-      <point>-41.3 -100 0.01</point>
-      <point>116.3 -100 0.01</point>
+      <point>-41.3 -100 5.02</point>
+      <point>116.3 -100 5.02</point>
     </road>
     
 
     <road name="road_x_2">
       <width>7.4</width>
-      <point>-41.3 -45 0.01</point>
-      <point>116.3 -45 0.01</point>
+      <point>-41.3 -45 5.02</point>
+      <point>116.3 -45 5.02</point>
     </road>
     
 
     <road name="road_x_3">
       <width>7.4</width>
-      <point>-41.3 0 0.01</point>
-      <point>116.3 0 0.01</point>
+      <point>-41.3 0 5.02</point>
+      <point>116.3 0 5.02</point>
     </road>
     
 
     <road name="road_x_4">
       <width>7.4</width>
-      <point>-41.3 45 0.01</point>
-      <point>116.3 45 0.01</point>
+      <point>-41.3 45 5.02</point>
+      <point>116.3 45 5.02</point>
     </road>
     
 
     <road name="road_x_5">
       <width>7.4</width>
-      <point>-41.3 100 0.01</point>
-      <point>116.3 100 0.01</point>
+      <point>-41.3 100 5.02</point>
+      <point>116.3 100 5.02</point>
     </road>
     
 
@@ -151,8 +140,8 @@
 
     <road name="sidewalk_y_1">
       <width>3</width>
-      <point>-39.8 -103.7 0.005</point>
-      <point>-39.8 103.7 0.005</point>
+      <point>-39.8 -103.7 5.015</point>
+      <point>-39.8 103.7 5.015</point>
 
       <material>
         <script>
@@ -165,8 +154,8 @@
 
     <road name="sidewalk_y_2">
       <width>3</width>
-      <point>-9.8 -103.7 0.005</point>
-      <point>-9.8 103.7 0.005</point>
+      <point>-9.8 -103.7 5.015</point>
+      <point>-9.8 103.7 5.015</point>
 
       <material>
         <script>
@@ -179,8 +168,8 @@
 
     <road name="sidewalk_y_3">
       <width>3</width>
-      <point>50.2 -103.7 0.005</point>
-      <point>50.2 103.7 0.005</point>
+      <point>50.2 -103.7 5.015</point>
+      <point>50.2 103.7 5.015</point>
 
       <material>
         <script>
@@ -193,8 +182,8 @@
 
     <road name="sidewalk_y_4">
       <width>3</width>
-      <point>125.2 -103.7 0.005</point>
-      <point>125.2 103.7 0.005</point>
+      <point>125.2 -103.7 5.015</point>
+      <point>125.2 103.7 5.015</point>
 
       <material>
         <script>
@@ -207,8 +196,8 @@
 
     <road name="sidewalk_y_5">
       <width>3</width>
-      <point>-50.2 -103.7 0.005</point>
-      <point>-50.2 103.7 0.005</point>
+      <point>-20.2 -103.7 5.015</point>
+      <point>-20.2 103.7 5.015</point>
 
       <material>
         <script>
@@ -221,8 +210,8 @@
 
     <road name="sidewalk_y_6">
       <width>3</width>
-      <point>-20.2 -103.7 0.005</point>
-      <point>-20.2 103.7 0.005</point>
+      <point>39.8 -103.7 5.015</point>
+      <point>39.8 103.7 5.015</point>
 
       <material>
         <script>
@@ -235,22 +224,8 @@
 
     <road name="sidewalk_y_7">
       <width>3</width>
-      <point>39.8 -103.7 0.005</point>
-      <point>39.8 103.7 0.005</point>
-
-      <material>
-        <script>
-          <uri>file://media/materials/scripts/gazebo.material</uri>
-          <name>Gazebo/Pedestrian</name>
-        </script>
-      </material>
-    </road>
-    
-
-    <road name="sidewalk_y_8">
-      <width>3</width>
-      <point>104.8 -103.7 0.005</point>
-      <point>104.8 103.7 0.005</point>
+      <point>104.8 -103.7 5.015</point>
+      <point>104.8 103.7 5.015</point>
 
       <material>
         <script>
@@ -263,8 +238,8 @@
 
     <road name="sidewalk_x_1">
       <width>3</width>
-      <point>-41.3 -94.8 0.005</point>
-      <point>106.3 -94.8 0.005</point>
+      <point>-41.3 -94.8 5.015</point>
+      <point>106.3 -94.8 5.015</point>
 
       <material>
         <script>
@@ -277,8 +252,8 @@
 
     <road name="sidewalk_x_2">
       <width>3</width>
-      <point>-41.3 -39.8 0.005</point>
-      <point>106.3 -39.8 0.005</point>
+      <point>-41.3 -39.8 5.015</point>
+      <point>106.3 -39.8 5.015</point>
 
       <material>
         <script>
@@ -291,8 +266,8 @@
 
     <road name="sidewalk_x_3">
       <width>3</width>
-      <point>-41.3 5.2 0.005</point>
-      <point>106.3 5.2 0.005</point>
+      <point>-41.3 5.2 5.015</point>
+      <point>106.3 5.2 5.015</point>
 
       <material>
         <script>
@@ -305,8 +280,8 @@
 
     <road name="sidewalk_x_4">
       <width>3</width>
-      <point>-41.3 50.2 0.005</point>
-      <point>106.3 50.2 0.005</point>
+      <point>-41.3 50.2 5.015</point>
+      <point>106.3 50.2 5.015</point>
 
       <material>
         <script>
@@ -319,8 +294,8 @@
 
     <road name="sidewalk_x_5">
       <width>3</width>
-      <point>-41.3 105.2 0.005</point>
-      <point>106.3 105.2 0.005</point>
+      <point>-41.3 105.2 5.015</point>
+      <point>106.3 105.2 5.015</point>
 
       <material>
         <script>
@@ -333,8 +308,8 @@
 
     <road name="sidewalk_x_6">
       <width>3</width>
-      <point>-41.3 -105.2 0.005</point>
-      <point>106.3 -105.2 0.005</point>
+      <point>-41.3 -105.2 5.015</point>
+      <point>106.3 -105.2 5.015</point>
 
       <material>
         <script>
@@ -347,8 +322,8 @@
 
     <road name="sidewalk_x_7">
       <width>3</width>
-      <point>-41.3 -50.2 0.005</point>
-      <point>106.3 -50.2 0.005</point>
+      <point>-41.3 -50.2 5.015</point>
+      <point>106.3 -50.2 5.015</point>
 
       <material>
         <script>
@@ -361,8 +336,8 @@
 
     <road name="sidewalk_x_8">
       <width>3</width>
-      <point>-41.3 -5.2 0.005</point>
-      <point>106.3 -5.2 0.005</point>
+      <point>-41.3 -5.2 5.015</point>
+      <point>106.3 -5.2 5.015</point>
 
       <material>
         <script>
@@ -375,8 +350,8 @@
 
     <road name="sidewalk_x_9">
       <width>3</width>
-      <point>-41.3 39.8 0.005</point>
-      <point>106.3 39.8 0.005</point>
+      <point>-41.3 39.8 5.015</point>
+      <point>106.3 39.8 5.015</point>
 
       <material>
         <script>
@@ -389,8 +364,8 @@
 
     <road name="sidewalk_x_10">
       <width>3</width>
-      <point>-41.3 94.8 0.005</point>
-      <point>106.3 94.8 0.005</point>
+      <point>-41.3 94.8 5.015</point>
+      <point>106.3 94.8 5.015</point>
 
       <material>
         <script>
@@ -406,11 +381,11 @@
     <!-- North block -->
 
     <include>
-      <name>parking_garage_1</name>
+      <name>parking_garage_3</name>
       <pose>
       146.778
       57.67
-      0.0
+      5.01
       0
       0
       -1.57
@@ -419,11 +394,11 @@
     </include>
 
     <include>
-      <name>fountain_2</name>
+      <name>fountain_4</name>
       <pose>
       135.5
       0
-      0.0
+      5.01
       0
       0
       0
@@ -433,40 +408,14 @@
 
 
     <include>
-      <name>oak_tree_3</name>
+      <name>oak_tree_5</name>
       <pose>
       129
       -16.3
-      0.0
+      5.01
       0
       0
-      0.7173134246469761
-      </pose>
-      <uri>model://oak_tree</uri>
-    </include>
-
-    <include>
-      <name>oak_tree_4</name>
-      <pose>
-      149.3
-      -15.6
-      0.0
-      0
-      0
-      1.6238582948861866
-      </pose>
-      <uri>model://oak_tree</uri>
-    </include>
-
-    <include>
-      <name>oak_tree_5</name>
-      <pose>
-      140
-      5.8
-      0.0
-      0
-      0
-      0.5288196592328596
+      1.8066183221356407
       </pose>
       <uri>model://oak_tree</uri>
     </include>
@@ -474,12 +423,12 @@
     <include>
       <name>oak_tree_6</name>
       <pose>
-      128.5
-      9.7
-      0.0
+      149.3
+      -15.6
+      5.01
       0
       0
-      0.5230301368172459
+      2.3392921028022076
       </pose>
       <uri>model://oak_tree</uri>
     </include>
@@ -487,12 +436,12 @@
     <include>
       <name>oak_tree_7</name>
       <pose>
-      152
-      10.9
-      0.0
+      140
+      5.8
+      5.01
       0
       0
-      0.24560363052256162
+      1.4890729259414837
       </pose>
       <uri>model://oak_tree</uri>
     </include>
@@ -500,23 +449,49 @@
     <include>
       <name>oak_tree_8</name>
       <pose>
+      128.5
+      9.7
+      5.01
+      0
+      0
+      1.5320097610548475
+      </pose>
+      <uri>model://oak_tree</uri>
+    </include>
+
+    <include>
+      <name>oak_tree_9</name>
+      <pose>
+      152
+      10.9
+      5.01
+      0
+      0
+      0.743042759239006
+      </pose>
+      <uri>model://oak_tree</uri>
+    </include>
+
+    <include>
+      <name>oak_tree_10</name>
+      <pose>
       134.5
       -6.6
-      0.0
+      5.01
       0
       0
-      2.9844798038798745
+      2.5388198828818007
       </pose>
       <uri>model://oak_tree</uri>
     </include>
 
 
     <include>
-      <name>robocup_3Dsim_field_9</name>
+      <name>robocup_3Dsim_field_11</name>
       <pose>
       138.5
       -86.6
-      0.05
+      5.06
       0
       0
       1.57
@@ -528,40 +503,14 @@
     <!-- North road -->
 
     <include>
-      <name>pine_tree_10</name>
-      <pose>
-      115.0
-      93
-      0.0
-      0
-      0
-      0.881237036546241
-      </pose>
-      <uri>model://pine_tree</uri>
-    </include>
-
-    <include>
-      <name>pine_tree_11</name>
-      <pose>
-      115.0
-      81
-      0.0
-      0
-      0
-      2.3136420876157566
-      </pose>
-      <uri>model://pine_tree</uri>
-    </include>
-
-    <include>
       <name>pine_tree_12</name>
       <pose>
       115.0
-      69
-      0.0
+      93
+      5.01
       0
       0
-      0.194012829903325
+      3.0406481473353333
       </pose>
       <uri>model://pine_tree</uri>
     </include>
@@ -570,11 +519,37 @@
       <name>pine_tree_13</name>
       <pose>
       115.0
+      81
+      5.01
+      0
+      0
+      0.7528369176901583
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
+    <include>
+      <name>pine_tree_14</name>
+      <pose>
+      115.0
+      69
+      5.01
+      0
+      0
+      1.0086505318302825
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
+    <include>
+      <name>pine_tree_15</name>
+      <pose>
+      115.0
       57
-      0.0
+      5.01
       0
       0
-      2.7384747871498765
+      0.06995124181037335
       </pose>
       <uri>model://pine_tree</uri>
     </include>
@@ -583,11 +558,11 @@
     <!-- Block 0 0 -->
 
     <include>
-      <name>fire_station_14</name>
+      <name>fire_station_16</name>
       <pose>
       56.84
       61.56
-      0.0
+      5.01
       0
       0
       1.57
@@ -596,12 +571,12 @@
     </include>
 
 
-    <model name="house_2_15">
+    <model name="house_2_17">
   <static>true</static>
   <pose>
     65.4415
     54.097
-    0
+    5.01
     0
     0
     0
@@ -637,12 +612,12 @@
   </link>
 </model>
 
-    <model name="house_3_16">
+    <model name="house_3_18">
   <static>true</static>
   <pose>
     75.734
     53.01
-    0
+    5.01
     0
     0
     0
@@ -681,14 +656,179 @@
 
     <!-- Block 0 1 -->
 
+    <model name="house_1_19">
+  <static>true</static>
+  <pose>
+    97.28
+    12.598
+    5.01
+    0
+    0
+    0
+  </pose>
+  <link name="link">
+    <collision name="collision">
+      <geometry>
+        <mesh>
+          <uri>model://house_1/meshes/house_1.dae</uri>
+        </mesh>
+      </geometry>
+    </collision>
+    <visual name="visual">
+      <geometry>
+        <mesh>
+          <uri>model://house_1/meshes/house_1.dae</uri>
+        </mesh>
+      </geometry>
+      <material>
+        <script>
+          <uri>model://house_1/materials/scripts</uri>
+          <uri>model://house_1/materials/textures</uri>
+          <name>House_1/Diffuse</name>
+        </script>
+        <ambient>
+          1
+          1
+          1
+          1
+        </ambient>
+      </material>
+    </visual>
+  </link>
+</model>
+
+    <model name="house_1_20">
+  <static>true</static>
+  <pose>
+    85.28
+    12.598
+    5.01
+    0
+    0
+    0
+  </pose>
+  <link name="link">
+    <collision name="collision">
+      <geometry>
+        <mesh>
+          <uri>model://house_1/meshes/house_1.dae</uri>
+        </mesh>
+      </geometry>
+    </collision>
+    <visual name="visual">
+      <geometry>
+        <mesh>
+          <uri>model://house_1/meshes/house_1.dae</uri>
+        </mesh>
+      </geometry>
+      <material>
+        <script>
+          <uri>model://house_1/materials/scripts</uri>
+          <uri>model://house_1/materials/textures</uri>
+          <name>House_1/Diffuse</name>
+        </script>
+        <ambient>
+          0.8
+          1
+          0.8
+          1
+        </ambient>
+      </material>
+    </visual>
+  </link>
+</model>
+
+    <model name="house_1_21">
+  <static>true</static>
+  <pose>
+    73.28
+    12.598
+    5.01
+    0
+    0
+    0
+  </pose>
+  <link name="link">
+    <collision name="collision">
+      <geometry>
+        <mesh>
+          <uri>model://house_1/meshes/house_1.dae</uri>
+        </mesh>
+      </geometry>
+    </collision>
+    <visual name="visual">
+      <geometry>
+        <mesh>
+          <uri>model://house_1/meshes/house_1.dae</uri>
+        </mesh>
+      </geometry>
+      <material>
+        <script>
+          <uri>model://house_1/materials/scripts</uri>
+          <uri>model://house_1/materials/textures</uri>
+          <name>House_1/Diffuse</name>
+        </script>
+        <ambient>
+          1
+          0.8
+          0.8
+          1
+        </ambient>
+      </material>
+    </visual>
+  </link>
+</model>
+
+    <model name="house_1_22">
+  <static>true</static>
+  <pose>
+    61.28
+    12.598
+    5.01
+    0
+    0
+    0
+  </pose>
+  <link name="link">
+    <collision name="collision">
+      <geometry>
+        <mesh>
+          <uri>model://house_1/meshes/house_1.dae</uri>
+        </mesh>
+      </geometry>
+    </collision>
+    <visual name="visual">
+      <geometry>
+        <mesh>
+          <uri>model://house_1/meshes/house_1.dae</uri>
+        </mesh>
+      </geometry>
+      <material>
+        <script>
+          <uri>model://house_1/materials/scripts</uri>
+          <uri>model://house_1/materials/textures</uri>
+          <name>House_1/Diffuse</name>
+        </script>
+        <ambient>
+          0.8
+          0.8
+          1
+          1
+        </ambient>
+      </material>
+    </visual>
+  </link>
+</model>
+
+
     <!-- Block 0 2 -->
 
     <include>
-      <name>office_building_17</name>
+      <name>office_building_23</name>
       <pose>
       60.19
       -15.294
-      0.0
+      5.01
       0
       0
       0
@@ -699,12 +839,12 @@
 
     <!-- Block 0 3 -->
 
-    <model name="gas_station_18">
+    <model name="gas_station_24">
   <static>true</static>
   <pose>
     61.88
     -75.82
-    0
+    5.01
     0
     0
     3.14
@@ -741,11 +881,11 @@
 </model>
 
     <include>
-      <name>asphalt_plane_19</name>
+      <name>asphalt_plane_25</name>
       <pose>
       61.581
       -61.664
-      0.0
+      5.01
       0
       0
       0
@@ -757,92 +897,14 @@
     <!-- Block 1 0 -->
 
     <include>
-      <name>pine_tree_20</name>
-      <pose>
-      19.79057356311896
-      58.88431165072077
-      0.0
-      0
-      0
-      2.067537134444087
-      </pose>
-      <uri>model://pine_tree</uri>
-    </include>
-
-    <include>
-      <name>pine_tree_21</name>
-      <pose>
-      20.59740422281088
-      87.30505387430462
-      0.0
-      0
-      0
-      1.8624325707245297
-      </pose>
-      <uri>model://pine_tree</uri>
-    </include>
-
-    <include>
-      <name>pine_tree_22</name>
-      <pose>
-      33.22652273923374
-      61.39909772775794
-      0.0
-      0
-      0
-      1.251410778510424
-      </pose>
-      <uri>model://pine_tree</uri>
-    </include>
-
-    <include>
-      <name>pine_tree_23</name>
-      <pose>
-      26.045862848900285
-      74.30940101319212
-      0.0
-      0
-      0
-      2.3925670494525373
-      </pose>
-      <uri>model://pine_tree</uri>
-    </include>
-
-    <include>
-      <name>pine_tree_24</name>
-      <pose>
-      10.248539319172268
-      66.22555246153112
-      0.0
-      0
-      0
-      2.148389696772332
-      </pose>
-      <uri>model://pine_tree</uri>
-    </include>
-
-    <include>
-      <name>pine_tree_25</name>
-      <pose>
-      1.1266329685263905
-      65.02035327354552
-      0.0
-      0
-      0
-      1.3541680225040724
-      </pose>
-      <uri>model://pine_tree</uri>
-    </include>
-
-    <include>
       <name>pine_tree_26</name>
       <pose>
-      23.889544773173043
-      68.17834015421818
-      0.0
+      3.1432533272652297
+      55.21201381739915
+      5.01
       0
       0
-      2.2652651442975604
+      1.2136341211193642
       </pose>
       <uri>model://pine_tree</uri>
     </include>
@@ -850,12 +912,12 @@
     <include>
       <name>pine_tree_27</name>
       <pose>
-      24.162925928553378
-      74.81751955493701
-      0.0
+      30.03201150311787
+      60.15481252474057
+      5.01
       0
       0
-      0.9945168995687232
+      2.014002512069187
       </pose>
       <uri>model://pine_tree</uri>
     </include>
@@ -863,12 +925,12 @@
     <include>
       <name>pine_tree_28</name>
       <pose>
-      29.664058617494476
-      77.91649304155717
-      0.0
+      14.627591736516079
+      55.847186926777816
+      5.01
       0
       0
-      1.2211931202998685
+      3.1184984518823904
       </pose>
       <uri>model://pine_tree</uri>
     </include>
@@ -876,12 +938,12 @@
     <include>
       <name>pine_tree_29</name>
       <pose>
-      27.37501507784045
-      65.0815226196962
-      0.0
+      24.045018973114352
+      75.83024590621403
+      5.01
       0
       0
-      1.9037389734820411
+      2.7039560773752425
       </pose>
       <uri>model://pine_tree</uri>
     </include>
@@ -889,12 +951,12 @@
     <include>
       <name>pine_tree_30</name>
       <pose>
-      16.464935745761473
-      65.19369583119672
-      0.0
+      -6.464128415265475
+      59.1889175734633
+      5.01
       0
       0
-      1.737582640758515
+      2.8220643827324405
       </pose>
       <uri>model://pine_tree</uri>
     </include>
@@ -902,12 +964,12 @@
     <include>
       <name>pine_tree_31</name>
       <pose>
-      22.182212473939593
-      56.409795248993944
-      0.0
+      2.6480306782911764
+      56.026217186590294
+      5.01
       0
       0
-      2.278126776390304
+      2.062434192768767
       </pose>
       <uri>model://pine_tree</uri>
     </include>
@@ -915,12 +977,12 @@
     <include>
       <name>pine_tree_32</name>
       <pose>
-      -0.60406874247892
-      61.10064963242993
-      0.0
+      8.609253210781832
+      68.87059353742761
+      5.01
       0
       0
-      2.0141989415721913
+      1.8231944107447946
       </pose>
       <uri>model://pine_tree</uri>
     </include>
@@ -928,12 +990,12 @@
     <include>
       <name>pine_tree_33</name>
       <pose>
-      -1.8501064117256503
-      85.42053350980257
-      0.0
+      7.6284820655101875
+      57.65426470908496
+      5.01
       0
       0
-      2.069554798230455
+      2.40671538346849
       </pose>
       <uri>model://pine_tree</uri>
     </include>
@@ -941,12 +1003,12 @@
     <include>
       <name>pine_tree_34</name>
       <pose>
-      -1.5422041495053707
-      77.82473668743586
-      0.0
+      16.86250813697111
+      56.40312744951653
+      5.01
       0
       0
-      0.3545949060452199
+      0.8096399375289425
       </pose>
       <uri>model://pine_tree</uri>
     </include>
@@ -954,12 +1016,12 @@
     <include>
       <name>pine_tree_35</name>
       <pose>
-      9.981603843533561
-      68.94077024774231
-      0.0
+      2.610312571724185
+      67.42249958243004
+      5.01
       0
       0
-      2.6229762090401842
+      0.3662024920276041
       </pose>
       <uri>model://pine_tree</uri>
     </include>
@@ -967,12 +1029,90 @@
     <include>
       <name>pine_tree_36</name>
       <pose>
-      -1.8440779920748556
-      61.16789517437372
-      0.0
+      3.0678529403972323
+      64.99952307507691
+      5.01
       0
       0
-      2.22674037580508
+      1.4510332102811572
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
+    <include>
+      <name>pine_tree_37</name>
+      <pose>
+      16.474247838336304
+      79.63705527014338
+      5.01
+      0
+      0
+      0.8813591297050267
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
+    <include>
+      <name>pine_tree_38</name>
+      <pose>
+      9.980487599577346
+      74.26424273154433
+      5.01
+      0
+      0
+      2.0142978393623956
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
+    <include>
+      <name>pine_tree_39</name>
+      <pose>
+      -2.135802851009344
+      78.81653681423344
+      5.01
+      0
+      0
+      2.60332008472656
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
+    <include>
+      <name>pine_tree_40</name>
+      <pose>
+      -5.762159423946606
+      65.75248685307724
+      5.01
+      0
+      0
+      2.8608560316647758
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
+    <include>
+      <name>pine_tree_41</name>
+      <pose>
+      19.941143310516544
+      69.90081597053717
+      5.01
+      0
+      0
+      1.952947086463175
+      </pose>
+      <uri>model://pine_tree</uri>
+    </include>
+
+    <include>
+      <name>pine_tree_42</name>
+      <pose>
+      26.107657151932592
+      62.42345072772271
+      5.01
+      0
+      0
+      0.45854368969405224
       </pose>
       <uri>model://pine_tree</uri>
     </include>
@@ -981,11 +1121,11 @@
     <!-- Block 1 1 -->
 
     <include>
-      <name>law_office_37</name>
+      <name>law_office_43</name>
       <pose>
       8.47
       9.356
-      0.0
+      5.01
       0
       0
       0
@@ -994,11 +1134,11 @@
     </include>
 
     <include>
-      <name>thrift_shop_38</name>
+      <name>thrift_shop_44</name>
       <pose>
       1.35
       9.356
-      0.0
+      5.01
       0
       0
       0
@@ -1007,11 +1147,11 @@
     </include>
 
     <include>
-      <name>salon_39</name>
+      <name>salon_45</name>
       <pose>
       15.7
       9.356
-      0.0
+      5.01
       0
       0
       0
@@ -1020,11 +1160,11 @@
     </include>
 
     <include>
-      <name>oak_tree_40</name>
+      <name>oak_tree_46</name>
       <pose>
       -6.418
       10.37
-      0.0
+      5.01
       0
       0
       0.55
@@ -1033,11 +1173,11 @@
     </include>
 
     <include>
-      <name>apartment_41</name>
+      <name>apartment_47</name>
       <pose>
       1.573
       27.565
-      0.0
+      5.01
       0
       0
       0
@@ -1046,11 +1186,11 @@
     </include>
 
     <include>
-      <name>osrf_first_office_42</name>
+      <name>osrf_first_office_48</name>
       <pose>
       27.003
       20.15
-      0.0
+      5.01
       0
       0
       1.57
@@ -1061,12 +1201,12 @@
 
     <!-- Block 1 2 -->
 
-    <model name="fast_food_43">
+    <model name="fast_food_49">
   <static>true</static>
   <pose>
     -3.73
     -9.08
-    1.57965648
+    6.5896564799999995
     0
     0
     0
@@ -1106,11 +1246,11 @@
     <!-- Block 1 3 -->
 
     <include>
-      <name>grocery_store_44</name>
+      <name>grocery_store_50</name>
       <pose>
       4.12
       -67.758
-      0.0
+      5.01
       0
       0
       1.57
@@ -1122,11 +1262,11 @@
     <!-- Block 2 0 -->
 
     <include>
-      <name>school_45</name>
+      <name>school_51</name>
       <pose>
       -27.309
       67.823
-      0.0
+      5.01
       0
       0
       -1.57
@@ -1135,11 +1275,11 @@
     </include>
 
     <include>
-      <name>oak_tree_46</name>
+      <name>oak_tree_52</name>
       <pose>
       -28.916
       89.604
-      0.0
+      5.01
       0
       0
       -0.51
@@ -1148,11 +1288,11 @@
     </include>
 
     <include>
-      <name>oak_tree_47</name>
+      <name>oak_tree_53</name>
       <pose>
       -34.077
       89.854
-      0.0
+      5.01
       0
       0
       0.51
@@ -1164,11 +1304,11 @@
     <!-- Block 2 1 -->
 
     <include>
-      <name>post_office_48</name>
+      <name>post_office_54</name>
       <pose>
       -26.686
       11.119
-      0.0
+      5.01
       0
       0
       3.14
@@ -1177,14 +1317,14 @@
     </include>
 
     <include>
-      <name>pine_tree_49</name>
+      <name>pine_tree_55</name>
       <pose>
       -30.709
       7.15
-      0.0
+      5.01
       0
       0
-      1.554547007984767
+      0.6820377849284023
       </pose>
       <uri>model://pine_tree</uri>
     </include>
@@ -1193,11 +1333,11 @@
     <!-- Block 2 2 -->
 
     <include>
-      <name>salon_50</name>
+      <name>salon_56</name>
       <pose>
       -27.65
       -9.35
-      0.0
+      5.01
       0
       0
       3.14
@@ -1206,11 +1346,11 @@
     </include>
 
     <include>
-      <name>law_office_51</name>
+      <name>law_office_57</name>
       <pose>
       -34.886
       -9.408
-      0.0
+      5.01
       0
       0
       3.14
@@ -1222,11 +1362,11 @@
     <!-- Block 2 3 -->
 
     <include>
-      <name>police_station_52</name>
+      <name>police_station_58</name>
       <pose>
       -31.838
       -59.696
-      0.0
+      5.01
       0
       0
       0
@@ -1235,11 +1375,11 @@
     </include>
 
     <include>
-      <name>collapsed_industrial_53</name>
+      <name>collapsed_industrial_59</name>
       <pose>
       -29.8725
       -83.9104
-      0.0
+      5.01
       0
       0
       1.5708
@@ -1248,237 +1388,237 @@
     </include>
 
     <include>
-      <name>construction_cone_54</name>
+      <name>construction_cone_60</name>
       <pose>
       -40.748
       -90.1868
-      0.0
+      5.01
       0
       0
-      2.180593125644825
+      0.8704794923855332
       </pose>
       <uri>model://construction_cone</uri>
     </include>
 
 
     <include>
-      <name>construction_cone_55</name>
+      <name>construction_cone_61</name>
       <pose>
       -40.692
       -95.2899
-      0.0
+      5.01
       0
       0
-      2.1446394193506095
+      2.301024734026146
       </pose>
       <uri>model://construction_cone</uri>
     </include>
 
     <include>
-      <name>construction_cone_56</name>
+      <name>construction_cone_62</name>
       <pose>
       -37.8997
       -95.3521
-      0.0
+      5.01
       0
       0
-      1.9081481761449384
+      0.37175744165681956
       </pose>
       <uri>model://construction_cone</uri>
     </include>
 
     <include>
-      <name>construction_cone_57</name>
+      <name>construction_cone_63</name>
       <pose>
       -35.2603
       -95.3721
-      0.0
+      5.01
       0
       0
-      0.0827118807084414
+      1.828091005062285
       </pose>
       <uri>model://construction_cone</uri>
     </include>
 
     <include>
-      <name>construction_cone_58</name>
+      <name>construction_cone_64</name>
       <pose>
       -31.8118
       -95.4314
-      0.0
+      5.01
       0
       0
-      2.2481133910383324
+      1.1343314816479544
       </pose>
       <uri>model://construction_cone</uri>
     </include>
 
     <include>
-      <name>construction_cone_59</name>
+      <name>construction_cone_65</name>
       <pose>
       -40.1918
       -74.491
-      0.0
+      5.01
       0
       0
-      1.2128512850746438
+      0.5058970919845013
       </pose>
       <uri>model://construction_cone</uri>
     </include>
 
     <include>
-      <name>construction_cone_60</name>
+      <name>construction_cone_66</name>
       <pose>
       -40.6878
       -80.629
-      0.0
+      5.01
       0
       0
-      1.1516248448807627
+      1.2102259227781929
       </pose>
       <uri>model://construction_cone</uri>
     </include>
 
 
     <include>
-      <name>cinder_block_61</name>
+      <name>cinder_block_67</name>
       <pose>
-      -37.03162276985168
-      -89.85020800670398
-      0.0
+      -35.239680159255414
+      -88.69935168728317
+      5.01
       0
       0
-      0.42075658701142804
+      3.0147007125276457
       </pose>
       <uri>model://cinder_block</uri>
     </include>
 
     <include>
-      <name>cinder_block_62</name>
+      <name>cinder_block_68</name>
       <pose>
-      -38.83294559220804
-      -93.62512037201148
-      0.0
+      -35.98478563020278
+      -88.57427776221961
+      5.01
       0
       0
-      2.8095518375142343
+      0.9755680881406781
       </pose>
       <uri>model://cinder_block</uri>
     </include>
 
     <include>
-      <name>cinder_block_63</name>
+      <name>cinder_block_69</name>
       <pose>
-      -37.176322012336136
-      -90.49150920135003
-      0.0
+      -39.085788487559476
+      -92.41240090832694
+      5.01
       0
       0
-      2.1764203404894213
+      3.0205864890276435
       </pose>
       <uri>model://cinder_block</uri>
     </include>
 
     <include>
-      <name>cinder_block_64</name>
+      <name>cinder_block_70</name>
       <pose>
-      -36.93754723107346
-      -88.88259637362111
-      0.0
+      -38.5207930835148
+      -87.73890279362543
+      5.01
       0
       0
-      2.0112528149700624
+      2.4971241162116415
       </pose>
       <uri>model://cinder_block</uri>
     </include>
 
     <include>
-      <name>cinder_block_65</name>
+      <name>cinder_block_71</name>
       <pose>
-      -38.925212423821044
-      -89.87476261459281
-      0.0
+      -39.05427831118566
+      -90.39806692722428
+      5.01
       0
       0
-      1.2327715953952851
+      2.174287487198014
       </pose>
       <uri>model://cinder_block</uri>
     </include>
 
     <include>
-      <name>cinder_block_66</name>
+      <name>cinder_block_72</name>
       <pose>
-      -36.441265997495165
-      -90.84612564031693
-      0.0
+      -36.94045868843714
+      -87.70335636004627
+      5.01
       0
       0
-      2.957635009455667
+      0.7257640081710521
       </pose>
       <uri>model://cinder_block</uri>
     </include>
 
     <include>
-      <name>cinder_block_2_67</name>
+      <name>cinder_block_2_73</name>
       <pose>
-      -35.46212954187402
-      -91.31312869908483
-      0.0
+      -36.86347405271667
+      -90.33679267966937
+      5.01
       0
       0
-      0.4820200594466015
+      3.019946976184979
       </pose>
       <uri>model://cinder_block_2</uri>
     </include>
 
     <include>
-      <name>cinder_block_2_68</name>
+      <name>cinder_block_2_74</name>
       <pose>
-      -38.51530162221107
-      -89.71088095382082
-      0.0
+      -38.76238667669846
+      -89.95662116300191
+      5.01
       0
       0
-      0.14221386396423896
+      2.3333117646776507
       </pose>
       <uri>model://cinder_block_2</uri>
     </include>
 
     <include>
-      <name>cinder_block_2_69</name>
+      <name>cinder_block_2_75</name>
       <pose>
-      -36.0910005939154
-      -90.05916438385403
-      0.0
+      -38.68828855192719
+      -92.85757146523677
+      5.01
       0
       0
-      0.4648117638565053
+      1.8062835257738583
       </pose>
       <uri>model://cinder_block_2</uri>
     </include>
 
     <include>
-      <name>cinder_block_2_70</name>
+      <name>cinder_block_2_76</name>
       <pose>
-      -38.48989253400411
-      -88.29203968120075
-      0.0
+      -38.95772648818905
+      -93.54717183710966
+      5.01
       0
       0
-      1.7794894474593266
+      1.1887464657595799
       </pose>
       <uri>model://cinder_block_2</uri>
     </include>
 
     <include>
-      <name>cinder_block_2_71</name>
+      <name>cinder_block_2_77</name>
       <pose>
-      -36.59295174556576
-      -89.06407131668064
-      0.0
+      -38.70158457422644
+      -93.17295560704002
+      5.01
       0
       0
-      0.055181712629784115
+      1.09150873239544
       </pose>
       <uri>model://cinder_block_2</uri>
     </include>
@@ -1486,179 +1626,14 @@
 
     <!-- West block -->
 
-    <model name="house_1_72">
-  <static>true</static>
-  <pose>
-    101.3
-    110.6999
-    0
-    0
-    0
-    0
-  </pose>
-  <link name="link">
-    <collision name="collision">
-      <geometry>
-        <mesh>
-          <uri>model://house_1/meshes/house_1.dae</uri>
-        </mesh>
-      </geometry>
-    </collision>
-    <visual name="visual">
-      <geometry>
-        <mesh>
-          <uri>model://house_1/meshes/house_1.dae</uri>
-        </mesh>
-      </geometry>
-      <material>
-        <script>
-          <uri>model://house_1/materials/scripts</uri>
-          <uri>model://house_1/materials/textures</uri>
-          <name>House_1/Diffuse</name>
-        </script>
-        <ambient>
-          1
-          1
-          1
-          1
-        </ambient>
-      </material>
-    </visual>
-  </link>
-</model>
-
-    <model name="house_1_73">
-  <static>true</static>
-  <pose>
-    81.3
-    110.6999
-    0
-    0
-    0
-    0
-  </pose>
-  <link name="link">
-    <collision name="collision">
-      <geometry>
-        <mesh>
-          <uri>model://house_1/meshes/house_1.dae</uri>
-        </mesh>
-      </geometry>
-    </collision>
-    <visual name="visual">
-      <geometry>
-        <mesh>
-          <uri>model://house_1/meshes/house_1.dae</uri>
-        </mesh>
-      </geometry>
-      <material>
-        <script>
-          <uri>model://house_1/materials/scripts</uri>
-          <uri>model://house_1/materials/textures</uri>
-          <name>House_1/Diffuse</name>
-        </script>
-        <ambient>
-          0.8
-          1
-          0.8
-          1
-        </ambient>
-      </material>
-    </visual>
-  </link>
-</model>
-
-    <model name="house_1_74">
-  <static>true</static>
-  <pose>
-    61.3
-    110.6999
-    0
-    0
-    0
-    0
-  </pose>
-  <link name="link">
-    <collision name="collision">
-      <geometry>
-        <mesh>
-          <uri>model://house_1/meshes/house_1.dae</uri>
-        </mesh>
-      </geometry>
-    </collision>
-    <visual name="visual">
-      <geometry>
-        <mesh>
-          <uri>model://house_1/meshes/house_1.dae</uri>
-        </mesh>
-      </geometry>
-      <material>
-        <script>
-          <uri>model://house_1/materials/scripts</uri>
-          <uri>model://house_1/materials/textures</uri>
-          <name>House_1/Diffuse</name>
-        </script>
-        <ambient>
-          1
-          0.8
-          0.8
-          1
-        </ambient>
-      </material>
-    </visual>
-  </link>
-</model>
-
-    <model name="house_1_75">
-  <static>true</static>
-  <pose>
-    41.3
-    110.6999
-    0
-    0
-    0
-    0
-  </pose>
-  <link name="link">
-    <collision name="collision">
-      <geometry>
-        <mesh>
-          <uri>model://house_1/meshes/house_1.dae</uri>
-        </mesh>
-      </geometry>
-    </collision>
-    <visual name="visual">
-      <geometry>
-        <mesh>
-          <uri>model://house_1/meshes/house_1.dae</uri>
-        </mesh>
-      </geometry>
-      <material>
-        <script>
-          <uri>model://house_1/materials/scripts</uri>
-          <uri>model://house_1/materials/textures</uri>
-          <name>House_1/Diffuse</name>
-        </script>
-        <ambient>
-          0.8
-          0.8
-          1
-          1
-        </ambient>
-      </material>
-    </visual>
-  </link>
-</model>
-
-
     <!-- East block -->
 
     <include>
-      <name>powerplant_76</name>
+      <name>powerplant_78</name>
       <pose>
       -6.09
       -134.33
-      0.0
+      5.01
       0
       0
       3.14
@@ -1670,11 +1645,11 @@
     <!-- Construction zone -->
 
     <include>
-      <name>tower_crane_77</name>
+      <name>tower_crane_79</name>
       <pose>
       -46.2805
       -101.493
-      0.0
+      5.01
       0
       0
       1.60214
@@ -1683,11 +1658,11 @@
     </include>
 
     <include>
-      <name>drc_practice_angled_barrier_45_78</name>
+      <name>drc_practice_angled_barrier_45_80</name>
       <pose>
       -37.2216
       -100.588
-      0.0
+      5.01
       0
       0
       3.14159
@@ -1696,11 +1671,11 @@
     </include>
 
     <include>
-      <name>drc_practice_orange_jersey_barrier_79</name>
+      <name>drc_practice_orange_jersey_barrier_81</name>
       <pose>
       -34.8405
       -101.725
-      0.0
+      5.01
       0
       0
       0.867273
@@ -1709,11 +1684,11 @@
     </include>
 
     <include>
-      <name>construction_barrel_80</name>
+      <name>construction_barrel_82</name>
       <pose>
       -47.7276
       -90.7959
-      0.0
+      5.01
       0
       0
       0
@@ -1722,83 +1697,73 @@
     </include>
 
 
-    <!-- Stop lights -->
+    <!-- South island -->
 
     <include>
-      <name>stop_light_post_81</name>
+      <name>truss_bridge_83</name>
       <pose>
-      -11.3
-      -3.7
-      0.0
-      0
-      0
-      -1.57
-      </pose>
-      <uri>model://stop_light_post</uri>
-    </include>
-
-
-    <include>
-      <name>stop_light_post_82</name>
-      <pose>
-      48.7
-      -3.7
-      0.0
-      0
-      0
-      -1.57
-      </pose>
-      <uri>model://stop_light_post</uri>
-    </include>
-
-    <include>
-      <name>stop_light_post_83</name>
-      <pose>
-      123.7
-      -3.7
-      0.0
-      0
-      0
-      -1.57
-      </pose>
-      <uri>model://stop_light_post</uri>
-    </include>
-
-    <include>
-      <name>stop_light_post_84</name>
-      <pose>
-      -48.7
-      3.7
-      0.0
+      -56.37
+      -45
+      4.72
       0
       0
       1.57
       </pose>
-      <uri>model://stop_light_post</uri>
+      <uri>model://truss_bridge</uri>
     </include>
+
+    <include>
+      <name>truss_bridge_84</name>
+      <pose>
+      -56.37
+      0
+      4.72
+      0
+      0
+      1.57
+      </pose>
+      <uri>model://truss_bridge</uri>
+    </include>
+
+
+    <road name="sandy_path">
+      <width>7.9</width>
+      <point>-68 -47.96 5.02</point>
+      <point>-68 2.9600000000000004 5.02</point>
+
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Residential</name>
+        </script>
+      </material>
+    </road>
+
+    <!-- Stop lights -->
 
     <include>
       <name>stop_light_post_85</name>
       <pose>
-      -18.7
-      3.7
-      0.0
+      -11.3
+      -3.7
+      5.01
       0
       0
-      1.57
+      -1.57
       </pose>
       <uri>model://stop_light_post</uri>
     </include>
 
+
     <include>
       <name>stop_light_post_86</name>
       <pose>
-      41.3
-      3.7
-      0.0
+      48.7
+      -3.7
+      5.01
       0
       0
-      1.57
+      -1.57
       </pose>
       <uri>model://stop_light_post</uri>
     </include>
@@ -1806,12 +1771,12 @@
     <include>
       <name>stop_light_post_87</name>
       <pose>
-      -41.3
-      3.7
-      0.0
+      123.7
+      -3.7
+      5.01
       0
       0
-      0.0
+      -1.57
       </pose>
       <uri>model://stop_light_post</uri>
     </include>
@@ -1819,12 +1784,12 @@
     <include>
       <name>stop_light_post_88</name>
       <pose>
-      -11.3
+      -48.7
       3.7
-      0.0
+      5.01
       0
       0
-      0.0
+      1.57
       </pose>
       <uri>model://stop_light_post</uri>
     </include>
@@ -1832,12 +1797,12 @@
     <include>
       <name>stop_light_post_89</name>
       <pose>
-      48.7
+      -18.7
       3.7
-      0.0
+      5.01
       0
       0
-      0.0
+      1.57
       </pose>
       <uri>model://stop_light_post</uri>
     </include>
@@ -1845,12 +1810,12 @@
     <include>
       <name>stop_light_post_90</name>
       <pose>
-      123.7
+      41.3
       3.7
-      0.0
+      5.01
       0
       0
-      0.0
+      1.57
       </pose>
       <uri>model://stop_light_post</uri>
     </include>
@@ -1858,12 +1823,12 @@
     <include>
       <name>stop_light_post_91</name>
       <pose>
-      -48.7
-      -3.7
+      -41.3
+      3.7
+      5.01
+      0
+      0
       0.0
-      0
-      0
-      3.14
       </pose>
       <uri>model://stop_light_post</uri>
     </include>
@@ -1871,12 +1836,12 @@
     <include>
       <name>stop_light_post_92</name>
       <pose>
-      -18.7
-      -3.7
+      -11.3
+      3.7
+      5.01
+      0
+      0
       0.0
-      0
-      0
-      3.14
       </pose>
       <uri>model://stop_light_post</uri>
     </include>
@@ -1884,9 +1849,35 @@
     <include>
       <name>stop_light_post_93</name>
       <pose>
-      41.3
-      -3.7
+      48.7
+      3.7
+      5.01
+      0
+      0
       0.0
+      </pose>
+      <uri>model://stop_light_post</uri>
+    </include>
+
+    <include>
+      <name>stop_light_post_94</name>
+      <pose>
+      123.7
+      3.7
+      5.01
+      0
+      0
+      0.0
+      </pose>
+      <uri>model://stop_light_post</uri>
+    </include>
+
+    <include>
+      <name>stop_light_post_95</name>
+      <pose>
+      -48.7
+      -3.7
+      5.01
       0
       0
       3.14
@@ -1895,11 +1886,37 @@
     </include>
 
     <include>
-      <name>stop_light_post_94</name>
+      <name>stop_light_post_96</name>
+      <pose>
+      -18.7
+      -3.7
+      5.01
+      0
+      0
+      3.14
+      </pose>
+      <uri>model://stop_light_post</uri>
+    </include>
+
+    <include>
+      <name>stop_light_post_97</name>
+      <pose>
+      41.3
+      -3.7
+      5.01
+      0
+      0
+      3.14
+      </pose>
+      <uri>model://stop_light_post</uri>
+    </include>
+
+    <include>
+      <name>stop_light_post_98</name>
       <pose>
       106.3
       -3.7
-      0.0
+      5.01
       0
       0
       3.14
@@ -1911,63 +1928,11 @@
     <!-- Stop signs -->
 
     <include>
-      <name>stop_sign_95</name>
-      <pose>
-      -41.3
-      -41.3
-      0.0
-      0
-      0
-      1.57
-      </pose>
-      <uri>model://stop_sign</uri>
-    </include>
-
-    <include>
-      <name>stop_sign_96</name>
-      <pose>
-      -11.3
-      -41.3
-      0.0
-      0
-      0
-      1.57
-      </pose>
-      <uri>model://stop_sign</uri>
-    </include>
-
-    <include>
-      <name>stop_sign_97</name>
-      <pose>
-      48.7
-      -41.3
-      0.0
-      0
-      0
-      1.57
-      </pose>
-      <uri>model://stop_sign</uri>
-    </include>
-
-    <include>
-      <name>stop_sign_98</name>
-      <pose>
-      -41.3
-      48.7
-      0.0
-      0
-      0
-      1.57
-      </pose>
-      <uri>model://stop_sign</uri>
-    </include>
-
-    <include>
       <name>stop_sign_99</name>
       <pose>
-      -11.3
-      48.7
-      0.0
+      -41.3
+      -41.3
+      5.01
       0
       0
       1.57
@@ -1978,9 +1943,9 @@
     <include>
       <name>stop_sign_100</name>
       <pose>
-      48.7
-      48.7
-      0.0
+      -11.3
+      -41.3
+      5.01
       0
       0
       1.57
@@ -1991,12 +1956,12 @@
     <include>
       <name>stop_sign_101</name>
       <pose>
-      -11.3
-      -48.7
-      0.0
+      48.7
+      -41.3
+      5.01
       0
       0
-      0.0
+      1.57
       </pose>
       <uri>model://stop_sign</uri>
     </include>
@@ -2004,12 +1969,12 @@
     <include>
       <name>stop_sign_102</name>
       <pose>
-      -11.3
-      41.3
-      0.0
+      -41.3
+      48.7
+      5.01
       0
       0
-      0.0
+      1.57
       </pose>
       <uri>model://stop_sign</uri>
     </include>
@@ -2018,11 +1983,11 @@
       <name>stop_sign_103</name>
       <pose>
       -11.3
-      96.3
-      0.0
+      48.7
+      5.01
       0
       0
-      0.0
+      1.57
       </pose>
       <uri>model://stop_sign</uri>
     </include>
@@ -2031,11 +1996,11 @@
       <name>stop_sign_104</name>
       <pose>
       48.7
-      -48.7
-      0.0
+      48.7
+      5.01
       0
       0
-      0.0
+      1.57
       </pose>
       <uri>model://stop_sign</uri>
     </include>
@@ -2043,9 +2008,9 @@
     <include>
       <name>stop_sign_105</name>
       <pose>
-      48.7
-      41.3
-      0.0
+      -11.3
+      -48.7
+      5.01
       0
       0
       0.0
@@ -2056,9 +2021,9 @@
     <include>
       <name>stop_sign_106</name>
       <pose>
-      48.7
-      96.3
-      0.0
+      -11.3
+      41.3
+      5.01
       0
       0
       0.0
@@ -2069,12 +2034,12 @@
     <include>
       <name>stop_sign_107</name>
       <pose>
-      -18.7
-      -96.3
+      -11.3
+      96.3
+      5.01
+      0
+      0
       0.0
-      0
-      0
-      3.14
       </pose>
       <uri>model://stop_sign</uri>
     </include>
@@ -2082,12 +2047,12 @@
     <include>
       <name>stop_sign_108</name>
       <pose>
-      -18.7
-      -41.3
+      48.7
+      -48.7
+      5.01
+      0
+      0
       0.0
-      0
-      0
-      3.14
       </pose>
       <uri>model://stop_sign</uri>
     </include>
@@ -2095,12 +2060,12 @@
     <include>
       <name>stop_sign_109</name>
       <pose>
-      -18.7
       48.7
+      41.3
+      5.01
+      0
+      0
       0.0
-      0
-      0
-      3.14
       </pose>
       <uri>model://stop_sign</uri>
     </include>
@@ -2108,12 +2073,12 @@
     <include>
       <name>stop_sign_110</name>
       <pose>
-      41.3
-      -96.3
+      48.7
+      96.3
+      5.01
+      0
+      0
       0.0
-      0
-      0
-      3.14
       </pose>
       <uri>model://stop_sign</uri>
     </include>
@@ -2121,9 +2086,9 @@
     <include>
       <name>stop_sign_111</name>
       <pose>
-      41.3
-      -41.3
-      0.0
+      -18.7
+      -96.3
+      5.01
       0
       0
       3.14
@@ -2134,9 +2099,9 @@
     <include>
       <name>stop_sign_112</name>
       <pose>
-      41.3
-      48.7
-      0.0
+      -18.7
+      -41.3
+      5.01
       0
       0
       3.14
@@ -2148,11 +2113,11 @@
       <name>stop_sign_113</name>
       <pose>
       -18.7
-      -48.7
-      0.0
+      48.7
+      5.01
       0
       0
-      -1.57
+      3.14
       </pose>
       <uri>model://stop_sign</uri>
     </include>
@@ -2160,12 +2125,12 @@
     <include>
       <name>stop_sign_114</name>
       <pose>
-      -18.7
       41.3
-      0.0
+      -96.3
+      5.01
       0
       0
-      -1.57
+      3.14
       </pose>
       <uri>model://stop_sign</uri>
     </include>
@@ -2174,11 +2139,11 @@
       <name>stop_sign_115</name>
       <pose>
       41.3
-      -48.7
-      0.0
+      -41.3
+      5.01
       0
       0
-      -1.57
+      3.14
       </pose>
       <uri>model://stop_sign</uri>
     </include>
@@ -2187,11 +2152,11 @@
       <name>stop_sign_116</name>
       <pose>
       41.3
-      41.3
-      0.0
+      48.7
+      5.01
       0
       0
-      -1.57
+      3.14
       </pose>
       <uri>model://stop_sign</uri>
     </include>
@@ -2199,9 +2164,9 @@
     <include>
       <name>stop_sign_117</name>
       <pose>
-      106.3
+      -18.7
       -48.7
-      0.0
+      5.01
       0
       0
       -1.57
@@ -2212,9 +2177,61 @@
     <include>
       <name>stop_sign_118</name>
       <pose>
+      -18.7
+      41.3
+      5.01
+      0
+      0
+      -1.57
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
+
+    <include>
+      <name>stop_sign_119</name>
+      <pose>
+      41.3
+      -48.7
+      5.01
+      0
+      0
+      -1.57
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
+
+    <include>
+      <name>stop_sign_120</name>
+      <pose>
+      41.3
+      41.3
+      5.01
+      0
+      0
+      -1.57
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
+
+    <include>
+      <name>stop_sign_121</name>
+      <pose>
+      106.3
+      -48.7
+      5.01
+      0
+      0
+      -1.57
+      </pose>
+      <uri>model://stop_sign</uri>
+    </include>
+
+    <include>
+      <name>stop_sign_122</name>
+      <pose>
       106.3
       41.3
-      0.0
+      5.01
       0
       0
       -1.57
@@ -2227,7 +2244,7 @@
     
       <actor name="talkingA">
         <!-- Starting pose -->
-        <pose>5 5 0.6 0 0 0</pose>
+        <pose>5 5 5.609999999999999 0 0 0</pose>
         <skin>
           <filename>model://actor/meshes/SKIN_man_blue_shirt.dae</filename>
         </skin>
@@ -2240,12 +2257,12 @@
               
                 <waypoint>
                   <time>100</time>
-                  <pose>5 5 0 0 0 0</pose>
+                  <pose>5 5 5.01 0 0 0</pose>
                 </waypoint>
               
                 <waypoint>
                   <time>100</time>
-                  <pose>5 5 0 0 0 0</pose>
+                  <pose>5 5 5.01 0 0 0</pose>
                 </waypoint>
               
             </trajectory>
@@ -2254,7 +2271,7 @@
     
       <actor name="talkingB">
         <!-- Starting pose -->
-        <pose>5 5.5 0.6 0 0 0</pose>
+        <pose>5 5.5 5.609999999999999 0 0 0</pose>
         <skin>
           <filename>model://actor/meshes/SKIN_man_green_shirt.dae</filename>
         </skin>
@@ -2267,12 +2284,12 @@
               
                 <waypoint>
                   <time>100</time>
-                  <pose>5 5.5 0 0 0 0</pose>
+                  <pose>5 5.5 5.01 0 0 0</pose>
                 </waypoint>
               
                 <waypoint>
                   <time>100</time>
-                  <pose>5 5.5 0 0 0 0</pose>
+                  <pose>5 5.5 5.01 0 0 0</pose>
                 </waypoint>
               
             </trajectory>
@@ -2283,9 +2300,18 @@
     <!-- Vehicles -->
 
     <include>
-      <pose>-40 -1.9 0 0 0 1.57</pose>
+      <name>prius_hybrid_123</name>
+      <pose>
+      -40
+      -1.9
+      5.01
+      0
+      0
+      1.57
+      </pose>
       <uri>model://prius_hybrid</uri>
     </include>
+
 
   </world>
 </sdf>
