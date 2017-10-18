@@ -29,8 +29,6 @@ namespace gazebo
   /// \brief Private data for the BloomVisualPlugin class.
   class BloomVisualPluginPrivate
   {
-    /// \brief Lens flare
-    // public: std::vector<rendering::BloomPtr> blooms;
   };
 }
 
@@ -83,8 +81,6 @@ void BloomVisualPlugin::AddBloom(rendering::CameraPtr _camera)
   bloomInstance =
       Ogre::CompositorManager::getSingleton().addCompositor(
       _camera->OgreViewport(), "Bloom");
-//  this->dataPtr->bloomInstance->getTechnique()->getOutputTargetPass()->
-//      getPass(0)->setMaterial(this->dataPtr->bloomMaterial);
 
   bloomInstance->setEnabled(true);
 
