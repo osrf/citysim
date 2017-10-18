@@ -1,13 +1,21 @@
 # Building
 
-cd worlds
-erb simple_city.world.erb > simple_city.world
+    mkdir build
+    cd build
+    cmake ..
+    make install
+
+## Updating world file
+
+    cd worlds
+    erb simple_city.world.erb > simple_city.world
+
 
 # Running
 
 1. Source setup file
 
-    . setup.sh
+    . [install_prefix]/share/citysim/setup.sh
 
 1. Open world
 
