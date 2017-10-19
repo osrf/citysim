@@ -4,6 +4,8 @@ list(APPEND CMAKE_CXX_FLAGS "${GAZEBO_CXX_FLAGS}")
 
 
 set (plugins
+  LensFlareVisualPlugin
+  BloomVisualPlugin
 )
 
 foreach (src ${plugins})
