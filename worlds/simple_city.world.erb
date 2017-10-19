@@ -6,14 +6,18 @@
   # Global model count used to generate unique names
   $count = 0
 
+  # Street level height (Z == 0 is the bottom of the ocean)
+  $street_z_offset = 5.01
+
   # Print a model include
+  # This automatically adds $street_z_offset to vertical coordinates
   # Sets $count
   # Parameters:
   # _model: Model file (without "model://", such as "pine_tree")
   # _posX: Position X in the world
   # _posY: Position Y in the world
   # _yaw: Yaw in the world
-  # _posZ: Optional position Z in the world
+  # _posZ: Optional position Z in the world w.r.t. street level
   def includeModel(_model, _posX, _posY, _yaw, _posZ = 0.0)
     $count += 1
 
@@ -22,7 +26,7 @@
     "      <pose>\n"\
     "      " + _posX.to_s() + "\n"\
     "      " + _posY.to_s() + "\n"\
-    "      " + _posZ.to_s() + "\n"\
+    "      " + (_posZ + $street_z_offset).to_s() + "\n"\
     "      " + 0.to_s() + "\n"\
     "      " + 0.to_s() + "\n"\
     "      " + _yaw.to_s() + "\n"\
@@ -57,7 +61,7 @@
     "  <pose>\n"\
     "    " + _posX.to_s() + "\n"\
     "    " + _posY.to_s() + "\n"\
-    "    " + _posZ.to_s() + "\n"\
+    "    " + (_posZ + $street_z_offset).to_s() + "\n"\
     "    " + 0.to_s() + "\n"\
     "    " + 0.to_s() + "\n"\
     "    " + _yaw.to_s() + "\n"\
@@ -261,49 +265,14 @@
       <direction>-0.5 0.1 -0.9</direction>
     </light>
 
-    <!-- A ground plane -->
-    <model name="large_ground_plane">
-      <pose>60 -30 -0.01 0 0 0</pose>
-      <static>true</static>
-      <link name="link">
-        <collision name="collision">
-          <geometry>
-            <plane>
-              <normal>0 0 1</normal>
-              <size>230 300</size>
-            </plane>
-          </geometry>
-          <surface>
-            <friction>
-              <ode>
-                <mu>100</mu>
-                <mu2>50</mu2>
-              </ode>
-            </friction>
-          </surface>
-        </collision>
-        <visual name="visual">
-          <cast_shadows>false</cast_shadows>
-          <geometry>
-            <plane>
-              <normal>0 0 1</normal>
-              <size>230 300</size>
-            </plane>
-          </geometry>
-          <material>
-            <script>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Grass</name>
-            </script>
-          </material>
-        </visual>
-      </link>
-    </model>
+    <!-- Environment -->
+    <%= includeModel("city_terrain", 0, 0, 0) %>
+    <%= includeModel("ocean", 40, -20, 0, 3 - $street_z_offset) %>
 
     <%
       # Roads
       road_width = 7.4
-      road_z_offset = 0.01
+      road_z_offset = 0.01 + $street_z_offset
 
       road_x = [-45, -15, 45, 110, 120]
       road_y = [-100, -45, 0, 45, 100]
@@ -339,7 +308,7 @@
     <%
       # Sidewalks
       sidewalk_width = 3
-      sidewalk_z_offset = 0.005
+      sidewalk_z_offset = 0.005 + $street_z_offset
       sidewalk_horiz_offset = 5.2
 
       sidewalk_x =
@@ -348,7 +317,6 @@
         road_x[1]+sidewalk_horiz_offset,
         road_x[2]+sidewalk_horiz_offset,
         road_x[4]+sidewalk_horiz_offset,
-        road_x[0]-sidewalk_horiz_offset,
         road_x[1]-sidewalk_horiz_offset,
         road_x[2]-sidewalk_horiz_offset,
         road_x[3]-sidewalk_horiz_offset,
@@ -443,6 +411,11 @@
 
     <!-- Block 0 1 -->
 
+    <%= oldModel("house_1", 97.28, 12.598, 0) %>
+    <%= oldModel("house_1", 85.28, 12.598, 0, 0, 0.8, 1, 0.8) %>
+    <%= oldModel("house_1", 73.28, 12.598, 0, 0, 1, 0.8, 0.8) %>
+    <%= oldModel("house_1", 61.28, 12.598, 0, 0, 0.8, 0.8, 1) %>
+
     <!-- Block 0 2 -->
 
     <%= includeModel("office_building", 60.19, -15.294, 0) %>
@@ -532,11 +505,6 @@
 
     <!-- West block -->
 
-    <%= oldModel("house_1", 101.3, 110.6999, 0) %>
-    <%= oldModel("house_1", 81.3, 110.6999, 0, 0, 0.8, 1, 0.8) %>
-    <%= oldModel("house_1", 61.3, 110.6999, 0, 0, 1, 0.8, 0.8) %>
-    <%= oldModel("house_1", 41.3, 110.6999, 0, 0, 0.8, 0.8, 1) %>
-
     <!-- East block -->
 
     <%= includeModel("powerplant", -6.09, -134.33, 3.14) %>
@@ -547,6 +515,24 @@
     <%= includeModel("drc_practice_angled_barrier_45", -37.2216, -100.588, 3.14159) %>
     <%= includeModel("drc_practice_orange_jersey_barrier", -34.8405, -101.725, 0.867273) %>
     <%= includeModel("construction_barrel", -47.7276, -90.7959, 0) %>
+
+    <!-- South island -->
+
+    <%= includeModel("truss_bridge", -56.37, -45, 1.57, -0.29) %>
+    <%= includeModel("truss_bridge", -56.37, 0, 1.57, -0.29) %>
+
+    <road name="sandy_path">
+      <width>7.9</width>
+      <point>-68 <%= -45 - road_width * 0.4 %> <%= road_z_offset %></point>
+      <point>-68 <%= road_width * 0.4 %> <%= road_z_offset %></point>
+
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Residential</name>
+        </script>
+      </material>
+    </road>
 
     <!-- Stop lights -->
 
@@ -602,7 +588,7 @@
     %>
       <actor name="<%= name  %>">
         <!-- Starting pose -->
-        <pose><%= traj[0][:x] %> <%= traj[0][:y] %> 0.6 0 0 <%= traj[0][:yaw] %></pose>
+        <pose><%= traj[0][:x] %> <%= traj[0][:y] %> <%= 0.6 + $street_z_offset %> 0 0 <%= traj[0][:yaw] %></pose>
         <skin>
           <filename><%= mesh_path + skin %></filename>
         </skin>
@@ -633,7 +619,7 @@
               %>
                 <waypoint>
                   <time><%= time %></time>
-                  <pose><%= x %> <%= y %> 0 0 0 <%= yaw %></pose>
+                  <pose><%= x %> <%= y %> <%= $street_z_offset %> 0 0 <%= yaw %></pose>
                 </waypoint>
               <% end %>
             </trajectory>
@@ -643,10 +629,7 @@
 
     <!-- Vehicles -->
 
-    <include>
-      <pose>-40 -1.9 0 0 0 1.57</pose>
-      <uri>model://prius_hybrid</uri>
-    </include>
+    <%= includeModel("prius_hybrid", -40, -1.9, 1.57) %>
 
   </world>
 </sdf>
