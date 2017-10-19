@@ -310,7 +310,7 @@
     seg = sidewalkSegs.delete sidewalkSegs.sample
     actors["walking_"+i.to_s] = {:skin => skins.sample,
                                  :anim => animations[3],
-                                 :traj => getStraightTrajectory(seg[:start], seg[:end], rand(1.5..2.5))}
+                                 :traj => getStraightTrajectory(seg[:start], seg[:end], rand(0.9..1.6))}
   end
 
   # running
