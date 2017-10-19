@@ -1,6 +1,8 @@
 <?xml version="1.0" ?>
 
 <%
+  require 'matrix'
+
   # Simple city
 
   ###############################################
@@ -20,6 +22,36 @@
   road_y = [-100, -45, 0, 45, 100]
   road_width = 7.4
   road_z_offset = 0.01 + $street_z_offset
+
+  # Sidewalk parameters
+  sidewalk_width = 3
+  sidewalk_z_offset = 0.005 + $street_z_offset
+  sidewalk_horiz_offset = 5.2
+
+  sidewalk_x =
+  [
+    road_x[0]+sidewalk_horiz_offset,
+    road_x[1]-sidewalk_horiz_offset,
+    road_x[1]+sidewalk_horiz_offset,
+    road_x[2]-sidewalk_horiz_offset,
+    road_x[2]+sidewalk_horiz_offset,
+    road_x[3]-sidewalk_horiz_offset,
+    road_x[4]+sidewalk_horiz_offset,
+  ]
+
+  sidewalk_y =
+  [
+    road_y[0]-sidewalk_horiz_offset,
+    road_y[0]+sidewalk_horiz_offset,
+    road_y[1]-sidewalk_horiz_offset,
+    road_y[1]+sidewalk_horiz_offset,
+    road_y[2]-sidewalk_horiz_offset,
+    road_y[2]+sidewalk_horiz_offset,
+    road_y[3]-sidewalk_horiz_offset,
+    road_y[3]+sidewalk_horiz_offset,
+    road_y[4]-sidewalk_horiz_offset,
+    road_y[4]+sidewalk_horiz_offset,
+  ]
 
   ###############################################
   #                                             #
@@ -119,9 +151,9 @@
   # Get a rectangular trajectory
   # Parameters:
   # _block: A rectangle, consisting of [minX, minY, maxX, maxY]
-  # _speed:
-  # _start:
-  def getTrajectory(_block, _speed, _start)
+  # _speed: Speed in m/s
+  # _start: (0..7)
+  def getRectangularTrajectory(_block, _speed, _start)
 
     minX = _block[:minX]
     minY = _block[:minY]
@@ -201,6 +233,39 @@
     return trajectory
   end
 
+  # Get a straight trajectory
+  # Parameters:
+  # _starPt: Start point
+  # _endPt: End point
+  # _speed: Speed in m/s
+  def getStraightTrajectory(_startPt, _endPt, _speed)
+
+    diff = _endPt - _startPt
+
+    # Orientation
+    startYaw = diff.angle_with(Vector[1, 0])
+
+    # FIXME: For now, reducing all paths because animation is bad otherwise
+    newEndPt = Vector[_startPt[0] + diff[0] * 0.2, _startPt[1] + diff[1] * 0.2]
+    _endPt = newEndPt
+
+    # Time
+    length = (_endPt - _startPt).magnitude
+    oneWayTime = length / _speed
+
+    # Trajectory
+    trajectory =
+    [
+      {:x => _startPt[0],        :y => _startPt[1], :yaw => startYaw, :time => 0},
+      {:x => _endPt[0],          :y => _endPt[1],   :yaw => startYaw, :time => oneWayTime},
+      {:x => _endPt[0],          :y => _endPt[1],   :yaw => startYaw + Math::PI, :time => oneWayTime * 1.1},
+      {:x => _startPt[0],        :y => _startPt[1], :yaw => startYaw + Math::PI, :time => oneWayTime * 2},
+      {:x => _startPt[0],        :y => _startPt[1], :yaw => startYaw, :time => oneWayTime * 2.1},
+    ]
+
+    return trajectory
+  end
+
   # Actor meshes
   skins =
   [
@@ -217,7 +282,7 @@
     "ANIMATION_walking.dae"
   ]
 
-  # Blocks for pedestrian trajectories
+  # Blocks for pedestrian rectangular trajectories
   blocks = []
   (0..2).step(1) do |x|
     (0..3).step(1) do |y|
@@ -225,21 +290,36 @@
     end
   end
 
+  # Street segments for pedestrian straight trajectories
+  # Note: These are not covering all sidewalks
+  sidewalkSegs = []
+  (0..4).step(2) do |x|
+    (1..7).step(2) do |y|
+      sidewalkSegs.push({:start => Vector[sidewalk_x[x], sidewalk_y[y]], :end => Vector[sidewalk_x[x], sidewalk_y[y+1]]})
+      sidewalkSegs.push({:start => Vector[sidewalk_x[x], sidewalk_y[y]], :end => Vector[sidewalk_x[x+1], sidewalk_y[y]]})
+      sidewalkSegs.push({:start => Vector[sidewalk_x[x+1], sidewalk_y[y]], :end => Vector[sidewalk_x[x], sidewalk_y[y]]})
+      sidewalkSegs.push({:start => Vector[sidewalk_x[x+1], sidewalk_y[y+1]], :end => Vector[sidewalk_x[x], sidewalk_y[y+1]]})
+      sidewalkSegs.push({:start => Vector[sidewalk_x[x], sidewalk_y[y+1]], :end => Vector[sidewalk_x[x+1], sidewalk_y[y+1]]})
+    end
+  end
+
   actors = Hash.new
 
   # walking
   starts = [0, 1, 2, 3, 4, 5, 6, 7].shuffle
-  for i in 0..3
+  for i in 0..5
+    seg = sidewalkSegs.sample
     actors["walking_"+i.to_s] = {:skin => skins.sample,
                                  :anim => animations[3],
-                                 :traj => getTrajectory(blocks.sample, rand(1.5..2.5), starts[i])}
+                                 :traj => getStraightTrajectory(seg[:start], seg[:end], rand(1.5..2.5))}
   end
 
   # running
-  for i in 0..3
+  for i in 0..5
+    seg = sidewalkSegs.sample
     actors["running_"+i.to_s] = {:skin => skins.sample,
                                  :anim => animations[0],
-                                 :traj => getTrajectory(blocks.sample, rand(3.5..4.5), starts[i+4])}
+                                 :traj => getStraightTrajectory(seg[:start], seg[:end], rand(3.5..4.5))}
   end
 
   actors["talkingA"] = {:skin => skins[0],
@@ -321,34 +401,6 @@
 
     <%
       # Sidewalks
-      sidewalk_width = 3
-      sidewalk_z_offset = 0.005 + $street_z_offset
-      sidewalk_horiz_offset = 5.2
-
-      sidewalk_x =
-      [
-        road_x[0]+sidewalk_horiz_offset,
-        road_x[1]+sidewalk_horiz_offset,
-        road_x[2]+sidewalk_horiz_offset,
-        road_x[4]+sidewalk_horiz_offset,
-        road_x[1]-sidewalk_horiz_offset,
-        road_x[2]-sidewalk_horiz_offset,
-        road_x[3]-sidewalk_horiz_offset,
-      ]
-
-      sidewalk_y =
-      [
-        road_y[0]+sidewalk_horiz_offset,
-        road_y[1]+sidewalk_horiz_offset,
-        road_y[2]+sidewalk_horiz_offset,
-        road_y[3]+sidewalk_horiz_offset,
-        road_y[4]+sidewalk_horiz_offset,
-        road_y[0]-sidewalk_horiz_offset,
-        road_y[1]-sidewalk_horiz_offset,
-        road_y[2]-sidewalk_horiz_offset,
-        road_y[3]-sidewalk_horiz_offset,
-        road_y[4]-sidewalk_horiz_offset,
-      ]
 
       count = 0
 
