@@ -480,15 +480,23 @@
 
     <%= includeModel("fire_station", 56.84, 61.56, 1.57) %>
 
-    <%= oldModel("house_2", 65.4415, 54.097, 0) %>
-    <%= oldModel("house_3", 75.734, 53.01, 0) %>
+    <%= includeModel("house_2", 71.455, 61.92, 0) %>
+    <%= includeModel("house_3", 92.89, 60.76, 0) %>
+    <%= includeModel("oak_tree", 68.27, 54.225, 3.08) %>
+    <%= includeModel("oak_tree", 81.411, 54.559, 1.17) %>
+    <%= includeModel("oak_tree", 99.055, 66.83, 2.2) %>
+    <%= includeModel("pine_tree", 97.22, 52.5, rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", 98.95, 53.2, rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", 101.11, 52.63, rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", 100.74, 54.2, rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", 100.53, 55.85, rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", 99.226, 55.0, rand(0.0..3.14)) %>
 
     <!-- Block 0 1 -->
 
-    <%= oldModel("house_1", 97.28, 12.598, 0) %>
-    <%= oldModel("house_1", 85.28, 12.598, 0, 0, 0.8, 1, 0.8) %>
-    <%= oldModel("house_1", 73.28, 12.598, 0, 0, 1, 0.8, 0.8) %>
-    <%= oldModel("house_1", 61.28, 12.598, 0, 0, 0.8, 0.8, 1) %>
+    <%= includeModel("house_1", 61.74, 22.76, -1.57) %>
+    <%= includeModel("oak_tree", 57.97, 10.72, 3.06) %>
+    <%= includeModel("oak_tree", 53.56, 34.08, 1.16) %>
 
     <!-- Block 0 2 -->
 
@@ -526,13 +534,29 @@
     <%= includeModel("law_office", 8.47, 9.356, 0) %>
     <%= includeModel("thrift_shop", 1.35, 9.356, 0) %>
     <%= includeModel("salon", 15.7, 9.356, 0) %>
+    <%= includeModel("postbox", -6.09, 4.33, 3.14) %>
     <%= includeModel("oak_tree", -6.418, 10.37, 0.55) %>
     <%= includeModel("apartment", 1.573, 27.565, 0) %>
     <%= includeModel("osrf_first_office", 27.003, 20.15, 1.57) %>
+    <%= includeModel("pine_tree", 16.096, 34.82, rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", 18.7, 29.33, rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", 22.56, 34.58, rand(0.0..3.14)) %>
+    <%= includeModel("oak_tree", 31.49, 35.89, -3.03) %>
 
     <!-- Block 1 2 -->
 
-    <%= oldModel("fast_food", -3.73, -9.08, 0, 1.57965648) %>
+    <%= includeModel("fast_food", 28.25, -13.93, 0) %>
+    <%= includeModel("dumpster", 15.94, -13.63, 3.14) %>
+    <%= includeModel("radio_tower", (road_x[1] + road_x[2])*0.5-1, (road_y[1] + road_y[2])*0.5, 0, 1.57965648) %>
+    <%= includeModel("house_2", 1.61, -14.15, 3.14) %>
+
+    <% (0..3).step(1).each do |x| %>
+      <%= includeModel("pine_tree", road_x[1] + 8 + x*5, road_y[2] - 8, rand(0.0..3.14)) %>
+    <% end %>
+
+    <% (1..5).step(1).each do |y| %>
+      <%= includeModel("pine_tree", road_x[1] + 8, road_y[2] - 8 - y*5, rand(0.0..3.14)) %>
+    <% end %>
 
     <!-- Block 1 3 -->
 
@@ -547,15 +571,28 @@
     <!-- Block 2 1 -->
 
     <%= includeModel("post_office", -26.686, 11.119, 3.14) %>
+    <%= includeModel("postbox", -28.58, 4.33, 3.14) %>
     <%= includeModel("pine_tree", -30.709, 7.15, rand(0.0..3.14)) %>
-    <%= oldModel("house_2", -35.45, 11.71, -1.57) %>
+    <%= includeModel("house_1", -29.5, 25.344, -1.57) %>
+    <%= includeModel("oak_tree", -35.811, 11.78, 0.55) %>
+    <%= includeModel("pine_tree", -22.97, 15.87, 1.82) %>
+    <%= includeModel("oak_tree", -36.78, 36.47, 1.7) %>
+    <%= includeModel("pine_tree", -23.94, 34.92, 0.56) %>
 
     <!-- Block 2 2 -->
 
     <%= includeModel("salon", -27.65, -9.35, 3.14) %>
     <%= includeModel("law_office", -34.886, -9.408, 3.14) %>
-    <%= oldModel("house_3", -33.84, -18.54, -1.57) %>
+    <%= includeModel("house_3", -33.39, -21.30, -1.57) %>
+    <%= includeModel("house_3", -28.126, -32.93, 0.0) %>
+    <%= includeModel("house_3", -25.739, -19.38, 1.57) %>
     <%= includeModel("pine_tree", -37.48, -13.67, rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", -22.26, -7.39, rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", -22.26, -10.46, rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", -35.045, -28.058, rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", -37.48, -36.76, rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", -33.06, -37.17, rand(0.0..3.14)) %>
+    <%= includeModel("pine_tree", -25.34, -29.166, rand(0.0..3.14)) %>
 
     <!-- Block 2 3 -->
 
@@ -586,7 +623,9 @@
 
     <!-- East block -->
 
-    <%= includeModel("powerplant", -6.09, -134.33, 3.14) %>
+    <%= includeModel("powerplant", 15.57, -134.33, 3.14) %>
+    <%= includeModel("reactor", -42.29, -115.79, 3.14) %>
+    <%= includeModel("reactor", -40.95, -136.98, 3.14) %>
 
     <!-- Construction zone -->
 
@@ -617,7 +656,6 @@
     <!-- Stop lights -->
 
     <%= includeModel("stop_light_post", road_x[1] + road_width * 0.5, -road_width * 0.5, -1.57) %>
-
     <%= includeModel("stop_light_post", road_x[2] + road_width * 0.5, -road_width * 0.5, -1.57) %>
     <%= includeModel("stop_light_post", road_x[4] + road_width * 0.5, -road_width * 0.5, -1.57) %>
     <%= includeModel("stop_light_post", road_x[0] - road_width * 0.5, +road_width * 0.5, 1.57) %>
@@ -658,6 +696,30 @@
     <%= includeModel("stop_sign", road_x[2] - road_width * 0.5, road_y[3]-road_width * 0.5, -1.57) %>
     <%= includeModel("stop_sign", road_x[3] - road_width * 0.5, road_y[1]-road_width * 0.5, -1.57) %>
     <%= includeModel("stop_sign", road_x[3] - road_width * 0.5, road_y[3]-road_width * 0.5, -1.57) %>
+
+    <!-- Street lights -->
+
+    <%
+      dist = road_x[1] - road_x[0]
+    %>
+    <%= includeModel("lamp_post", road_x[0] + dist*0.33, -road_width * 0.5, 3.14) %>
+    <%= includeModel("lamp_post", road_x[0] + dist*0.66,  road_width * 0.5, 0) %>
+
+    <%
+      dist = road_x[2] - road_x[1]
+    %>
+    <%= includeModel("lamp_post", road_x[1] + dist*0.2, -road_width * 0.5, 3.14) %>
+    <%= includeModel("lamp_post", road_x[1] + dist*0.4,  road_width * 0.5, 0) %>
+    <%= includeModel("lamp_post", road_x[1] + dist*0.6, -road_width * 0.5, 3.14) %>
+    <%= includeModel("lamp_post", road_x[1] + dist*0.7,  road_width * 0.5, 0) %>
+
+    <%
+      dist = road_x[3] - road_x[2]
+    %>
+    <%= includeModel("lamp_post", road_x[2] + dist*0.2, -road_width * 0.5, 3.14) %>
+    <%= includeModel("lamp_post", road_x[2] + dist*0.4,  road_width * 0.5, 0) %>
+    <%= includeModel("lamp_post", road_x[2] + dist*0.6, -road_width * 0.5, 3.14) %>
+    <%= includeModel("lamp_post", road_x[2] + dist*0.7,  road_width * 0.5, 0) %>
 
     <!-- Actors -->
     <%
