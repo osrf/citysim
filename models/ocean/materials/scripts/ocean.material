@@ -68,8 +68,8 @@ material Waves_GLSL
 
       fragment_program_ref GLSL/WavesFS
       {
-        param_named deepColor float4 0 0.05 0.2 1.0
-        param_named shallowColor float4 0 0.6 1 1.0
+        param_named deepColor float4 0 0.05 0.1 1.0
+        param_named shallowColor float4 0 0.2 0.3 1.0
         param_named fresnelPower float 5
         param_named hdrMultiplier float 0.4
         param_named bumpMap int 0
