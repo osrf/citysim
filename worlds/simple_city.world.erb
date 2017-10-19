@@ -306,9 +306,8 @@
   actors = Hash.new
 
   # walking
-  starts = [0, 1, 2, 3, 4, 5, 6, 7].shuffle
   for i in 0..5
-    seg = sidewalkSegs.sample
+    seg = sidewalkSegs.delete sidewalkSegs.sample
     actors["walking_"+i.to_s] = {:skin => skins.sample,
                                  :anim => animations[3],
                                  :traj => getStraightTrajectory(seg[:start], seg[:end], rand(1.5..2.5))}
@@ -316,7 +315,7 @@
 
   # running
   for i in 0..5
-    seg = sidewalkSegs.sample
+    seg = sidewalkSegs.delete sidewalkSegs.sample
     actors["running_"+i.to_s] = {:skin => skins.sample,
                                  :anim => animations[0],
                                  :traj => getStraightTrajectory(seg[:start], seg[:end], rand(3.5..4.5))}
