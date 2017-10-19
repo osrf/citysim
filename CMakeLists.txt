@@ -45,3 +45,4 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/setup.sh DESTINATION ${CMAKE_INSTALL_P
 add_subdirectory(plugins)
 add_subdirectory(models)
 add_subdirectory(worlds)
+add_subdirectory(media)
