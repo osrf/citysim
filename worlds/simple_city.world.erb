@@ -492,10 +492,14 @@
 
     <!-- North road -->
 
-    <%= includeModel("pine_tree", (road_x[3] + road_x[4]) * 0.5, 93, rand(0.0..3.14)) %>
-    <%= includeModel("pine_tree", (road_x[3] + road_x[4]) * 0.5, 81, rand(0.0..3.14)) %>
-    <%= includeModel("pine_tree", (road_x[3] + road_x[4]) * 0.5, 69, rand(0.0..3.14)) %>
-    <%= includeModel("pine_tree", (road_x[3] + road_x[4]) * 0.5, 57, rand(0.0..3.14)) %>
+    <%
+      (0..3).step(1).each do |road|
+        (0..4).step(1).each do |y|
+          dist = (road_y[road+1] - road_y[road]) * 0.15
+    %>
+        <%= includeModel("pine_tree", (road_x[3] + road_x[4]) * 0.5, road_y[road] + 8 + y*dist, rand(0.0..3.14)) %>
+      <% end %>
+    <% end %>
 
     <!-- Block 0 0 -->
 
@@ -576,13 +580,18 @@
     <%= includeModel("dumpster", 15.94, -13.63, 3.14) %>
     <%= includeModel("radio_tower", (road_x[1] + road_x[2])*0.5-1, (road_y[1] + road_y[2])*0.5, 0, 1.57965648) %>
     <%= includeModel("house_2", 1.61, -14.15, 3.14) %>
+    <%= includeModel("house_2", -0.59, -26.6, -1.57) %>
 
     <% (0..4).step(1).each do |x| %>
       <%= includeModel("pine_tree", road_x[1] + 8 + x*5, road_y[2] - 8, rand(0.0..3.14)) %>
     <% end %>
 
-    <% (1..5).step(1).each do |y| %>
+    <% (1..6).step(1).each do |y| %>
       <%= includeModel("pine_tree", road_x[1] + 8, road_y[2] - 8 - y*5, rand(0.0..3.14)) %>
+    <% end %>
+
+    <% (1..5).step(1).each do |x| %>
+      <%= includeModel("pine_tree", road_x[1] + 8 + x*5, road_y[1] + 8, rand(0.0..3.14)) %>
     <% end %>
 
     <!-- Block 1 3 -->
@@ -624,6 +633,11 @@
     <!-- Block 2 3 -->
 
     <%= includeModel("police_station", -31.838, -59.696, 0) %>
+
+    <% (1..10).step(1).each do |y| %>
+      <%= includeModel("pine_tree", road_x[1] - 8 + rand(-0.8..0.8), road_y[1] - 6 - y, rand(0.0..3.14)) %>
+    <% end %>
+
     <%= includeModel("collapsed_industrial", -29.8725, -83.9104, 1.5708) %>
     <%= includeModel("construction_cone", -40.748, -90.1868, rand(0.0..3.14)) %>
 
