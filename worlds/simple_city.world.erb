@@ -1,13 +1,63 @@
 <?xml version="1.0" ?>
 
 <%
+  require 'matrix'
+
   # Simple city
+
+  ###############################################
+  #                                             #
+  #              GLOBAL PARAMETERS              #
+  #                                             #
+  ###############################################
 
   # Global model count used to generate unique names
   $count = 0
 
   # Street level height (Z == 0 is the bottom of the ocean)
   $street_z_offset = 5.01
+
+  # Road parameters
+  road_x = [-45, -15, 45, 110, 120]
+  road_y = [-100, -45, 0, 45, 100]
+  road_width = 7.4
+  road_z_offset = 0.01 + $street_z_offset
+
+  # Sidewalk parameters
+  sidewalk_width = 3
+  sidewalk_z_offset = 0.005 + $street_z_offset
+  sidewalk_horiz_offset = 5.2
+
+  sidewalk_x =
+  [
+    road_x[0]+sidewalk_horiz_offset,
+    road_x[1]-sidewalk_horiz_offset,
+    road_x[1]+sidewalk_horiz_offset,
+    road_x[2]-sidewalk_horiz_offset,
+    road_x[2]+sidewalk_horiz_offset,
+    road_x[3]-sidewalk_horiz_offset,
+    road_x[4]+sidewalk_horiz_offset,
+  ]
+
+  sidewalk_y =
+  [
+    road_y[0]-sidewalk_horiz_offset,
+    road_y[0]+sidewalk_horiz_offset,
+    road_y[1]-sidewalk_horiz_offset,
+    road_y[1]+sidewalk_horiz_offset,
+    road_y[2]-sidewalk_horiz_offset,
+    road_y[2]+sidewalk_horiz_offset,
+    road_y[3]-sidewalk_horiz_offset,
+    road_y[3]+sidewalk_horiz_offset,
+    road_y[4]-sidewalk_horiz_offset,
+    road_y[4]+sidewalk_horiz_offset,
+  ]
+
+  ###############################################
+  #                                             #
+  #                  FUNCTIONS                  #
+  #                                             #
+  ###############################################
 
   # Print a model include
   # This automatically adds $street_z_offset to vertical coordinates
@@ -98,30 +148,17 @@
     "</model>\n"
   end
 
-  # Actors
-  mesh_path = "model://actor/meshes/"
+  # Get a rectangular trajectory
+  # Parameters:
+  # _block: A rectangle, consisting of [minX, minY, maxX, maxY]
+  # _speed: Speed in m/s
+  # _start: (0..7)
+  def getRectangularTrajectory(_block, _speed, _start)
 
-  skins =
-  [
-    "SKIN_man_blue_shirt.dae",
-    "SKIN_man_green_shirt.dae",
-    "SKIN_man_red_shirt.dae"
-  ]
-
-  animations =
-  [
-    "ANIMATION_running.dae",
-    "ANIMATION_talking_a.dae",
-    "ANIMATION_talking_b.dae",
-    "ANIMATION_walking.dae"
-  ]
-
-  # From a rectangle (min, max)
-  def trajectory(traj, speed, start)
-    minX = traj[:minX]
-    minY = traj[:minY]
-    maxX = traj[:maxX]
-    maxY = traj[:maxY]
+    minX = _block[:minX]
+    minY = _block[:minY]
+    maxX = _block[:maxX]
+    maxY = _block[:maxY]
 
     # Orientation
     plusX = 0
@@ -134,12 +171,12 @@
 
     # Time
     edgeX_length = maxX - minX - margin*2.0 - turn*2.0
-    edgeX_time = edgeX_length / speed
+    edgeX_time = edgeX_length / _speed
 
     edgeY_length = maxY - minY - margin*2.0 - turn*2.0
-    edgeY_time = edgeY_length / speed
+    edgeY_time = edgeY_length / _speed
 
-    turn_time = (turn*2) / speed
+    turn_time = (turn*2) / _speed
 
     # poses starting from min
     allPoses =
@@ -158,9 +195,9 @@
     trajectory = Array.new
 
     time = 0.0
-    current = start
+    current = _start
     for i in 0..8
-      if current == start
+      if current == _start
         time = 0.0
       elsif current == 1 or current == 5
         time = time + edgeY_time
@@ -182,45 +219,107 @@
     end
 
     # repeat first
-    if start == 1 || start == 5
+    if _start == 1 || _start == 5
       time = time + edgeY_time
-    elsif start == 3 || start == 7
+    elsif _start == 3 || _start == 7
       time = time + edgeX_time
     else
       time = time + turn_time
     end
 
-    pose = allPoses[start]
+    pose = allPoses[_start]
     trajectory.push({:x => pose[:x], :y => pose[:y], :yaw => pose[:yaw], :time => time})
 
     return trajectory
   end
 
-  # Blocks
-  block_size = 100
+  # Get a straight trajectory
+  # Parameters:
+  # _starPt: Start point
+  # _endPt: End point
+  # _speed: Speed in m/s
+  def getStraightTrajectory(_startPt, _endPt, _speed)
 
-  blocks =
+    diff = _endPt - _startPt
+
+    # Orientation
+    startYaw = diff.angle_with(Vector[1, 0])
+
+    # FIXME: For now, reducing all paths because animation is bad otherwise
+    newEndPt = Vector[_startPt[0] + diff[0] * 0.2, _startPt[1] + diff[1] * 0.2]
+    _endPt = newEndPt
+
+    # Time
+    length = (_endPt - _startPt).magnitude
+    oneWayTime = length / _speed
+
+    # Trajectory
+    trajectory =
+    [
+      {:x => _startPt[0],        :y => _startPt[1], :yaw => startYaw, :time => 0},
+      {:x => _endPt[0],          :y => _endPt[1],   :yaw => startYaw, :time => oneWayTime},
+      {:x => _endPt[0],          :y => _endPt[1],   :yaw => startYaw + Math::PI, :time => oneWayTime * 1.1},
+      {:x => _startPt[0],        :y => _startPt[1], :yaw => startYaw + Math::PI, :time => oneWayTime * 2},
+      {:x => _startPt[0],        :y => _startPt[1], :yaw => startYaw, :time => oneWayTime * 2.1},
+    ]
+
+    return trajectory
+  end
+
+  # Actor meshes
+  skins =
   [
-    {:minX => 0, :maxX => block_size, :minY => -block_size, :maxY => 0},
-    {:minX => 0, :maxX => block_size, :minY => 0,           :maxY => block_size}
+    "SKIN_man_blue_shirt.dae",
+    "SKIN_man_green_shirt.dae",
+    "SKIN_man_red_shirt.dae"
   ]
+
+  animations =
+  [
+    "ANIMATION_running.dae",
+    "ANIMATION_talking_a.dae",
+    "ANIMATION_talking_b.dae",
+    "ANIMATION_walking.dae"
+  ]
+
+  # Blocks for pedestrian rectangular trajectories
+  blocks = []
+  (0..2).step(1) do |x|
+    (0..3).step(1) do |y|
+      blocks.push({:minX => road_x[x], :maxX => road_x[x+1], :minY => road_y[y], :maxY => road_y[y+1]})
+    end
+  end
+
+  # Street segments for pedestrian straight trajectories
+  # Note: These are not covering all sidewalks
+  sidewalkSegs = []
+  (0..4).step(2) do |x|
+    (1..7).step(2) do |y|
+      sidewalkSegs.push({:start => Vector[sidewalk_x[x], sidewalk_y[y]], :end => Vector[sidewalk_x[x], sidewalk_y[y+1]]})
+      sidewalkSegs.push({:start => Vector[sidewalk_x[x], sidewalk_y[y]], :end => Vector[sidewalk_x[x+1], sidewalk_y[y]]})
+      sidewalkSegs.push({:start => Vector[sidewalk_x[x+1], sidewalk_y[y]], :end => Vector[sidewalk_x[x], sidewalk_y[y]]})
+      sidewalkSegs.push({:start => Vector[sidewalk_x[x+1], sidewalk_y[y+1]], :end => Vector[sidewalk_x[x], sidewalk_y[y+1]]})
+      sidewalkSegs.push({:start => Vector[sidewalk_x[x], sidewalk_y[y+1]], :end => Vector[sidewalk_x[x+1], sidewalk_y[y+1]]})
+    end
+  end
 
   actors = Hash.new
 
   # walking
-  #starts = [0, 1, 2, 3, 4, 5, 6, 7].shuffle
-  #for i in 0..3
-  #  actors["walking_"+i.to_s] = {:skin => skins.sample,
-  #                               :anim => animations[3],
-  #                               :traj => trajectory(blocks.sample, rand(1.5..2.5), starts[i])}
-  #end
+  for i in 0..5
+    seg = sidewalkSegs.delete sidewalkSegs.sample
+    actors["walking_"+i.to_s] = {:skin => skins.sample,
+                                 :anim => animations[3],
+                                 :traj => getStraightTrajectory(seg[:start], seg[:end], rand(0.9..1.6))}
+  end
 
   # running
-  #for i in 0..3
-  #  actors["running_"+i.to_s] = {:skin => skins.sample,
-  #                               :anim => animations[0],
-  #                               :traj => trajectory(blocks.sample, rand(3.5..4.5), starts[i+4])}
-  #end
+  for i in 0..5
+    seg = sidewalkSegs.delete sidewalkSegs.sample
+    actors["running_"+i.to_s] = {:skin => skins.sample,
+                                 :anim => animations[0],
+                                 :traj => getStraightTrajectory(seg[:start], seg[:end], rand(3.5..4.5))}
+  end
 
   actors["talkingA"] = {:skin => skins[0],
                         :anim => animations[1],
@@ -236,7 +335,7 @@
   <world name="default">
     <gui>
      <camera name="user_camera">
-       <pose>-61.60 -2.05 10.325 0 0.25 0</pose>
+       <pose>-49.08 -1.911 6.95 0 0 -0.0159</pose>
      </camera>
     </gui>
     <scene>
@@ -293,12 +392,6 @@
 
     <%
       # Roads
-      road_width = 7.4
-      road_z_offset = 0.01 + $street_z_offset
-
-      road_x = [-45, -15, 45, 110, 120]
-      road_y = [-100, -45, 0, 45, 100]
-
       count = 0
 
       # Along y
@@ -329,34 +422,6 @@
 
     <%
       # Sidewalks
-      sidewalk_width = 3
-      sidewalk_z_offset = 0.005 + $street_z_offset
-      sidewalk_horiz_offset = 5.2
-
-      sidewalk_x =
-      [
-        road_x[0]+sidewalk_horiz_offset,
-        road_x[1]+sidewalk_horiz_offset,
-        road_x[2]+sidewalk_horiz_offset,
-        road_x[4]+sidewalk_horiz_offset,
-        road_x[1]-sidewalk_horiz_offset,
-        road_x[2]-sidewalk_horiz_offset,
-        road_x[3]-sidewalk_horiz_offset,
-      ]
-
-      sidewalk_y =
-      [
-        road_y[0]+sidewalk_horiz_offset,
-        road_y[1]+sidewalk_horiz_offset,
-        road_y[2]+sidewalk_horiz_offset,
-        road_y[3]+sidewalk_horiz_offset,
-        road_y[4]+sidewalk_horiz_offset,
-        road_y[0]-sidewalk_horiz_offset,
-        road_y[1]-sidewalk_horiz_offset,
-        road_y[2]-sidewalk_horiz_offset,
-        road_y[3]-sidewalk_horiz_offset,
-        road_y[4]-sidewalk_horiz_offset,
-      ]
 
       count = 0
 
@@ -612,10 +677,10 @@
         <!-- Starting pose -->
         <pose><%= traj[0][:x] %> <%= traj[0][:y] %> <%= 0.6 + $street_z_offset %> 0 0 <%= traj[0][:yaw] %></pose>
         <skin>
-          <filename><%= mesh_path + skin %></filename>
+          <filename>model://actor/meshes/<%= skin %></filename>
         </skin>
         <animation name="animation">
-          <filename><%= mesh_path + anim %></filename>
+          <filename>model://actor/meshes/<%= anim %></filename>
           <% if traj.length > 1 %>
             <interpolate_x>true</interpolate_x>
           <% end %>
