@@ -24,6 +24,8 @@ if (NOT CMAKE_BUILD_TYPE)
   message(STATUS "Build type not selected: Release selected by default")
 endif (NOT CMAKE_BUILD_TYPE)
 
+find_package (Qt5Widgets REQUIRED)
+find_package (Qt5Core REQUIRED)
 find_package(gazebo 9 REQUIRED)
 
 include(GNUInstallDirs)
