@@ -839,7 +839,7 @@
 
     <%= oldModel("gas_station", 61.88, -30.82, 3.14) %>
     <%= asphalt(61.581, -16.664, 0, 20, 20) %>
-    <%= includeModel(static_cars.sample, 61.90, -12.36, -1.57) %>
+    <%= includeModel(static_cars.sample, 61.90, -12.36, 0) %>
 
     <%= includeModel("apartment", 87.36, -21.48, -1.57) %>
     <%= includeModel("oak_tree", 74.95, -8.29, rand(0.0..3.14)) %>
@@ -854,8 +854,8 @@
     <%= includeModel("dumpster", 96.55, -57.43, 1.57) %>
     <%= asphalt(88.62, -72.49, 0, 29.378, 35.240) %>
     <%= asphalt(90.00, -52.48, 0, 10.15, 6.61) %>
-    <%= includeModel(static_cars.sample, 86.87, -60.00, 0) %>
-    <%= includeModel(static_cars.sample, 84.24, -60.00, 0) %>
+    <%= includeModel(static_cars.sample, 86.87, -60.00, Math::PI*0.5) %>
+    <%= includeModel(static_cars.sample, 84.24, -60.00, Math::PI*0.5) %>
     <%= includeModel("fire_hydrant", 105.6, -92.78, 0, $sidewalk_height) %>
 
     <%
@@ -965,7 +965,7 @@
       <%= includeModel("pine_tree", road_x[1] + 10, road_y[1] - 8 - y*1.5, rand(0.0..3.14)) %>
     <% end %>
 
-    <%= includeModel("pickup", 9.27, -85.5, -1.57) %>
+    <%= includeModel(static_cars.sample, 9.27, -85.5, 0) %>
     <%= includeModel("fire_hydrant", -10.8, -93.34, 0, $sidewalk_height) %>
     <%= includeModel("postbox", -10.76, -74.02, 1.57, $sidewalk_height) %>
 
@@ -1074,6 +1074,8 @@
 
     <!-- Stop lights -->
 
+    <%= includeModel("stop_light_post", road_x[0] + road_width * 0.5, road_y[1]-road_width * 0.5, -1.57) %>
+    <%= includeModel("stop_light_post", road_x[0] + road_width * 0.5, -road_width * 0.5, -1.57) %>
     <%= includeModel("stop_light_post", road_x[1] + road_width * 0.5, -road_width * 0.5, -1.57) %>
     <%= includeModel("stop_light_post", road_x[2] + road_width * 0.5, -road_width * 0.5, -1.57) %>
     <%= includeModel("stop_light_post", road_x[4] + road_width * 0.5, -road_width * 0.5, -1.57) %>
@@ -1082,39 +1084,25 @@
     <%= includeModel("stop_light_post", road_x[2] - road_width * 0.5, +road_width * 0.5, 1.57) %>
     <%= includeModel("stop_light_post", road_x[0] + road_width * 0.5, +road_width * 0.5, 0.0) %>
     <%= includeModel("stop_light_post", road_x[1] + road_width * 0.5, +road_width * 0.5, 0.0) %>
-    <%= includeModel("stop_light_post", road_x[2] + road_width * 0.5, +road_width * 0.5, 0.0) %>
     <%= includeModel("stop_light_post", road_x[4] + road_width * 0.5, +road_width * 0.5, 0.0) %>
     <%= includeModel("stop_light_post", road_x[0] - road_width * 0.5, -road_width * 0.5, 3.14) %>
-    <%= includeModel("stop_light_post", road_x[1] - road_width * 0.5, -road_width * 0.5, 3.14) %>
     <%= includeModel("stop_light_post", road_x[2] - road_width * 0.5, -road_width * 0.5, 3.14) %>
     <%= includeModel("stop_light_post", road_x[3] - road_width * 0.5, -road_width * 0.5, 3.14) %>
 
     <!-- Stop signs -->
 
-    <%= includeModel("stop_sign", road_x[0] + road_width * 0.5, road_y[1]+road_width * 0.5, 1.57) %>
-    <%= includeModel("stop_sign", road_x[1] + road_width * 0.5, road_y[1]+road_width * 0.5, 1.57) %>
-    <%= includeModel("stop_sign", road_x[2] + road_width * 0.5, road_y[1]+road_width * 0.5, 1.57) %>
     <%= includeModel("stop_sign", road_x[0] + road_width * 0.5, road_y[3]+road_width * 0.5, 1.57) %>
     <%= includeModel("stop_sign", road_x[1] + road_width * 0.5, road_y[3]+road_width * 0.5, 1.57) %>
     <%= includeModel("stop_sign", road_x[2] + road_width * 0.5, road_y[3]+road_width * 0.5, 1.57) %>
     <%= includeModel("stop_sign", road_x[1] + road_width * 0.5, road_y[1]-road_width * 0.5, 0.0) %>
     <%= includeModel("stop_sign", road_x[1] + road_width * 0.5, road_y[3]-road_width * 0.5, 0.0) %>
     <%= includeModel("stop_sign", road_x[1] + road_width * 0.5, road_y[4]-road_width * 0.5, 0.0) %>
-    <%= includeModel("stop_sign", road_x[2] + road_width * 0.5, road_y[1]-road_width * 0.5, 0.0) %>
-    <%= includeModel("stop_sign", road_x[2] + road_width * 0.5, road_y[3]-road_width * 0.5, 0.0) %>
-    <%= includeModel("stop_sign", road_x[2] + road_width * 0.5, road_y[4]-road_width * 0.5, 0.0) %>
-    <%= includeModel("stop_sign", road_x[1] - road_width * 0.5, road_y[0]+road_width * 0.5, 3.14) %>
-    <%= includeModel("stop_sign", road_x[1] - road_width * 0.5, road_y[1]+road_width * 0.5, 3.14) %>
-    <%= includeModel("stop_sign", road_x[1] - road_width * 0.5, road_y[3]+road_width * 0.5, 3.14) %>
     <%= includeModel("stop_sign", road_x[2] - road_width * 0.5, road_y[0]+road_width * 0.5, 3.14) %>
     <%= includeModel("stop_sign", road_x[2] - road_width * 0.5, road_y[1]+road_width * 0.5, 3.14) %>
     <%= includeModel("stop_sign", road_x[2] - road_width * 0.5, road_y[3]+road_width * 0.5, 3.14) %>
     <%= includeModel("stop_sign", road_x[1] - road_width * 0.5, road_y[1]-road_width * 0.5, -1.57) %>
-    <%= includeModel("stop_sign", road_x[1] - road_width * 0.5, road_y[3]-road_width * 0.5, -1.57) %>
     <%= includeModel("stop_sign", road_x[2] - road_width * 0.5, road_y[1]-road_width * 0.5, -1.57) %>
-    <%= includeModel("stop_sign", road_x[2] - road_width * 0.5, road_y[3]-road_width * 0.5, -1.57) %>
     <%= includeModel("stop_sign", road_x[3] - road_width * 0.5, road_y[1]-road_width * 0.5, -1.57) %>
-    <%= includeModel("stop_sign", road_x[3] - road_width * 0.5, road_y[3]-road_width * 0.5, -1.57) %>
 
     <!-- Street lights -->
 
@@ -1192,15 +1180,18 @@
     <%
       # Along Y
       (0..3).step(1).each do |y|
-        (0..2).step(1).each do |x|
+        (1..2).step(1).each do |x|
           dist = road_y[y+1] - road_y[y]
+
+          # facing west / east
+          yaw = x == 1 ? Math::PI*0.5 : -Math::PI*0.5
     %>
           <%= includeModel(static_cars.sample,
                            road_x[x] - road_width * 0.5 + car_width * 0.5,
-                           road_y[y] + dist*rand(0.2..0.8), [0, 3.14].sample) %>
+                           road_y[y] + dist*rand(0.2..0.8), yaw) %>
           <%= includeModel(static_cars.sample,
                            road_x[x] + road_width * 0.5 - car_width * 0.5,
-                           road_y[y] + dist*rand(0.2..0.8), [0, 3.14].sample) %>
+                           road_y[y] + dist*rand(0.2..0.8), yaw) %>
     <%
         end
       end
@@ -1209,24 +1200,24 @@
     <%
       # Along X
       (0..2).step(1).each do |x|
-        (0..4).step(1).each do |y|
-          if y == 2
-            next
-          end
+        [1, 3].each do |y|
           dist = road_x[x+1] - road_x[x]
+
+          # facing north / south
+          yaw = y == 1 ? 0 : Math::PI
     %>
           <%= includeModel(static_cars.sample,
                            road_x[x] + dist*rand(0.2..0.8),
-                           road_y[y] - road_width * 0.5 + car_width * 0.5,  [-1.57, 1.57].sample) %>
+                           road_y[y] - road_width * 0.5 + car_width * 0.5,  yaw) %>
           <%= includeModel(static_cars.sample,
                            road_x[x] + dist*rand(0.2..0.8),
-                           road_y[y] + road_width * 0.5 - car_width * 0.5,  [-1.57, 1.57].sample) %>
+                           road_y[y] + road_width * 0.5 - car_width * 0.5,  yaw) %>
     <%
         end
       end
     %>
 
-    <!-- Actors -->
+    <!-- People -->
     <%
       actors.keys.each do |name|
         skin = actors[name][:skin]
@@ -1274,7 +1265,82 @@
       </actor>
     <% end %>
 
-    <!-- Vehicles -->
+    <!-- Animated vehicles -->
+    <%
+      animCars = []
+
+      # X == 0: 2 ways, offset for construction
+      trajectory = []
+      trajectory.push({:x => road_x[0] + road_width*0.25, :y => road_y[0] + 10, :yaw => 0, :time => 0})
+      trajectory.push({:x => road_x[0] + road_width*0.25, :y => road_y[4], :yaw => 0, :time => rand(20..50)})
+      animCars.push(trajectory)
+
+      trajectory = []
+      trajectory.push({:x => road_x[0] - road_width*0.25, :y => road_y[4], :yaw => Math::PI, :time => 0})
+      trajectory.push({:x => road_x[0] - road_width*0.25, :y => road_y[0] + 10, :yaw => Math::PI, :time => rand(20..50)})
+      animCars.push(trajectory)
+
+      # X == 1: -> west
+      trajectory = []
+      trajectory.push({:x => road_x[1], :y => road_y[0], :yaw => 0, :time => 0})
+      trajectory.push({:x => road_x[1], :y => road_y[4], :yaw => 0, :time => rand(20..50)})
+      animCars.push(trajectory)
+
+      # X == 2: -> east
+      trajectory = []
+      trajectory.push({:x => road_x[2], :y => road_y[4], :yaw => Math::PI, :time => 0})
+      trajectory.push({:x => road_x[2], :y => road_y[0], :yaw => Math::PI, :time => rand(20..50)})
+      animCars.push(trajectory)
+
+      # X == 3: 2 cars going east
+      trajectory = []
+      trajectory.push({:x => road_x[3] - road_width*0.25, :y => road_y[4], :yaw => Math::PI, :time => 0})
+      trajectory.push({:x => road_x[3] - road_width*0.25, :y => road_y[0], :yaw => Math::PI, :time => rand(20..50)})
+      animCars.push(trajectory)
+
+      trajectory = []
+      trajectory.push({:x => road_x[3] + road_width*0.25, :y => road_y[4], :yaw => Math::PI, :time => 0})
+      trajectory.push({:x => road_x[3] + road_width*0.25, :y => road_y[0], :yaw => Math::PI, :time => rand(20..50)})
+      animCars.push(trajectory)
+
+      # X == 4: 2 cars going west
+      trajectory = []
+      trajectory.push({:x => road_x[4] - road_width*0.25, :y => road_y[0], :yaw => 0, :time => 0})
+      trajectory.push({:x => road_x[4] - road_width*0.25, :y => road_y[4], :yaw => 0, :time => rand(20..50)})
+      animCars.push(trajectory)
+
+      trajectory = []
+      trajectory.push({:x => road_x[4] + road_width*0.25, :y => road_y[0], :yaw => 0, :time => 0})
+      trajectory.push({:x => road_x[4] + road_width*0.25, :y => road_y[4], :yaw => 0, :time => rand(20..50)})
+      animCars.push(trajectory)
+
+
+      animCars.each do |traj|
+        $count += 1
+    %>
+      <actor name="car_<%= $count.to_s()  %>">
+        <pose><%= traj[0][:x] %> <%= traj[0][:y] %> <%= $street_z_offset %> 0 0 <%= traj[0][:yaw] %></pose>
+        <%= includeModel(static_cars.sample, 0, 0, Math::PI*0.5, -$street_z_offset) %>
+        <script>
+          <trajectory id="0" type="animation">
+            <%
+              traj.each do |t|
+                x = t[:x]
+                y = t[:y]
+                yaw = t[:yaw]
+                time = t[:time]
+            %>
+              <waypoint>
+                <time><%= time %></time>
+                <pose><%= x %> <%= y %> <%= $street_z_offset %> 0 0 <%= yaw %></pose>
+              </waypoint>
+            <% end %>
+          </trajectory>
+        </script>
+      </actor>
+    <% end %>
+
+    <!-- Prius -->
 
     <include>
       <name>prius_hybrid_123</name>
