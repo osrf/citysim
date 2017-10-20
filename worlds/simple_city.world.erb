@@ -22,6 +22,7 @@
   road_y = [-100, -45, 0, 45, 100]
   road_width = 7.4
   road_z_offset = 0.01 + $street_z_offset
+  road_z_offset_x = 0.005 + road_z_offset
 
   # Sidewalk parameters
   sidewalk_width = 3
@@ -485,9 +486,10 @@
     %>
 
     <road name="road_x_<%= count %>">
+
       <width><%= road_width %></width>
-      <point><%= road_x[0] + road_width * 0.5 %> <%= y %> <%= road_z_offset %></point>
-      <point><%= road_x[4] - road_width * 0.5 %> <%= y %> <%= road_z_offset %></point>
+      <point><%= road_x[0] + road_width * 0.5 %> <%= y %> <%= road_z_offset_x %></point>
+      <point><%= road_x[4] - road_width * 0.5 %> <%= y %> <%= road_z_offset_x %></point>
 
       <% if y != road_y.last and y != road_y.first and y != road_y[2] %>
       <material>
