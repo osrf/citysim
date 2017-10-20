@@ -25,8 +25,9 @@
   road_z_offset_x = 0.005 + road_z_offset
 
   # Sidewalk parameters
-  sidewalk_width = 3
-  sidewalk_z_offset = 0.005 + $street_z_offset
+  $sidewalk_width = 3
+  $sidewalk_height = 0.15
+  $sidewalk_corner_radius = 0.5
   sidewalk_horiz_offset = 5.2
 
   sidewalk_x =
@@ -56,6 +57,7 @@
 
   # Static cars
   static_cars = ["suv", "pickup", "hatchback", "hatchback_blue", "hatchback_red"]
+  car_width = 2.3
 
   # Trees
   trees = ["oak_tree", "pine_tree"]
@@ -328,6 +330,105 @@
     return trajectory
   end
 
+  # Print sidewalk block
+  # Sets $count
+  # Parameters:
+  # _minX: Minimum X coordinate
+  # _maxX: Maximum X coordinate
+  # _minY: Minimum Y coordinate
+  # _maxY: Maximum Y coordinate
+  # _radius: Corner radius
+  def sidewalkBlock(_minX, _maxX, _minY, _maxY, _radius = $sidewalk_corner_radius)
+    $count += 1
+
+    pts = []
+
+    # min - min
+    (0.0..1.0).step(0.2).each do |pt|
+
+      angle = Math::PI * 0.5 * pt
+
+      x = _minX + _radius - _radius * Math::cos(angle)
+      y = _minY + _radius - _radius * Math::sin(angle)
+
+      pts.push([x, y])
+    end
+
+    # max - min
+    (0.0..1.0).step(0.2).each do |pt|
+
+      pt = 1.0 - pt
+
+      angle = Math::PI * 0.5 * pt
+
+      x = _maxX - _radius + _radius * Math::cos(angle)
+      y = _minY + _radius - _radius * Math::sin(angle)
+
+      pts.push([x, y])
+    end
+
+    # max - max
+    (0.0..1.0).step(0.2).each do |pt|
+
+      angle = Math::PI * 0.5 * pt
+
+      x = _maxX - _radius + _radius * Math::cos(angle)
+      y = _maxY - _radius + _radius * Math::sin(angle)
+
+      pts.push([x, y])
+    end
+
+    # min - max
+    (0.0..1.0).step(0.2).each do |pt|
+
+      pt = 1.0 - pt
+
+      angle = Math::PI * 0.5 * pt
+
+      x = _minX + _radius - _radius * Math::cos(angle)
+      y = _maxY - _radius + _radius * Math::sin(angle)
+
+      pts.push([x, y])
+    end
+
+    str = "<model name=\"sidewalk_" + $count.to_s() + "\">\n"\
+    "  <static>true</static>\n"\
+    "  <pose>0 0 " + $street_z_offset.to_s() + " 0 0 0</pose>\n"\
+    "  <link name=\"link\">\n"\
+    "    <collision name=\"collision\">\n"\
+    "      <geometry>\n"\
+    "        <polyline>\n"\
+    "          <height>" + $sidewalk_height.to_s() + "</height>\n"
+
+             for pt in pts
+    str += "          <point>"+ pt[0].to_s() + " " + pt[1].to_s() + "</point>\n"\
+             end
+
+    str += "        </polyline>\n"\
+    "      </geometry>\n"\
+    "    </collision>\n"\
+    "    <visual name=\"visual\">\n"\
+    "      <geometry>\n"\
+    "        <polyline>\n"\
+    "          <height>" + $sidewalk_height.to_s() + "</height>\n"
+
+             for pt in pts
+    str += "          <point>"+ pt[0].to_s() + " " + pt[1].to_s() + "</point>\n"\
+             end
+
+    str += "        </polyline>\n"\
+    "      </geometry>\n"\
+    "      <material>\n"\
+    "        <ambient>0.2 0.2 0.2 1.0</ambient>\n"\
+    "      </material>\n"\
+    "    </visual>\n"\
+    "  </link>\n"\
+    "</model>\n"
+
+    str
+
+  end
+
   # Actor meshes
   skins =
   [
@@ -459,12 +560,14 @@
       # Along y
       for x in road_x
         count = count + 1
+        # Pull a bit to match roads made thicker to cover sidewalk corners
+        offset = $sidewalk_corner_radius
     %>
 
     <road name="road_y_<%= count %>">
       <width><%= road_width %></width>
       <point><%= x %> <%= road_y[0] - road_width * 0.5 %> <%= road_z_offset %></point>
-      <point><%= x %> <%= road_y[4] + road_width * 0.5 %> <%= road_z_offset %></point>
+      <point><%= x %> <%= road_y[4] + road_width * 0.5 + offset %> <%= road_z_offset %></point>
 
       <% if x != road_x.last and x != road_x.first %>
       <material>
@@ -483,11 +586,13 @@
       # Along x
       for y in road_y
         count = count + 1
+        # Make X roads slightly thicker to cover the corners of sidewalks
+        width = road_width + 2 * $sidewalk_corner_radius
     %>
 
     <road name="road_x_<%= count %>">
 
-      <width><%= road_width %></width>
+      <width><%= width %></width>
       <point><%= road_x[0] + road_width * 0.5 %> <%= y %> <%= road_z_offset_x %></point>
       <point><%= road_x[4] - road_width * 0.5 %> <%= y %> <%= road_z_offset_x %></point>
 
@@ -503,51 +608,135 @@
     </road>
     <% end %>
 
+
+    <!-- Sidewalks -->
     <%
-      # Sidewalks
+      (0..3).step(1).each do |x|
+        (0..3).step(1).each do |y|
+          # Use this to fill a whole block with concrete
+          if false
+    %>
+      <%= sidewalkBlock(road_x[x] + road_width*0.5,
+                        road_x[x+1] - road_width*0.5,
+                        road_y[y] + road_width*0.5,
+                        road_y[y+1] - road_width*0.5)  %>
+    <%
+          # North road's center divider
+          elsif x == 3
+            width = 0.5
+            radius = 0.1
+    %>
+      <%= sidewalkBlock(road_x[x] + road_width*0.5,
+                        road_x[x+1] - road_width*0.5,
+                        road_y[y] + road_width*0.5,
+                        road_y[y] + width  + road_width*0.5, radius)  %>
+      <%= sidewalkBlock(road_x[x] + road_width*0.5,
+                        road_x[x+1] - road_width*0.5,
+                        road_y[y+1] - width - road_width*0.5,
+                        road_y[y+1] - road_width*0.5, radius)  %>
+      <%= sidewalkBlock(road_x[x] + road_width*0.5,
+                        road_x[x] + width + road_width*0.5,
+                        road_y[y] + road_width*0.5,
+                        road_y[y+1] - road_width*0.5, radius)  %>
+      <%= sidewalkBlock(road_x[x+1] - width - road_width*0.5,
+                        road_x[x+1] - road_width*0.5,
+                        road_y[y] + road_width*0.5,
+                        road_y[y+1] - road_width*0.5, radius)  %>
+    <%
+          # Blocks with 4 surrounding sidewalks
+          else
+    %>
+      <!-- East -->
+      <%= sidewalkBlock(road_x[x] + road_width*0.5,
+                        road_x[x+1] - road_width*0.5,
+                        road_y[y] + road_width*0.5,
+                        road_y[y] + $sidewalk_width  + road_width*0.5)  %>
+      <!-- West -->
+      <%
+        # Fast food entrance
+        if x == 2 and y == 0
+      %>
+        <%= sidewalkBlock(road_x[x] + road_width*0.5,
+                          road_x[x] + 40,
+                          road_y[y+1] - $sidewalk_width - road_width*0.5,
+                          road_y[y+1] - road_width*0.5)  %>
+        <%= sidewalkBlock(road_x[x] + 50,
+                          road_x[x+1] - road_width*0.5,
+                          road_y[y+1] - $sidewalk_width - road_width*0.5,
+                          road_y[y+1] - road_width*0.5)  %>
+      <%
+        # Normal west sidewalks
+        else
+      %>
+        <%= sidewalkBlock(road_x[x] + road_width*0.5,
+                          road_x[x+1] - road_width*0.5,
+                          road_y[y+1] - $sidewalk_width - road_width*0.5,
+                          road_y[y+1] - road_width*0.5)  %>
+      <% end %>
 
-      count = 0
+      <!-- South -->
+      <%
+        # Grocery store entrance
+        if x == 1 and y == 0
+      %>
+        <%= sidewalkBlock(road_x[x] + road_width*0.5,
+                          road_x[x] + $sidewalk_width + road_width*0.5,
+                          road_y[y] + road_width*0.5,
+                          road_y[y] + 29)  %>
+        <%= sidewalkBlock(road_x[x] + road_width*0.5,
+                          road_x[x] + $sidewalk_width + road_width*0.5,
+                          road_y[y] + 35,
+                          road_y[y+1] - road_width*0.5 )  %>
+      <%
+        # Normal south sidewalks
+        else
+      %>
+        <%= sidewalkBlock(road_x[x] + road_width*0.5,
+                          road_x[x] + $sidewalk_width + road_width*0.5,
+                          road_y[y] + road_width*0.5,
+                          road_y[y+1] - road_width*0.5)  %>
+      <% end %>
 
-      # Along y
-      for x in sidewalk_x
-        count = count + 1
+      <!-- North -->
+      <%= sidewalkBlock(road_x[x+1] - $sidewalk_width - road_width*0.5,
+                        road_x[x+1] - road_width*0.5,
+                        road_y[y] + road_width*0.5,
+                        road_y[y+1] - road_width*0.5)  %>
+    <%
+          end
+        end
+      end
     %>
 
-    <road name="sidewalk_y_<%= count %>">
-      <width><%= sidewalk_width %></width>
-      <point><%= x %> <%= road_y[0] - road_width * 0.5 %> <%= sidewalk_z_offset %></point>
-      <point><%= x %> <%= road_y[4] + road_width * 0.5 %> <%= sidewalk_z_offset %></point>
+    <!-- North sidewalk -->
+    <%= sidewalkBlock(road_x[4] + road_width*0.5,
+                      road_x[4] + road_width*0.5 + $sidewalk_width,
+                      road_y[0] - road_width*0.5 - $sidewalk_width,
+                      #road_y[4] + road_width*0.5 + $sidewalk_width
+                      road_y[4] + road_width*0.5)  %>
 
-      <material>
-        <script>
-          <uri>file://media/materials/scripts/gazebo.material</uri>
-          <name>Gazebo/Pedestrian</name>
-        </script>
-      </material>
-    </road>
-    <% end
+    <!-- South sidewalk
+         Commented out because it leaks beyond the heightmap and intersects bridges
+    <%= sidewalkBlock(road_x[0] - road_width*0.5 - $sidewalk_width,
+                      road_x[0] - road_width*0.5,
+                      road_y[0] - road_width*0.5 - $sidewalk_width,
+                      road_y[4] + road_width*0.5 + $sidewalk_width)  %>
+     -->
 
-      count = 0
+    <!-- East sidewalk -->
+    <%= sidewalkBlock(#road_x[0] - road_width*0.5 - $sidewalk_width,
+                      road_x[0] - road_width*0.5,
+                      road_x[4] + road_width*0.5 + $sidewalk_width,
+                      road_y[0] - road_width*0.5 - $sidewalk_width,
+                      road_y[0] - road_width*0.5)  %>
 
-
-      # Along x
-      for y in sidewalk_y
-        count = count + 1
-    %>
-
-    <road name="sidewalk_x_<%= count %>">
-      <width><%= sidewalk_width %></width>
-      <point><%= road_x[0] + road_width * 0.5 %> <%= y %> <%= sidewalk_z_offset %></point>
-      <point><%= road_x[3] - road_width * 0.5 %> <%= y %> <%= sidewalk_z_offset %></point>
-
-      <material>
-        <script>
-          <uri>file://media/materials/scripts/gazebo.material</uri>
-          <name>Gazebo/Pedestrian</name>
-        </script>
-      </material>
-    </road>
-    <% end %>
+    <!-- West sidewalk
+         Commented out because it leaks beyond the heightmap
+    <%= sidewalkBlock(road_x[0] - road_width*0.5 - $sidewalk_width,
+                      road_x[4] + road_width*0.5 + $sidewalk_width,
+                      road_y[4] + road_width*0.5,
+                      road_y[4] + road_width*0.5 + $sidewalk_width)  %>
+     -->
 
     <!-- Buildings -->
 
@@ -620,7 +809,7 @@
 
     <%= oldModel("gas_station", 61.88, -30.82, 3.14) %>
     <%= asphalt(61.581, -16.664, 0, 20, 20) %>
-    <%= includeModel("pickup", 61.90, -12.36, -1.57) %>
+    <%= includeModel(static_cars.sample, 61.90, -12.36, -1.57) %>
 
     <%= includeModel("apartment", 87.36, -21.48, -1.57) %>
     <%= includeModel("oak_tree", 74.95, -8.29, rand(0.0..3.14)) %>
@@ -633,7 +822,7 @@
     <%= includeModel("fast_food", 96.084, -69.65, -1.57) %>
     <%= includeModel("dumpster", 96.55, -57.43, 1.57) %>
     <%= asphalt(88.62, -72.49, 0, 29.378, 35.240) %>
-    <%= asphalt(77.25, (road_y[0] + road_y[1])*0.5, 0, 6.49, road_y[1]-road_y[0] - road_width - sidewalk_width*2) %>
+    <%= asphalt(90.00, -52.48, 0, 10.15, 6.61) %>
     <%= includeModel(static_cars.sample, 86.87, -60.00, 0) %>
     <%= includeModel(static_cars.sample, 84.24, -60.00, 0) %>
 
@@ -681,7 +870,7 @@
     <%= includeModel("law_office", 8.47, 9.356, 0) %>
     <%= includeModel("thrift_shop", 1.35, 9.356, 0) %>
     <%= includeModel("salon", 15.7, 9.356, 0) %>
-    <%= includeModel("postbox", -6.09, 4.33, 3.14) %>
+    <%= includeModel("postbox", -6.09, 4.33, 3.14, $sidewalk_height) %>
     <%= includeModel("oak_tree", -6.418, 10.37, 0.55) %>
     <%= includeModel("apartment", 1.573, 27.565, 0) %>
     <%= includeModel("osrf_first_office", 27.003, 20.15, 1.57) %>
@@ -723,7 +912,7 @@
 
     <%= includeModel("grocery_store", 26.027, -71.40, 1.57) %>
     <%= asphalt(7.40, -72.69, 0, 22.248, 36.24) %>
-    <%= asphalt(-5.05, -67.99, 0, 6.49, 7.24) %>
+    <%= asphalt(-7.51, -67.99, 0, 7.63, 7.24) %>
 
     <% (1..29).step(1).each do |x| %>
       <%= includeModel("pine_tree", road_x[1] + 8 + x*1.5, road_y[0] + 8, rand(0.0..3.14)) %>
@@ -753,7 +942,7 @@
     <!-- Block 2 1 -->
 
     <%= includeModel("post_office", -26.686, 11.119, 3.14) %>
-    <%= includeModel("postbox", -28.58, 4.33, 3.14) %>
+    <%= includeModel("postbox", -28.58, 4.33, 3.14, $sidewalk_height) %>
     <%= includeModel("pine_tree", -30.709, 7.15, rand(0.0..3.14)) %>
     <%= includeModel("house_1", -27.49, 25.344, -1.57) %>
     <%= includeModel("pickup", -36.72, 21.02, -1.57) %>
@@ -786,26 +975,26 @@
     <% end %>
 
     <%= includeModel("collapsed_industrial", -29.8725, -83.9104, 1.5708) %>
-    <%= includeModel("construction_cone", -40.748, -90.1868, rand(0.0..3.14)) %>
+    <%= includeModel("construction_cone", -40.748, -90.1868, rand(0.0..3.14), $sidewalk_height) %>
 
-    <%= includeModel("construction_cone", -40.692, -95.2899, rand(0.0..3.14)) %>
-    <%= includeModel("construction_cone", -37.8997, -95.3521, rand(0.0..3.14)) %>
-    <%= includeModel("construction_cone", -35.2603, -95.3721, rand(0.0..3.14)) %>
-    <%= includeModel("construction_cone", -31.8118, -95.4314, rand(0.0..3.14)) %>
-    <%= includeModel("construction_cone", -40.1918, -74.491, rand(0.0..3.14)) %>
-    <%= includeModel("construction_cone", -40.6878, -80.629, rand(0.0..3.14)) %>
+    <%= includeModel("construction_cone", -40.692, -95.2899, rand(0.0..3.14), $sidewalk_height) %>
+    <%= includeModel("construction_cone", -37.8997, -95.3521, rand(0.0..3.14), $sidewalk_height) %>
+    <%= includeModel("construction_cone", -35.2603, -95.3721, rand(0.0..3.14), $sidewalk_height) %>
+    <%= includeModel("construction_cone", -31.8118, -95.4314, rand(0.0..3.14), $sidewalk_height) %>
+    <%= includeModel("construction_cone", -40.1918, -74.491, rand(0.0..3.14), $sidewalk_height) %>
+    <%= includeModel("construction_cone", -40.6878, -80.629, rand(0.0..3.14), $sidewalk_height) %>
 
-    <%= includeModel("cinder_block", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14)) %>
-    <%= includeModel("cinder_block", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14)) %>
-    <%= includeModel("cinder_block", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14)) %>
-    <%= includeModel("cinder_block", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14)) %>
-    <%= includeModel("cinder_block", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14)) %>
-    <%= includeModel("cinder_block", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14)) %>
-    <%= includeModel("cinder_block_2", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14)) %>
-    <%= includeModel("cinder_block_2", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14)) %>
-    <%= includeModel("cinder_block_2", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14)) %>
-    <%= includeModel("cinder_block_2", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14)) %>
-    <%= includeModel("cinder_block_2", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14)) %>
+    <%= includeModel("cinder_block", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14), $sidewalk_height) %>
+    <%= includeModel("cinder_block", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14), $sidewalk_height) %>
+    <%= includeModel("cinder_block", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14), $sidewalk_height) %>
+    <%= includeModel("cinder_block", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14), $sidewalk_height) %>
+    <%= includeModel("cinder_block", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14), $sidewalk_height) %>
+    <%= includeModel("cinder_block", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14), $sidewalk_height) %>
+    <%= includeModel("cinder_block_2", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14), $sidewalk_height) %>
+    <%= includeModel("cinder_block_2", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14), $sidewalk_height) %>
+    <%= includeModel("cinder_block_2", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14), $sidewalk_height) %>
+    <%= includeModel("cinder_block_2", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14), $sidewalk_height) %>
+    <%= includeModel("cinder_block_2", rand(-39.77..-35.209), rand(-93.948..-87.66), rand(0.0..3.14), $sidewalk_height) %>
 
     <!-- West block -->
 
@@ -965,8 +1154,12 @@
         (0..2).step(1).each do |x|
           dist = road_y[y+1] - road_y[y]
     %>
-          <%= includeModel(static_cars.sample, road_x[x] - road_width * 0.5, road_y[y] + dist*rand(0.4..0.6), [0, 3.14].sample) %>
-          <%= includeModel(static_cars.sample, road_x[x] + road_width * 0.5, road_y[y] + dist*rand(0.4..0.6), [0, 3.14].sample) %>
+          <%= includeModel(static_cars.sample,
+                           road_x[x] - road_width * 0.5 + car_width * 0.5,
+                           road_y[y] + dist*rand(0.2..0.8), [0, 3.14].sample) %>
+          <%= includeModel(static_cars.sample,
+                           road_x[x] + road_width * 0.5 - car_width * 0.5,
+                           road_y[y] + dist*rand(0.2..0.8), [0, 3.14].sample) %>
     <%
         end
       end
@@ -981,8 +1174,12 @@
           end
           dist = road_x[x+1] - road_x[x]
     %>
-          <%= includeModel(static_cars.sample, road_x[x] + dist*rand(0.4..0.6), road_y[y] - road_width * 0.5,  [-1.57, 1.57].sample) %>
-          <%= includeModel(static_cars.sample, road_x[x] + dist*rand(0.4..0.6), road_y[y] + road_width * 0.5,  [-1.57, 1.57].sample) %>
+          <%= includeModel(static_cars.sample,
+                           road_x[x] + dist*rand(0.2..0.8),
+                           road_y[y] - road_width * 0.5 + car_width * 0.5,  [-1.57, 1.57].sample) %>
+          <%= includeModel(static_cars.sample,
+                           road_x[x] + dist*rand(0.2..0.8),
+                           road_y[y] + road_width * 0.5 - car_width * 0.5,  [-1.57, 1.57].sample) %>
     <%
         end
       end
@@ -997,7 +1194,7 @@
     %>
       <actor name="<%= name  %>">
         <!-- Starting pose -->
-        <pose><%= traj[0][:x] %> <%= traj[0][:y] %> <%= 0.6 + $street_z_offset %> 0 0 <%= traj[0][:yaw] %></pose>
+        <pose><%= traj[0][:x] %> <%= traj[0][:y] %> <%= 0.6 + $street_z_offset + $sidewalk_height %> 0 0 <%= traj[0][:yaw] %></pose>
         <skin>
           <filename>model://actor/meshes/<%= skin %></filename>
         </skin>
@@ -1028,7 +1225,7 @@
               %>
                 <waypoint>
                   <time><%= time %></time>
-                  <pose><%= x %> <%= y %> <%= $street_z_offset %> 0 0 <%= yaw %></pose>
+                  <pose><%= x %> <%= y %> <%= $street_z_offset + $sidewalk_height %> 0 0 <%= yaw %></pose>
                 </waypoint>
               <% end %>
             </trajectory>
