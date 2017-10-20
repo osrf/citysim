@@ -794,6 +794,8 @@
     <%= includeModel("pine_tree", 100.74, 54.2, rand(0.0..3.14)) %>
     <%= includeModel("pine_tree", 100.53, 55.85, rand(0.0..3.14)) %>
     <%= includeModel("pine_tree", 99.226, 55.0, rand(0.0..3.14)) %>
+    <%= includeModel("fire_hydrant", 103.2, 49, 0, $sidewalk_height) %>
+    <%= includeModel("postbox", 80, 49.34, 3.14, $sidewalk_height) %>
 
     <!-- Block 0 1 -->
 
@@ -816,6 +818,7 @@
     <%= includeModel("oak_tree", 79.06, -35.8, rand(0.0..3.14)) %>
     <%= includeModel("oak_tree", 100.33, -33.7, rand(0.0..3.14)) %>
     <%= includeModel("oak_tree", 100.15, -8.67, rand(0.0..3.14)) %>
+    <%= includeModel("fire_hydrant", 103.0, -4.386, 0, $sidewalk_height) %>
 
     <!-- Block 0 3 -->
 
@@ -825,6 +828,7 @@
     <%= asphalt(90.00, -52.48, 0, 10.15, 6.61) %>
     <%= includeModel(static_cars.sample, 86.87, -60.00, 0) %>
     <%= includeModel(static_cars.sample, 84.24, -60.00, 0) %>
+    <%= includeModel("fire_hydrant", 105.6, -92.78, 0, $sidewalk_height) %>
 
     <%
       (0..6).step(1).each do |x|
@@ -864,13 +868,13 @@
 
     <%= includeModel("playground", 16.32, 64.85, -0.98) %>
     <%= includeModel("fountain", 0.9, 58.9, rand(0.0..3.14)) %>
+    <%= includeModel("fire_hydrant", 38.5, 49, 0, $sidewalk_height) %>
 
     <!-- Block 1 1 -->
 
     <%= includeModel("law_office", 8.47, 9.356, 0) %>
     <%= includeModel("thrift_shop", 1.35, 9.356, 0) %>
     <%= includeModel("salon", 15.7, 9.356, 0) %>
-    <%= includeModel("postbox", -6.09, 4.33, 3.14, $sidewalk_height) %>
     <%= includeModel("oak_tree", -6.418, 10.37, 0.55) %>
     <%= includeModel("apartment", 1.573, 27.565, 0) %>
     <%= includeModel("osrf_first_office", 27.003, 20.15, 1.57) %>
@@ -878,11 +882,13 @@
     <%= includeModel("pine_tree", 18.7, 29.33, rand(0.0..3.14)) %>
     <%= includeModel("pine_tree", 22.56, 34.58, rand(0.0..3.14)) %>
     <%= includeModel("oak_tree", 31.49, 35.89, -3.03) %>
+    <%= includeModel("postbox", 24.0, 4.33, 3.14, $sidewalk_height) %>
 
     <!-- Block 1 2 -->
 
     <%= includeModel("fast_food", 28.25, -13.93, 0) %>
     <%= includeModel("dumpster", 15.94, -13.63, 3.14) %>
+    <%= includeModel("fire_hydrant", 38.5, -4.38, 0, $sidewalk_height) %>
 
     <%
       (0..6).step(1).each do |x|
@@ -932,12 +938,15 @@
     <% end %>
 
     <%= includeModel("pickup", 9.27, -85.5, -1.57) %>
+    <%= includeModel("fire_hydrant", -10.8, -93.34, 0, $sidewalk_height) %>
+    <%= includeModel("postbox", -10.76, -74.02, 1.57, $sidewalk_height) %>
 
     <!-- Block 2 0 -->
 
     <%= includeModel("school", -27.309, 67.823, -1.57) %>
     <%= includeModel("oak_tree", -28.916, 89.604, -0.51) %>
     <%= includeModel("oak_tree", -34.077, 89.854, 0.51) %>
+    <%= includeModel("fire_hydrant", -38.5, 49, 0, $sidewalk_height) %>
 
     <!-- Block 2 1 -->
 
@@ -950,6 +959,8 @@
     <%= includeModel("pine_tree", -22.97, 15.87, 1.82) %>
     <%= includeModel("oak_tree", -36.78, 36.47, 1.7) %>
     <%= includeModel("pine_tree", -23.94, 34.92, 0.56) %>
+    <%= includeModel("cardboard_box", -32, 8, 0) %>
+    <%= includeModel("cardboard_box", -33, 7.5, 0) %>
 
     <!-- Block 2 2 -->
 
@@ -965,10 +976,12 @@
     <%= includeModel("pine_tree", -37.48, -36.76, rand(0.0..3.14)) %>
     <%= includeModel("pine_tree", -33.06, -37.17, rand(0.0..3.14)) %>
     <%= includeModel("pine_tree", -25.34, -29.166, rand(0.0..3.14)) %>
+    <%= includeModel("fire_hydrant", -20.34, -4.38, 0, $sidewalk_height) %>
 
     <!-- Block 2 3 -->
 
     <%= includeModel("police_station", -31.838, -59.696, 0) %>
+    <%= includeModel("fire_hydrant", -40.34, -49.16, 0, $sidewalk_height) %>
 
     <% (1..10).step(1).each do |y| %>
       <%= includeModel("pine_tree", road_x[1] - 8 + rand(-0.8..0.8), road_y[1] - 6 - y, rand(0.0..3.14)) %>
