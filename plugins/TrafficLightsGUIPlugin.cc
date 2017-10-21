@@ -50,8 +50,6 @@ void TrafficLightsGUIPlugin::Load(sdf::ElementPtr _sdf)
 
   while (keyElem)
   {
-    auto keyElem = _sdf->GetElement("key");
-
     Key key;
     key.value = keyElem->Get<int>("value");
     key.model = keyElem->Get<std::string>("model");
